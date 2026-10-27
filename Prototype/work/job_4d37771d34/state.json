@@ -1,0 +1,1386 @@
+{
+ "title": "ML Product Design: ML Canvas",
+ "file": "3. ML Canvas (1).pdf",
+ "tagged_input": true,
+ "elements": [
+  {
+   "kind": "image",
+   "page": 1,
+   "bbox": [
+    147.08,
+    8.480999999999995,
+    353.13,
+    90.89999999999998
+   ],
+   "odl_id": 3,
+   "hash": "51a1f330dc3395369586b4047c677b3a",
+   "area": 0.03275932667824073,
+   "decorative": false,
+   "id": "e000",
+   "jenis": "dekoratif",
+   "status": "dekoratif",
+   "checks": {},
+   "reasons": [
+    "VLM: gambar dekoratif"
+   ],
+   "pdf_ditahan": false,
+   "status_gerbang": "dekoratif"
+  },
+  {
+   "kind": "image",
+   "page": 1,
+   "bbox": [
+    81.6,
+    16.741999999999962,
+    147.078,
+    82.22000000000003
+   ],
+   "odl_id": 4,
+   "hash": "e3b1f8cca0863f0c09dac4eabe8ef7aa",
+   "area": 0.008270386736111121,
+   "decorative": true,
+   "id": "e001",
+   "jenis": "dekoratif",
+   "status": "dekoratif",
+   "checks": {},
+   "reasons": [
+    "Disaring heuristik ukuran/pengulangan"
+   ],
+   "pdf_ditahan": false,
+   "status_gerbang": "dekoratif"
+  },
+  {
+   "kind": "heading",
+   "level": 1,
+   "page": 1,
+   "text": "ML Product Design: ML Canvas",
+   "id": "e002"
+  },
+  {
+   "kind": "paragraph",
+   "page": 1,
+   "text": "TIM DOSEN MACHINE LEARNING",
+   "id": "e003"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 2,
+   "text": "Introduction",
+   "id": "e004"
+  },
+  {
+   "kind": "paragraph",
+   "page": 2,
+   "text": "The most useful question to continue working on the AI/ML  solution is ",
+   "id": "e005"
+  },
+  {
+   "kind": "paragraph",
+   "page": 2,
+   "text": "“how costly are wrong predictions?” ",
+   "id": "e006"
+  },
+  {
+   "kind": "paragraph",
+   "page": 2,
+   "text": "Answering that question will define the feasibility of the ML  project.",
+   "id": "e007"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 3,
+   "text": "Introduction (2)",
+   "id": "e008"
+  },
+  {
+   "kind": "paragraph",
+   "page": 3,
+   "text": "• Tidak jarang waktu dihabiskan oleh para insinyur dan ilmuwan untuk memecahkan  masalah yang salah dan membangun model yang tidak digunakan. ",
+   "id": "e009"
+  },
+  {
+   "kind": "paragraph",
+   "page": 3,
+   "text": "• Ketika  mereka  mengerjakan  masalah  yang  tepat,  muncul  suatu  tantangan  menyelaraskan aktivitas setiap orang dari latar belakang berbeda (misalnya ilmu data,  teknik,  produk,  bisnis)  untuk  bisa  bekerja  sama  dalam  membangun  sesuatu  yang  inovatif yang menciptakan nilai.",
+   "id": "e010"
+  },
+  {
+   "kind": "paragraph",
+   "page": 3,
+   "text": "• Salah  satu  cara  untuk  mempermudah  kolaborasi  adalah  dengan  menggunakan  kanvas.",
+   "id": "e011"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 4,
+   "text": "Canvas",
+   "id": "e012"
+  },
+  {
+   "kind": "paragraph",
+   "page": 4,
+   "text": "• Kanvas sangat populer di komunitas startup, dimulai dengan Lean Canvas yang sangat  populer, yang berasal dari Business Model Canvas.",
+   "id": "e013"
+  },
+  {
+   "kind": "paragraph",
+   "page": 4,
+   "text": "• Kanvas berupa bagan visual untuk mendeskripsikan objek kompleks dengan cara yang  lebih baik daripada dokumen teks sederhana. Setiap komponen kunci memiliki bloknya  sendiri dan blok disusun pada bagan dengan cara yang masuk akal secara visual  (berdasarkan kedekatannya).",
+   "id": "e014"
+  },
+  {
+   "kind": "paragraph",
+   "page": 4,
+   "text": "• Dalam konteks data dan AI (artificial intelligence), sebuah kanvas dapat berguna untuk  menggambarkan pembelajaran aktual yang terjadi dalam sistem cerdas:",
+   "id": "e015"
+  },
+  {
+   "kind": "paragraph",
+   "page": 4,
+   "text": "• Data apa yang kita pelajari?",
+   "id": "e016"
+  },
+  {
+   "kind": "paragraph",
+   "page": 4,
+   "text": "• Bagaimana kita menggunakan prediksi yang didukung oleh pembelajaran itu?",
+   "id": "e017"
+  },
+  {
+   "kind": "paragraph",
+   "page": 4,
+   "text": "• Bagaimana kita memastikan bahwa semuanya \"bekerja\" sepanjang waktu?",
+   "id": "e018"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 5,
+   "text": "AI Canvas",
+   "id": "e019"
+  },
+  {
+   "kind": "paragraph",
+   "page": 5,
+   "text": "AI Canvas membantu dalam merancang dan merinci proses prediksi, termasuk  mengidentifikasi  kebutuhan  sistem  serta  menentukan  mekanisme  respons  terhadap kesalahan yang dihasilkan oleh algoritma prediksi.  AI Canvas berisi  kerangka  kerja  konseptual  untuk  merancang  dan  memetakan  penggunaan  sistem  kecerdasan  buatan  secara  menyeluruh,  mulai  dari  input  data,  proses  prediksi, pengambilan  keputusan,  tindakan  sistem, hingga evaluasi  hasil dan  umpan balik untuk perbaikan berkelanjutan.",
+   "id": "e020"
+  },
+  {
+   "kind": "paragraph",
+   "page": 5,
+   "text": "Tujuan utama AI Canvas:",
+   "id": "e021"
+  },
+  {
+   "kind": "paragraph",
+   "page": 5,
+   "text": "1. Menggambarkan bagaimana AI digunakan dalam suatu sistem atau proses  nyata.",
+   "id": "e022"
+  },
+  {
+   "kind": "paragraph",
+   "page": 5,
+   "text": "2. Menjelaskan  hubungan  antara  data,  model,  keputusan,  dan  dampak  operasional.",
+   "id": "e023"
+  },
+  {
+   "kind": "paragraph",
+   "page": 5,
+   "text": "3. Membantu perancangan sistem AI secara end-to-end.",
+   "id": "e024"
+  },
+  {
+   "kind": "image",
+   "page": 6,
+   "bbox": [
+    94.211,
+    77.86200000000002,
+    807.231,
+    443.752
+   ],
+   "odl_id": 14,
+   "hash": "35bf27fc4e384118c4b27cf592ecec80",
+   "area": 0.5032540273919753,
+   "decorative": false,
+   "id": "e025",
+   "jenis": "diagram",
+   "draft": "Infografis \"The AI Canvas\" ini menjelaskan contoh penerapan AI untuk meningkatkan keamanan rumah melalui tujuh komponen utama. Komponen tersebut mencakup Prediksi, Penilaian, Tindakan, Hasil, Input, Pelatihan, dan Umpan Balik. Setiap bagian merinci proses penggunaan data sensor untuk melatih, mengoperasikan, dan terus meningkatkan akurasi model AI.",
+   "checks": {},
+   "reasons": [
+    "Diagram nondata tidak memiliki pemeriksaan otomatis (K = ∅)"
+   ],
+   "status": "antrean",
+   "pdf_ditahan": false,
+   "status_gerbang": "antrean"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 7,
+   "text": "ML Canvas",
+   "id": "e026"
+  },
+  {
+   "kind": "paragraph",
+   "page": 7,
+   "text": "Meskipun AI  Canvas  merepresentasikan  struktur  tingkat  tinggi  dari  implementasi  AI/ML,  pada  tahap  tertentu  diperlukan  perumusan  visi  dan  spesifikasi sistem machine learning secara lebih rinci. Untuk tujuan tersebut  digunakan ML Canvas, seperti yang diperkenalkan oleh Louis Dorard.",
+   "id": "e027"
+  },
+  {
+   "kind": "paragraph",
+   "page": 7,
+   "text": "ML Canvas  membantu  menyusun  proyek  machine  learning  dan  menentukan  persyaratan  inti  yang  diperlukan  untuk  merealisasikannya.  Proses  ini  diawali  dengan mengidentifikasi tujuan dengan menjawab pertanyaan “apa yang ingin  dicapai  bagi  end-user  dari  sistem  prediktif?”,  kemudian  menghubungkan  sasaran bisnis dengan tugas machine learning (ML task).",
+   "id": "e028"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 8,
+   "text": "ML Canvas",
+   "id": "e029"
+  },
+  {
+   "kind": "paragraph",
+   "page": 8,
+   "text": "ML Canvas berisi kerangka kerja untuk merancang dan mengembangkan model  machine learning dengan menekankan aspek teknis seperti data, fitur, pelatihan  model, evaluasi kinerja, dan implementasi model.",
+   "id": "e030"
+  },
+  {
+   "kind": "paragraph",
+   "page": 8,
+   "text": "Tujuan utama ML Canvas:",
+   "id": "e031"
+  },
+  {
+   "kind": "paragraph",
+   "page": 8,
+   "text": "Memetakan proses pembangunan model machine learning.",
+   "id": "e032"
+  },
+  {
+   "kind": "paragraph",
+   "page": 8,
+   "text": "Mengidentifikasi kebutuhan data dan fitur.",
+   "id": "e033"
+  },
+  {
+   "kind": "paragraph",
+   "page": 8,
+   "text": "Mengoptimalkan performa model prediksi.",
+   "id": "e034"
+  },
+  {
+   "kind": "image",
+   "page": 9,
+   "bbox": [
+    140.45,
+    2.604000000000042,
+    787.1,
+    492.854
+   ],
+   "odl_id": 19,
+   "hash": "10c7ce2da5ff640ddddf2d5b51e6655a",
+   "area": 0.6115358072916668,
+   "decorative": false,
+   "id": "e035",
+   "jenis": "dekoratif",
+   "status": "dekoratif",
+   "checks": {},
+   "reasons": [
+    "VLM: gambar dekoratif"
+   ],
+   "pdf_ditahan": false,
+   "status_gerbang": "dekoratif"
+  },
+  {
+   "kind": "image",
+   "page": 10,
+   "bbox": [
+    172.71,
+    11.144000000000005,
+    787.28,
+    486.174
+   ],
+   "odl_id": 20,
+   "hash": "a51ba75e11d3df35b73f2f385f935e32",
+   "area": 0.5631542961033951,
+   "decorative": false,
+   "id": "e036",
+   "jenis": "dekoratif",
+   "status": "dekoratif",
+   "checks": {},
+   "reasons": [
+    "VLM: gambar dekoratif"
+   ],
+   "pdf_ditahan": false,
+   "status_gerbang": "dekoratif"
+  },
+  {
+   "id": "v01000",
+   "kind": "image",
+   "page": 10,
+   "vektor": true,
+   "campuran": true,
+   "jenis": "figur",
+   "status": "antrean",
+   "checks": {},
+   "reasons": [
+    "Figure bertag tanpa citra yang terdeteksi tata letak, tidak dapat diverifikasi (K = ∅); ditahan untuk ULD",
+    "Halaman ini juga memuat citra raster sehingga urutan Figure tidak dapat dipastikan; di PDF bertag figur tetap berpenanda tahan, keputusan ULD diterapkan pada HTML",
+    "Pratinjau menampilkan seluruh halaman karena letak figur tidak tercatat (figur ke-1 dari 1 pada halaman ini)"
+   ],
+   "status_gerbang": "antrean"
+  },
+  {
+   "kind": "paragraph",
+   "page": 11,
+   "text": "ML Task yang  digunakan  adalah  Classification",
+   "id": "e037"
+  },
+  {
+   "kind": "paragraph",
+   "page": 11,
+   "text": "Kemudian kita  jawab  pertanyaanpertanyaan  yang ada di  masing-masing  blok",
+   "id": "e038"
+  },
+  {
+   "kind": "image",
+   "page": 11,
+   "bbox": [
+    181.13,
+    23.538999999999987,
+    778.86,
+    485.389
+   ],
+   "odl_id": 21,
+   "hash": "9796957a004c7de67afd872d81e916ec",
+   "area": 0.5325262355324074,
+   "decorative": false,
+   "id": "e039",
+   "jenis": "tabel",
+   "draft": "Gambar ini menampilkan The Machine Learning Canvas (V1.0), sebuah kerangka kerja terstruktur untuk merancang proyek machine learning. Kanvas ini mencakup berbagai komponen penting seperti tugas prediksi, proposisi nilai, pengumpulan data, pembangunan model, hingga pemantauan langsung. Template ini berfungsi sebagai panduan komprehensif untuk merencanakan seluruh aspek sistem pembelajaran mesin.",
+   "checks": {},
+   "reasons": [
+    "Tabel-citra: struktur belum diverifikasi, perlu tinjauan"
+   ],
+   "status": "disetujui",
+   "pdf_ditahan": false,
+   "status_gerbang": "antrean",
+   "alt_final": "Gambar ini menampilkan The Machine Learning Canvas (V1.0), sebuah kerangka kerja terstruktur untuk merancang proyek machine learning. Kanvas ini mencakup berbagai komponen penting seperti tugas prediksi, proposisi nilai, pengumpulan data, pembangunan model, hingga pemantauan langsung. Template ini berfungsi sebagai panduan komprehensif untuk merencanakan seluruh aspek sistem pembelajaran mesin.",
+   "log": [
+    {
+     "aksi": "setujui",
+     "waktu": "2026-10-27 19:19:28"
+    }
+   ]
+  },
+  {
+   "id": "v01100",
+   "kind": "image",
+   "page": 11,
+   "vektor": true,
+   "campuran": true,
+   "jenis": "figur",
+   "status": "antrean",
+   "checks": {},
+   "reasons": [
+    "Figure bertag tanpa citra yang terdeteksi tata letak, tidak dapat diverifikasi (K = ∅); ditahan untuk ULD",
+    "Halaman ini juga memuat citra raster sehingga urutan Figure tidak dapat dipastikan; di PDF bertag figur tetap berpenanda tahan, keputusan ULD diterapkan pada HTML",
+    "Pratinjau menampilkan seluruh halaman karena letak figur tidak tercatat (figur ke-1 dari 1 pada halaman ini)"
+   ],
+   "status_gerbang": "antrean"
+  },
+  {
+   "kind": "image",
+   "page": 12,
+   "bbox": [
+    100.69,
+    22.56600000000003,
+    864.12,
+    451.996
+   ],
+   "odl_id": 25,
+   "hash": "1c60703b8401a9e4b6b8ceb02d6653d7",
+   "area": 0.632406915316358,
+   "decorative": false,
+   "id": "e040",
+   "jenis": "diagram",
+   "draft": "Diagram The Machine Learning Canvas (v0.4) yang merupakan kerangka kerja untuk merancang proyek machine learning. Diagram ini terbagi menjadi dua area utama, yaitu Domain Integration dan Predictive Engine, yang mencakup komponen seperti tugas ML, proposisi nilai, sumber data, hingga evaluasi. Alur kerja dalam kanvas ini menghubungkan tujuan utama dengan proses prediksi, pembelajaran, dan evaluasi sistem.",
+   "checks": {},
+   "reasons": [
+    "Diagram nondata tidak memiliki pemeriksaan otomatis (K = ∅)"
+   ],
+   "status": "antrean",
+   "pdf_ditahan": false,
+   "status_gerbang": "antrean"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 12,
+   "text": "Other Project: ML Canvas",
+   "id": "e041"
+  },
+  {
+   "id": "v01200",
+   "kind": "image",
+   "page": 12,
+   "vektor": true,
+   "campuran": true,
+   "jenis": "figur",
+   "status": "antrean",
+   "checks": {},
+   "reasons": [
+    "Figure bertag tanpa citra yang terdeteksi tata letak, tidak dapat diverifikasi (K = ∅); ditahan untuk ULD",
+    "Halaman ini juga memuat citra raster sehingga urutan Figure tidak dapat dipastikan; di PDF bertag figur tetap berpenanda tahan, keputusan ULD diterapkan pada HTML",
+    "Pratinjau menampilkan seluruh halaman karena letak figur tidak tercatat (figur ke-1 dari 2 pada halaman ini)"
+   ],
+   "status_gerbang": "antrean"
+  },
+  {
+   "id": "v01201",
+   "kind": "image",
+   "page": 12,
+   "vektor": true,
+   "campuran": true,
+   "jenis": "figur",
+   "status": "antrean",
+   "checks": {},
+   "reasons": [
+    "Figure bertag tanpa citra yang terdeteksi tata letak, tidak dapat diverifikasi (K = ∅); ditahan untuk ULD",
+    "Halaman ini juga memuat citra raster sehingga urutan Figure tidak dapat dipastikan; di PDF bertag figur tetap berpenanda tahan, keputusan ULD diterapkan pada HTML",
+    "Pratinjau menampilkan seluruh halaman karena letak figur tidak tercatat (figur ke-2 dari 2 pada halaman ini)"
+   ],
+   "status_gerbang": "antrean"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 13,
+   "text": "Blocks in ML Canvas",
+   "id": "e042"
+  },
+  {
+   "kind": "paragraph",
+   "page": 13,
+   "text": "• Bagian tengah kanvas adalah blok bangunan  Value Preposition, yang menjelaskan  produk atau layanan yang menciptakan nilai bagi pelanggan. Biasanya, kita menjawab  pertanyaan-pertanyaan berikut: ",
+   "id": "e043"
+  },
+  {
+   "kind": "paragraph",
+   "page": 13,
+   "text": "• Masalah apa yang coba diselesaikan? ",
+   "id": "e044"
+  },
+  {
+   "kind": "paragraph",
+   "page": 13,
+   "text": "• Mengapa ini penting? ",
+   "id": "e045"
+  },
+  {
+   "kind": "paragraph",
+   "page": 13,
+   "text": "• Siapa end-user sistem? ",
+   "id": "e046"
+  },
+  {
+   "kind": "paragraph",
+   "page": 13,
+   "text": "• Nilai apa yang diberikan proyek ML kepada end-user? ",
+   "id": "e047"
+  },
+  {
+   "kind": "paragraph",
+   "page": 13,
+   "text": "• Bagaimana mereka akan menggunakan outputs/predictions Anda? (workflow)",
+   "id": "e048"
+  },
+  {
+   "kind": "paragraph",
+   "page": 13,
+   "text": "• Kanvas yang tersisa dibagi menjadi tiga kategori besar: ",
+   "id": "e049"
+  },
+  {
+   "kind": "paragraph",
+   "page": 13,
+   "text": "• Learning, menentukan bagaimana model ML akan dipelajari;",
+   "id": "e050"
+  },
+  {
+   "kind": "paragraph",
+   "page": 13,
+   "text": "• Prediction, menjelaskan bagaimana prediksi dilakukan; dan",
+   "id": "e051"
+  },
+  {
+   "kind": "paragraph",
+   "page": 13,
+   "text": "• Evaluation, berisi metode dan metrik untuk model ML dan evaluasi sistem.",
+   "id": "e052"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 14,
+   "text": "Blocks in ML Canvas: Prediction",
+   "id": "e053"
+  },
+  {
+   "kind": "paragraph",
+   "page": 14,
+   "text": "Bagian di  sisi  kiri  dikhususkan  untuk  Prediction,  berdasarkan  model  yang  akan  kita  pelajari dari data.",
+   "id": "e054"
+  },
+  {
+   "kind": "paragraph",
+   "page": 14,
+   "text": "• ML/Prediction Task: Jenis apa (misal: klasifikasi, regresi, dll), apa inputnya, dan apa  output yang akan diprediksi (bersama dengan nilai yang mungkin)? ",
+   "id": "e055"
+  },
+  {
+   "kind": "paragraph",
+   "page": 14,
+   "text": "• Decisions:  Bagaimana  prediksi  digunakan  untuk  membuat  keputusan  yang  memberikan nilai yang diusulkan kepada end-user? ",
+   "id": "e056"
+  },
+  {
+   "kind": "paragraph",
+   "page": 14,
+   "text": "• Making Predictions: Kapan kita membuat prediksi tentang input baru dan berapa lama  waktu yang kita miliki untuk itu? ",
+   "id": "e057"
+  },
+  {
+   "kind": "paragraph",
+   "page": 14,
+   "text": "• Offline  Evaluation:  Metode  dan  metrik  mana  yang  dapat  digunakan  untuk  mengevaluasi cara prediksi yang akan dibuat dan digunakan (prior to deployment)?",
+   "id": "e058"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 15,
+   "text": "Blocks in ML Canvas: Learning",
+   "id": "e059"
+  },
+  {
+   "kind": "paragraph",
+   "page": 15,
+   "text": "Bagian di sisi kanan didedikasikan untuk Learning dari data. ",
+   "id": "e060"
+  },
+  {
+   "kind": "paragraph",
+   "page": 15,
+   "text": "• Data Sources: Sumber data mentah mana yang dapat kita gunakan? ",
+   "id": "e061"
+  },
+  {
+   "kind": "paragraph",
+   "page": 15,
+   "text": "• Data Collection: Bagaimana kita mendapatkan data baru untuk dipelajari (input dan  output)? ",
+   "id": "e062"
+  },
+  {
+   "kind": "paragraph",
+   "page": 15,
+   "text": "• Features: Representasi input untuk mengekstrak dari sumber data mentah. ",
+   "id": "e063"
+  },
+  {
+   "kind": "paragraph",
+   "page": 15,
+   "text": "• Building  Models:  Kapan  kita  membuat/memperbarui  model  dengan  data  pelatihan  baru dan berapa lama waktu yang kita miliki untuk itu? ",
+   "id": "e064"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 16,
+   "text": "Blocks in ML Canvas: Evaluation",
+   "id": "e065"
+  },
+  {
+   "kind": "paragraph",
+   "page": 16,
+   "text": "Bagian terakhir kanvas didedikasikan untuk mengukur seberapa baik sistem bekerja di  Live  Monitoring.  Di  sinilah  kita  akan  menentukan  metode  dan  metrik  untuk  mengevaluasi sistem setelah deployment, dan untuk mengukur penciptaan nilai.",
+   "id": "e066"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 17,
+   "text": "Data Sources",
+   "id": "e067"
+  },
+  {
+   "kind": "paragraph",
+   "page": 17,
+   "text": "Di blok ini, kita mengklarifikasi semua sumber data yang tersedia dan memungkinkan untuk digunakan untuk  tugas ML. Sebagai contoh, kita dapat mempertimbangkan untuk menggunakan:",
+   "id": "e068"
+  },
+  {
+   "kind": "paragraph",
+   "page": 17,
+   "text": "• Internal/external databases.",
+   "id": "e069"
+  },
+  {
+   "kind": "paragraph",
+   "page": 17,
+   "text": "• Data marts, OLAP cubes, data warehouses, OLTP systems.",
+   "id": "e070"
+  },
+  {
+   "kind": "paragraph",
+   "page": 17,
+   "text": "• Hadoop clusters,",
+   "id": "e071"
+  },
+  {
+   "kind": "paragraph",
+   "page": 17,
+   "text": "• REST APIs to gather data.",
+   "id": "e072"
+  },
+  {
+   "kind": "paragraph",
+   "page": 17,
+   "text": "• Static files, spreadsheets.",
+   "id": "e073"
+  },
+  {
+   "kind": "paragraph",
+   "page": 17,
+   "text": "• Web scraping.",
+   "id": "e074"
+  },
+  {
+   "kind": "paragraph",
+   "page": 17,
+   "text": "• The output of other (ML) systems.",
+   "id": "e075"
+  },
+  {
+   "kind": "paragraph",
+   "page": 17,
+   "text": "• Open-source data sets.",
+   "id": "e076"
+  },
+  {
+   "kind": "paragraph",
+   "page": 17,
+   "text": "Hidden cost dari aplikasi ML:",
+   "id": "e077"
+  },
+  {
+   "kind": "paragraph",
+   "page": 17,
+   "text": "Seberapa mahal bisa mendapatkan penyimpanan data? Haruskah kita membeli data eksternal? ",
+   "id": "e078"
+  },
+  {
+   "kind": "paragraph",
+   "page": 17,
+   "text": "Alat dan proses penilaian data apa yang tersedia untuk membuat data dapat diakses dari sistem lain?",
+   "id": "e079"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 18,
+   "text": "Prediction Task",
+   "id": "e080"
+  },
+  {
+   "kind": "paragraph",
+   "page": 18,
+   "text": "Setelah mengklarifikasi data apa yang tersedia, kita melakukan brainstorming jenis ML apa yang harus digunakan.",
+   "id": "e081"
+  },
+  {
+   "kind": "paragraph",
+   "page": 18,
+   "text": "• Supervised or unsupervised learning?",
+   "id": "e082"
+  },
+  {
+   "kind": "paragraph",
+   "page": 18,
+   "text": "• Is this anomaly detection?",
+   "id": "e083"
+  },
+  {
+   "kind": "paragraph",
+   "page": 18,
+   "text": "• Is the problem about which option should be taken? (recommendation)",
+   "id": "e084"
+  },
+  {
+   "kind": "paragraph",
+   "page": 18,
+   "text": "• Do we need to predict a continuous value? (regression)",
+   "id": "e085"
+  },
+  {
+   "kind": "paragraph",
+   "page": 18,
+   "text": "• Which category need to be predicted? (classification)",
+   "id": "e086"
+  },
+  {
+   "kind": "paragraph",
+   "page": 18,
+   "text": "• Do we need to group our data? (clustering)",
+   "id": "e087"
+  },
+  {
+   "kind": "paragraph",
+   "page": 18,
+   "text": "• If supervised, what type of ML task should be taken: classification, regression, or ranking?",
+   "id": "e088"
+  },
+  {
+   "kind": "paragraph",
+   "page": 18,
+   "text": "• If classification, will it be binary- or multiclass classification task?",
+   "id": "e089"
+  },
+  {
+   "kind": "paragraph",
+   "page": 18,
+   "text": "• What is the input for a prediction task? e.g. E-mail text.",
+   "id": "e090"
+  },
+  {
+   "kind": "paragraph",
+   "page": 18,
+   "text": "• What is the output of the prediction task? e.g. “spam” and “regular”",
+   "id": "e091"
+  },
+  {
+   "kind": "paragraph",
+   "page": 18,
+   "text": "• What is the degree of complexity our ML Model could assume? e.g. is our model a combination of other ML  models? Do we employ ensemble learning? How many hidden layers included in the deep learning model?",
+   "id": "e092"
+  },
+  {
+   "kind": "paragraph",
+   "page": 18,
+   "text": "• What are the complexity costs, such as training and inference time, for the above models?",
+   "id": "e093"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 19,
+   "text": "Features",
+   "id": "e094"
+  },
+  {
+   "kind": "paragraph",
+   "page": 19,
+   "text": "• Karena setiap algoritma ML membutuhkan input data dalam bentuk fitur, kita harus  mengklarifikasi bagaimana data input harus direpresentasikan. ",
+   "id": "e095"
+  },
+  {
+   "kind": "paragraph",
+   "page": 19,
+   "text": "• Bagaimana kita mengekstrak fitur dari sumber mentah? ",
+   "id": "e096"
+  },
+  {
+   "kind": "paragraph",
+   "page": 19,
+   "text": "• Pertimbangkan untuk menyertakan pakar domain guna menentukan aspek data apa  yang paling penting untuk tugas ML tertentu.",
+   "id": "e097"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 20,
+   "text": "Offline Evaluation",
+   "id": "e098"
+  },
+  {
+   "kind": "paragraph",
+   "page": 20,
+   "text": "• Sebelum  penerapan  pelatihan  model  ML  apa  pun,  kami  perlu  menentukan  dan  menyiapkan metode dan metrik untuk mengevaluasi sistem sebelum penerapan. ",
+   "id": "e099"
+  },
+  {
+   "kind": "paragraph",
+   "page": 20,
+   "text": "• Metrik evaluasi teknis apa yang harus digunakan? Presisi, F-1 score, Akurasi, dll. ",
+   "id": "e100"
+  },
+  {
+   "kind": "paragraph",
+   "page": 20,
+   "text": "• Apa arti kesalahan prediksi model, seperti positif palsu dan negatif palsu? ",
+   "id": "e101"
+  },
+  {
+   "kind": "paragraph",
+   "page": 20,
+   "text": "• Apa data pengujian kami? ",
+   "id": "e102"
+  },
+  {
+   "kind": "paragraph",
+   "page": 20,
+   "text": "• Berapa  banyak  data  pengujian  yang  kami  perlukan  untuk  yakin  bahwa  model  ML  berperforma baik?",
+   "id": "e103"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 21,
+   "text": "Decisions",
+   "id": "e104"
+  },
+  {
+   "kind": "paragraph",
+   "page": 21,
+   "text": "• Bagaimana prediksi digunakan untuk membuat keputusan? ",
+   "id": "e105"
+  },
+  {
+   "kind": "paragraph",
+   "page": 21,
+   "text": "• Bagaimana end-user atau sistem berinteraksi dengan prediksi model? ",
+   "id": "e106"
+  },
+  {
+   "kind": "paragraph",
+   "page": 21,
+   "text": "Misalnya Apa yang terjadi jika pengguna mendapatkan daftar rekomendasi produk?  Apa jadinya jika email yang masuk tergolong “spam”? ",
+   "id": "e107"
+  },
+  {
+   "kind": "paragraph",
+   "page": 21,
+   "text": "• Apakah ada biaya tersembunyi dalam pengambilan keputusan, misal human in the loop  ?",
+   "id": "e108"
+  },
+  {
+   "kind": "paragraph",
+   "page": 21,
+   "text": "Informasi tersebut diperlukan untuk kemudian memutuskan cara menerapkan model  ML.",
+   "id": "e109"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 22,
+   "text": "Making Predictions",
+   "id": "e110"
+  },
+  {
+   "kind": "paragraph",
+   "page": 22,
+   "text": "Blok ini berisi informasi tentang kapan kita membuat prediksi pada input baru. ",
+   "id": "e111"
+  },
+  {
+   "kind": "paragraph",
+   "page": 22,
+   "text": "• Kapan prediksi harus tersedia? ",
+   "id": "e112"
+  },
+  {
+   "kind": "paragraph",
+   "page": 22,
+   "text": "• Prediksi baru dibuat setiap kali pengguna membuka aplikasi, seperti rekomendasi.",
+   "id": "e113"
+  },
+  {
+   "kind": "paragraph",
+   "page": 22,
+   "text": "• Prediksi baru dibuat berdasarkan permintaan. ",
+   "id": "e114"
+  },
+  {
+   "kind": "paragraph",
+   "page": 22,
+   "text": "• Prediksi baru dibuat sesuai jadwal. ",
+   "id": "e115"
+  },
+  {
+   "kind": "paragraph",
+   "page": 22,
+   "text": "• Apakah prediksi dibuat dengan cepat untuk setiap titik data atau untuk kumpulan data  masukan? ",
+   "id": "e116"
+  },
+  {
+   "kind": "paragraph",
+   "page": 22,
+   "text": "• Seberapa kompleks secara komputasi inferensi model dalam aplikasi? ",
+   "id": "e117"
+  },
+  {
+   "kind": "paragraph",
+   "page": 22,
+   "text": "• Apakah ada human in the loop untuk mendukung dalam membuat prediksi?",
+   "id": "e118"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 23,
+   "text": "Data Collection",
+   "id": "e119"
+  },
+  {
+   "kind": "paragraph",
+   "page": 23,
+   "text": "Terkait dengan  Making  Predictions,  blok  Data  Collection  mengumpulkan  informasi  tentang data baru yang harus dikumpulkan untuk melatih kembali model ML. ",
+   "id": "e120"
+  },
+  {
+   "kind": "paragraph",
+   "page": 23,
+   "text": "• Bagaimana kami memberi label pada data baru? ",
+   "id": "e121"
+  },
+  {
+   "kind": "paragraph",
+   "page": 23,
+   "text": "• Seberapa mahal untuk mengumpulkan data baru? ",
+   "id": "e122"
+  },
+  {
+   "kind": "paragraph",
+   "page": 23,
+   "text": "• Seberapa mahal untuk memproses media kaya seperti gambar, suara, atau video? ",
+   "id": "e123"
+  },
+  {
+   "kind": "paragraph",
+   "page": 23,
+   "text": "• Apakah ada human in the loop untuk pembersihan manual dan pelabelan data yang  masuk?",
+   "id": "e124"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 24,
+   "text": "Building Models",
+   "id": "e125"
+  },
+  {
+   "kind": "paragraph",
+   "page": 24,
+   "text": "Blok ini menjawab pertanyaan terkait pembaruan model ML, karena tugas ML yang berbeda memerlukan  frekuensi pelatihan ulang model yang berbeda.",
+   "id": "e126"
+  },
+  {
+   "kind": "paragraph",
+   "page": 24,
+   "text": "• Seberapa sering model harus dilatih ulang? ",
+   "id": "e127"
+  },
+  {
+   "kind": "paragraph",
+   "page": 24,
+   "text": "• misalnya setiap jam, mingguan, atau dengan setiap titik data baru. ",
+   "id": "e128"
+  },
+  {
+   "kind": "paragraph",
+   "page": 24,
+   "text": "• Berapa biaya tersembunyi untuk pelatihan ulang model? ",
+   "id": "e129"
+  },
+  {
+   "kind": "paragraph",
+   "page": 24,
+   "text": "• misalnya apakah kami menggunakan sumber daya cloud untuk melakukan tugas seperti itu? ",
+   "id": "e130"
+  },
+  {
+   "kind": "paragraph",
+   "page": 24,
+   "text": "• apa kebijakan harga vendor cloud? ",
+   "id": "e131"
+  },
+  {
+   "kind": "paragraph",
+   "page": 24,
+   "text": "• bagaimana seharusnya kita melakukan estimasi biaya perangkat keras? ",
+   "id": "e132"
+  },
+  {
+   "kind": "paragraph",
+   "page": 24,
+   "text": "• common Cloud Pricing Calculators are Google Cloud Calculator, Amazon ML Pricing, Microsoft Azure Calculator",
+   "id": "e133"
+  },
+  {
+   "kind": "paragraph",
+   "page": 24,
+   "text": "• Berapa lama waktu yang diperlukan untuk melatih ulang model? ",
+   "id": "e134"
+  },
+  {
+   "kind": "paragraph",
+   "page": 24,
+   "text": "• Bagaimana kita menangani masalah penskalaan operasi cloud karena bisa jadi lebih kompleks dan mahal?",
+   "id": "e135"
+  },
+  {
+   "kind": "paragraph",
+   "page": 24,
+   "text": "• Apakah kita merencanakan perubahan dalam tumpukan teknologi? ",
+   "id": "e136"
+  },
+  {
+   "kind": "paragraph",
+   "page": 24,
+   "text": "• misalnya bagaimana kita bisa menghadapi evolusi tumpukan teknologi karena alat baru dan alur kerja  pengembangan muncul di AI modern?",
+   "id": "e137"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 25,
+   "text": "Live Evaluation and Monitoring",
+   "id": "e138"
+  },
+  {
+   "kind": "paragraph",
+   "page": 25,
+   "text": "Setelah penerapan  (deployment),  model  ML  harus  dievaluasi  dan  di  sini  kita  perlu  menentukan model  dan metrik  bisnis,  yang  harus  berkorelasi. Secara  umum,  metrik  harus  mengikuti  metodologi  S.M.A.R.T  (Specific,  Measurable,  Achievable,  Relevant, and Time-bound.). ",
+   "id": "e139"
+  },
+  {
+   "kind": "paragraph",
+   "page": 25,
+   "text": "• Bagaimana kita melacak kinerja sistem? ",
+   "id": "e140"
+  },
+  {
+   "kind": "paragraph",
+   "page": 25,
+   "text": "• misalnya Pengujian A/B ",
+   "id": "e141"
+  },
+  {
+   "kind": "paragraph",
+   "page": 25,
+   "text": "• Bagaimana kita mengevaluasi penciptaan nilai? ",
+   "id": "e142"
+  },
+  {
+   "kind": "paragraph",
+   "page": 25,
+   "text": "• misalnya pengguna menghabiskan lebih sedikit waktu di kotak masuk. ",
+   "id": "e143"
+  },
+  {
+   "kind": "paragraph",
+   "page": 25,
+   "text": "Hasil dalam tahap ini adalah Machine Learning Canvas yang sudah selesai. ",
+   "id": "e144"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 26,
+   "text": "IMPLEMENTASI",
+   "id": "e145"
+  },
+  {
+   "kind": "paragraph",
+   "page": 26,
+   "text": "Penawaran Real Estat ",
+   "id": "e146"
+  },
+  {
+   "kind": "paragraph",
+   "page": 26,
+   "text": "Pengguna akhir dalam contoh ini: investor properti",
+   "id": "e147"
+  },
+  {
+   "kind": "paragraph",
+   "page": 26,
+   "text": "Proposisi nilai: lakukan investasi yang lebih baik dengan melihat penawaran terbaik di  antara semua properti yang saat ini ada di pasar ",
+   "id": "e148"
+  },
+  {
+   "kind": "paragraph",
+   "page": 26,
+   "text": "Kotak masuk Prioritas ",
+   "id": "e149"
+  },
+  {
+   "kind": "paragraph",
+   "page": 26,
+   "text": "Pengguna akhir: pengguna klien email ",
+   "id": "e150"
+  },
+  {
+   "kind": "paragraph",
+   "page": 26,
+   "text": "Proposisi nilai: membalas pesan penting lebih cepat dan menghabiskan lebih sedikit  waktu untuk email ",
+   "id": "e151"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 27,
+   "text": "IMPLEMENTASI (2)",
+   "id": "e152"
+  },
+  {
+   "kind": "paragraph",
+   "page": 27,
+   "text": "Deteksi Ulasan Palsu ",
+   "id": "e153"
+  },
+  {
+   "kind": "paragraph",
+   "page": 27,
+   "text": "Pengguna akhir: platform pemesanan hotel ",
+   "id": "e154"
+  },
+  {
+   "kind": "paragraph",
+   "page": 27,
+   "text": "Proposisi nilai: tingkatkan kepuasan hotel dan pengalaman pengguna platform dengan  peringkat yang lebih akurat ",
+   "id": "e155"
+  },
+  {
+   "kind": "paragraph",
+   "page": 27,
+   "text": "Retensi pelanggan",
+   "id": "e156"
+  },
+  {
+   "kind": "paragraph",
+   "page": 27,
+   "text": "Pengguna akhir: Tim Manajemen Hubungan Pelanggan ",
+   "id": "e157"
+  },
+  {
+   "kind": "paragraph",
+   "page": 27,
+   "text": "Proposisi  nilai:  mengurangi  tingkat  churn  di  antara  pelanggan  bernilai  tinggi  dan  meningkatkan tingkat keberhasilan upaya retensi.",
+   "id": "e158"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 28,
+   "text": "Referensi",
+   "id": "e159"
+  },
+  {
+   "kind": "paragraph",
+   "page": 28,
+   "text": "https://medium.com/louis-dorard/from-data-to-ai-with-the-machine-learning-canvas-part-i-d171b867b047",
+   "id": "e160"
+  },
+  {
+   "kind": "paragraph",
+   "page": 28,
+   "text": "https://www.ownml.co/machine-learning-canvas",
+   "id": "e161"
+  },
+  {
+   "kind": "paragraph",
+   "page": 28,
+   "text": "https://ml-ops.org/content/phase-zero",
+   "id": "e162"
+  },
+  {
+   "kind": "paragraph",
+   "page": 29,
+   "text": "Terima kasih",
+   "id": "e163"
+  }
+ ],
+ "thresholds": {
+  "theta_e": 0.01,
+  "epsilon": 0.02,
+  "rho": 0.1,
+  "locked": true,
+  "locked_at": "2026-10-12 12:38:31",
+  "calibrated_on": "30 grafik dev",
+  "aturan": "Î¸e terkecil (â‰¥0,01) yang mempertahankan jumlah terbit maksimum dengan rerata Fk (vs acuan) â‰¥ 0,98 pada grafik dev",
+  "riwayat": "v1: Fk 0,937 pada Î´=0 â†’ ditambah cL (nilai tercetak) dan aturan urutan acuan diselaraskan; v2: cA ditoleransi 20% rentang (sumbu melewati tik terluar); set uji belum dibuka"
+ },
+ "manifest": {
+  "model_t1": "gemma-4-26b-a4b-it",
+  "model_t2": "gemma-4-26b-a4b-it",
+  "model_b2": "gemma-4-26b-a4b-it",
+  "model_qa": "gemma-4-26b-a4b-it",
+  "thinking": "bawaan (Gemma) / minimal (Gemini)",
+  "temperature": 0,
+  "prompt_t1": "a2db0023d821",
+  "prompt_t2": "bbe13c6a83dc",
+  "prompt_b2": "ad760959b04a",
+  "skema": "e21f743f0d29"
+ },
+ "pages": 29,
+ "timing": {
+  "struktur_s": 2.25,
+  "total_s": 98.11
+ },
+ "_job": "D:\\claude\\prototype\\Prototype\\work\\job_4d37771d34",
+ "patch": {
+  "figures": 11,
+  "alt_filled": 7,
+  "figur_ditahan": 4,
+  "figur_tambahan": 4,
+  "halaman_tidak_cocok": [
+   10,
+   11,
+   12
+  ],
+  "th_cells": 0,
+  "tertanam": [
+   "e000",
+   "e001",
+   "e025",
+   "e035",
+   "e036",
+   "e039",
+   "e040"
+  ],
+  "artefak": 4,
+  "artefak_gagal": 0
+ },
+ "report": {
+  "B0": {
+   "verapdf": {
+    "compliant": false,
+    "failed_rules": 4,
+    "failed_checks": 12,
+    "rules": [
+     {
+      "clause": "7.3",
+      "test": 1,
+      "checks": 9,
+      "desc": "Figure tags shall include an alternative representation or replacement text that represents the contents marked with the Figure tag as noted in ISO 32000-1:2008, 14.7.2, Table 323"
+     },
+     {
+      "clause": "5",
+      "test": 1,
+      "checks": 1,
+      "desc": "The PDF/UA version and conformance level of a file shall be specified using the PDF/UA Identification extension schema"
+     },
+     {
+      "clause": "7.18.3",
+      "test": 1,
+      "checks": 1,
+      "desc": "Every page on which there is an annotation shall contain in its page dictionary the key Tabs, and its value shall be S"
+     },
+     {
+      "clause": "7.2",
+      "test": 19,
+      "checks": 1,
+      "desc": "L element may contain only L, LI and Caption elements"
+     }
+    ]
+   },
+   "g1": {
+    "tagged": true,
+    "figures": 11,
+    "alt_bermakna": 2,
+    "alt_ok": false,
+    "lang_ok": true,
+    "title_ok": true,
+    "pass": false,
+    "alt_ditahan": 0,
+    "pass_ketat": false
+   }
+  },
+  "B1": {
+   "verapdf": {
+    "compliant": false,
+    "failed_rules": 4,
+    "failed_checks": 12,
+    "rules": [
+     {
+      "clause": "7.3",
+      "test": 1,
+      "checks": 9,
+      "desc": "Figure tags shall include an alternative representation or replacement text that represents the contents marked with the Figure tag as noted in ISO 32000-1:2008, 14.7.2, Table 323"
+     },
+     {
+      "clause": "5",
+      "test": 1,
+      "checks": 1,
+      "desc": "The PDF/UA version and conformance level of a file shall be specified using the PDF/UA Identification extension schema"
+     },
+     {
+      "clause": "7.18.3",
+      "test": 1,
+      "checks": 1,
+      "desc": "Every page on which there is an annotation shall contain in its page dictionary the key Tabs, and its value shall be S"
+     },
+     {
+      "clause": "7.2",
+      "test": 19,
+      "checks": 1,
+      "desc": "L element may contain only L, LI and Caption elements"
+     }
+    ]
+   },
+   "g1": {
+    "tagged": true,
+    "figures": 11,
+    "alt_bermakna": 2,
+    "alt_ok": false,
+    "lang_ok": true,
+    "title_ok": true,
+    "pass": false,
+    "alt_ditahan": 0,
+    "pass_ketat": false
+   }
+  },
+  "D": {
+   "verapdf": {
+    "compliant": false,
+    "failed_rules": 1,
+    "failed_checks": 1,
+    "rules": [
+     {
+      "clause": "7.2",
+      "test": 19,
+      "checks": 1,
+      "desc": "L element may contain only L, LI and Caption elements"
+     }
+    ]
+   },
+   "g1": {
+    "tagged": true,
+    "figures": 7,
+    "alt_bermakna": 7,
+    "alt_ok": true,
+    "lang_ok": true,
+    "title_ok": true,
+    "pass": true,
+    "alt_ditahan": 6,
+    "pass_ketat": false
+   }
+  }
+ },
+ "katalog": true,
+ "dibuat": 1793103445.4353545,
+ "output_version": "versions/809ebe333357486b8620a0ca977cab6f",
+ "judul_uld": "ML Product Design: ML Canvas",
+ "ringkasan": {
+  "teks": "Materi ini membahas tentang penggunaan ML Canvas sebagai alat bantu dalam merancang proyek machine learning. Seringkali insinyur dan ilmuwan menghabiskan waktu untuk masalah yang salah atau membangun model yang tidak terpakai. ML Canvas hadir untuk mempermudah kolaborasi antar tim dengan latar belakang berbeda, seperti bisnis, produk, dan teknik, agar dapat bekerja sama membangun solusi inovatif yang bernilai.\n\nBagian pertama, pengenalan konsep kanvas. Kanvas adalah bagan visual untuk mendeskripsikan objek kompleks dengan lebih baik daripada dokumen teks. Dalam konteks kecerdasan buatan, kanvas membantu menggambarkan data yang dipelajari, penggunaan prediksi, serta cara memastikan sistem bekerja dengan baik. AI Canvas digunakan untuk merancang proses prediksi secara menyeluruh, mulai dari input data hingga evaluasi hasil.\n\nBagian kedua, ML Canvas. ML Canvas adalah kerangka kerja yang lebih rinci untuk merumuskan visi dan spesifikasi sistem machine learning. Alat ini membantu menyusun proyek dengan mengidentifikasi tujuan bagi pengguna akhir dan menghubungkan sasaran bisnis dengan tugas machine learning. ML Canvas menekankan aspek teknis seperti data, fitur, pelatihan model, evaluasi kinerja, dan implementasi.\n\nBagian ketiga, blok bangunan utama. Bagian tengah kanvas adalah proposisi nilai yang menjelaskan masalah yang diselesaikan dan manfaat bagi pengguna. Sisa kanvas dibagi menjadi tiga kategori besar, yaitu pembelajaran untuk menentukan cara model dipelajari, prediksi untuk menjelaskan cara prediksi dilakukan, serta evaluasi untuk mengukur kinerja model dan sistem.\n\nBagian keempat, detail teknis prediksi dan pembelajaran. Sisi prediksi mencakup tugas machine learning, pengambilan keputusan, waktu pembuatan prediksi, dan evaluasi sebelum penerapan. Sisi pembelajaran mencakup sumber data, pengumpulan data, ekstraksi fitur, dan proses pembangunan atau pembaruan model.\n\nBagian kelima, evaluasi dan implementasi. Setelah sistem diterapkan, dilakukan pemantauan langsung untuk mengukur kinerja menggunakan metrik yang spesifik dan terukur. Contoh implementasi ML Canvas meliputi sistem penawaran real estat, kotak masuk prioritas, deteksi ulasan palsu, dan strategi retensi pelanggan.\n\nIstilah penting: ML Canvas adalah kerangka kerja terstruktur untuk merancang proyek machine learning. Proposisi nilai adalah penjelasan mengenai manfaat produk bagi pengguna. Fitur adalah representasi data input yang digunakan oleh algoritma. Inferensi adalah proses model dalam membuat prediksi pada data baru. Deployment adalah tahap penerapan model ke dalam sistem nyata.",
+  "asli": "Materi ini membahas tentang penggunaan ML Canvas sebagai alat bantu dalam merancang proyek machine learning. Seringkali insinyur dan ilmuwan menghabiskan waktu untuk masalah yang salah atau membangun model yang tidak terpakai. ML Canvas hadir untuk mempermudah kolaborasi antar tim dengan latar belakang berbeda, seperti bisnis, produk, dan teknik, agar dapat bekerja sama membangun solusi inovatif yang bernilai.\n\nBagian pertama, pengenalan konsep kanvas. Kanvas adalah bagan visual untuk mendeskripsikan objek kompleks dengan lebih baik daripada dokumen teks. Dalam konteks kecerdasan buatan, kanvas membantu menggambarkan data yang dipelajari, penggunaan prediksi, serta cara memastikan sistem bekerja dengan baik. AI Canvas digunakan untuk merancang proses prediksi secara menyeluruh, mulai dari input data hingga evaluasi hasil.\n\nBagian kedua, ML Canvas. ML Canvas adalah kerangka kerja yang lebih rinci untuk merumuskan visi dan spesifikasi sistem machine learning. Alat ini membantu menyusun proyek dengan mengidentifikasi tujuan bagi pengguna akhir dan menghubungkan sasaran bisnis dengan tugas machine learning. ML Canvas menekankan aspek teknis seperti data, fitur, pelatihan model, evaluasi kinerja, dan implementasi.\n\nBagian ketiga, blok bangunan utama. Bagian tengah kanvas adalah proposisi nilai yang menjelaskan masalah yang diselesaikan dan manfaat bagi pengguna. Sisa kanvas dibagi menjadi tiga kategori besar, yaitu pembelajaran untuk menentukan cara model dipelajari, prediksi untuk menjelaskan cara prediksi dilakukan, serta evaluasi untuk mengukur kinerja model dan sistem.\n\nBagian keempat, detail teknis prediksi dan pembelajaran. Sisi prediksi mencakup tugas machine learning, pengambilan keputusan, waktu pembuatan prediksi, dan evaluasi sebelum penerapan. Sisi pembelajaran mencakup sumber data, pengumpulan data, ekstraksi fitur, dan proses pembangunan atau pembaruan model.\n\nBagian kelima, evaluasi dan implementasi. Setelah sistem diterapkan, dilakukan pemantauan langsung untuk mengukur kinerja menggunakan metrik yang spesifik dan terukur. Contoh implementasi ML Canvas meliputi sistem penawaran real estat, kotak masuk prioritas, deteksi ulasan palsu, dan strategi retensi pelanggan.\n\nIstilah penting: ML Canvas adalah kerangka kerja terstruktur untuk merancang proyek machine learning. Proposisi nilai adalah penjelasan mengenai manfaat produk bagi pengguna. Fitur adalah representasi data input yang digunakan oleh algoritma. Inferensi adalah proses model dalam membuat prediksi pada data baru. Deployment adalah tahap penerapan model ke dalam sistem nyata.",
+  "status": "ditandai",
+  "dibuat": 1793105380.8399699,
+  "log": []
+ }
+}

@@ -1,0 +1,1716 @@
+{
+ "title": "Pertemuan 4: Statistika Deskriptif dan Visualisasi Data",
+ "file": "materi_02.pdf",
+ "tagged_input": false,
+ "elements": [
+  {
+   "kind": "heading",
+   "level": 1,
+   "page": 1,
+   "text": "Pertemuan 4: Statistika Deskriptif dan Visualisasi Data",
+   "id": "e000"
+  },
+  {
+   "kind": "image",
+   "page": 1,
+   "bbox": [
+    67.0,
+    98.08000000000004,
+    95.0,
+    126.08000000000004
+   ],
+   "odl_id": 2,
+   "hash": "31d75503d13f19fd6cc51813b85c314b",
+   "area": 0.0015649014950398213,
+   "decorative": true,
+   "id": "e001",
+   "jenis": "dekoratif",
+   "status": "dekoratif",
+   "checks": {},
+   "reasons": [
+    "Disaring heuristik ukuran/pengulangan"
+   ],
+   "pdf_ditahan": false,
+   "status_gerbang": "dekoratif"
+  },
+  {
+   "kind": "paragraph",
+   "page": 1,
+   "text": "Mata kuliah Statistika Dasar, semester gasal",
+   "id": "e002"
+  },
+  {
+   "kind": "heading",
+   "level": 2,
+   "page": 1,
+   "text": "1. Pendahuluan",
+   "id": "e003"
+  },
+  {
+   "kind": "paragraph",
+   "page": 1,
+   "text": "Statistika deskriptif membantu kita meringkas data sebelum melakukan inferensi. Pada pertemuan ini kita membahas ukuran pemusatan, ukuran penyebaran, dan cara membaca graﬁk dengan benar.",
+   "id": "e004",
+   "ucapan_uld": "Statistika deskriptif membantu meringkas data sebelum inferensi.",
+   "log": [
+    {
+     "aksi": "ubah",
+     "oleh": "ULD",
+     "waktu": "2026-10-27 17:39:05"
+    }
+   ]
+  },
+  {
+   "kind": "paragraph",
+   "page": 1,
+   "text": "Tabel berikut merangkum hasil kuis mingguan. Gunakan tabel ini untuk berlatih menghitung rerata dan simpangan baku secara manual sebelum memakai perangkat lunak.",
+   "id": "e005"
+  },
+  {
+   "kind": "table",
+   "page": 1,
+   "rows": [
+    [
+     "Nama",
+     "Kuis 1",
+     "Kuis 2"
+    ],
+    [
+     "Mahasiswa A",
+     "86",
+     "73"
+    ],
+    [
+     "Mahasiswa B",
+     "81",
+     "84"
+    ],
+    [
+     "Mahasiswa C",
+     "73",
+     "60"
+    ],
+    [
+     "Mahasiswa D",
+     "57",
+     "60"
+    ],
+    [
+     "Mahasiswa E",
+     "56",
+     "96"
+    ]
+   ],
+   "source": "pymupdf",
+   "id": "e006"
+  },
+  {
+   "kind": "paragraph",
+   "page": 1,
+   "text": "Graﬁk batang cocok untuk membandingkan kategori, sedangkan graﬁk garis cocok untuk memperlihatkan perubahan menurut waktu. Perhatikan selalu satuan dan skala pada sumbu nilai.",
+   "id": "e007"
+  },
+  {
+   "kind": "image",
+   "page": 1,
+   "bbox": [
+    67.0,
+    455.58,
+    447.0,
+    693.08
+   ],
+   "odl_id": 91,
+   "hash": "9dbff298269ca1305ea0ec28e6bbf362",
+   "area": 0.180143316233857,
+   "decorative": false,
+   "id": "e008",
+   "jenis": "grafik",
+   "ext": {
+    "jenis_grafik": "lainnya",
+    "judul": "Mahasiswa baru per fakultas (2022)",
+    "label_x": "Fakultas",
+    "label_y": "Jumlah mahasiswa (orang)",
+    "satuan": "orang",
+    "banyak_seri": 1
+   },
+   "T1": [
+    {
+     "kategori": "Ekonomi",
+     "nilai": 850.0
+    },
+    {
+     "kategori": "Psikologi",
+     "nilai": 240.0
+    },
+    {
+     "kategori": "Teknik",
+     "nilai": 280.0
+    },
+    {
+     "kategori": "Hukum",
+     "nilai": 200.0
+    }
+   ],
+   "T2": [
+    {
+     "kategori": "Ekonomi",
+     "nilai": 850.0
+    },
+    {
+     "kategori": "Psikologi",
+     "nilai": 240.0
+    },
+    {
+     "kategori": "Teknik",
+     "nilai": 280.0
+    },
+    {
+     "kategori": "Hukum",
+     "nilai": 200.0
+    }
+   ],
+   "table": [
+    {
+     "kategori": "Ekonomi",
+     "nilai": 850.0
+    },
+    {
+     "kategori": "Psikologi",
+     "nilai": 240.0
+    },
+    {
+     "kategori": "Teknik",
+     "nilai": 280.0
+    },
+    {
+     "kategori": "Hukum",
+     "nilai": 200.0
+    }
+   ],
+   "delta": 0.0,
+   "axis_ok": true,
+   "axis_msg": "nilai berada dalam rentang sumbu",
+   "label_tertulis": false,
+   "seg": [
+    {
+     "text": "Grafik "
+    },
+    {
+     "text": "berjudul “Mahasiswa baru per fakultas (2022)”, "
+    },
+    {
+     "text": "dengan sumbu kategori Fakultas dan sumbu nilai Jumlah mahasiswa (orang). "
+    },
+    {
+     "text": "Grafik memuat 4 kategori, dari Ekonomi sampai Hukum. "
+    },
+    {
+     "text": "Nilai tertinggi pada Ekonomi, yaitu "
+    },
+    {
+     "text": "850",
+     "claim": 0
+    },
+    {
+     "text": " orang; terendah pada Hukum, yaitu "
+    },
+    {
+     "text": "200",
+     "claim": 1
+    },
+    {
+     "text": " orang. Selisih keduanya "
+    },
+    {
+     "text": "650",
+     "claim": 2
+    },
+    {
+     "text": " orang, dan rerata seluruh kategori "
+    },
+    {
+     "text": "392,5",
+     "claim": 3
+    },
+    {
+     "text": " orang. "
+    },
+    {
+     "text": "Urutan dari tertinggi: Ekonomi, Teknik, Psikologi, Hukum. "
+    },
+    {
+     "text": "Rincian nilai: "
+    },
+    {
+     "text": "Ekonomi "
+    },
+    {
+     "text": "850",
+     "claim": 4
+    },
+    {
+     "text": " orang; "
+    },
+    {
+     "text": "Psikologi "
+    },
+    {
+     "text": "240",
+     "claim": 5
+    },
+    {
+     "text": " orang; "
+    },
+    {
+     "text": "Teknik "
+    },
+    {
+     "text": "280",
+     "claim": 6
+    },
+    {
+     "text": " orang; "
+    },
+    {
+     "text": "Hukum "
+    },
+    {
+     "text": "200",
+     "claim": 7
+    },
+    {
+     "text": " orang."
+    }
+   ],
+   "claims": [
+    {
+     "e": "Ekonomi",
+     "m": "maksimum",
+     "v": 850.0
+    },
+    {
+     "e": "Hukum",
+     "m": "minimum",
+     "v": 200.0
+    },
+    {
+     "e": "Ekonomi|Hukum",
+     "m": "selisih",
+     "v": 650.0
+    },
+    {
+     "e": "*",
+     "m": "rerata",
+     "v": 392.5
+    },
+    {
+     "e": "Ekonomi",
+     "m": "nilai",
+     "v": 850.0
+    },
+    {
+     "e": "Psikologi",
+     "m": "nilai",
+     "v": 240.0
+    },
+    {
+     "e": "Teknik",
+     "m": "nilai",
+     "v": 280.0
+    },
+    {
+     "e": "Hukum",
+     "m": "nilai",
+     "v": 200.0
+    }
+   ],
+   "D": [
+    {
+     "e": "Ekonomi",
+     "m": "maksimum",
+     "v": 850.0
+    },
+    {
+     "e": "Hukum",
+     "m": "minimum",
+     "v": 200.0
+    },
+    {
+     "e": "Ekonomi|Hukum",
+     "m": "selisih",
+     "v": 650.0
+    },
+    {
+     "e": "*",
+     "m": "rerata",
+     "v": 392.5
+    },
+    {
+     "e": "*",
+     "m": "total",
+     "v": 1570.0
+    }
+   ],
+   "alt_auto": "Grafik berjudul “Mahasiswa baru per fakultas (2022)”, dengan sumbu kategori Fakultas dan sumbu nilai Jumlah mahasiswa (orang). Grafik memuat 4 kategori, dari Ekonomi sampai Hukum. Nilai tertinggi pada Ekonomi, yaitu 850 orang; terendah pada Hukum, yaitu 200 orang. Selisih keduanya 650 orang, dan rerata seluruh kategori 392,5 orang. Urutan dari tertinggi: Ekonomi, Teknik, Psikologi, Hukum. Rincian nilai: Ekonomi 850 orang; Psikologi 240 orang; Teknik 280 orang; Hukum 200 orang.",
+   "claim_detail": [
+    {
+     "e": "Ekonomi",
+     "m": "maksimum",
+     "v": 850.0,
+     "ok": true,
+     "ref": 850.0
+    },
+    {
+     "e": "Hukum",
+     "m": "minimum",
+     "v": 200.0,
+     "ok": true,
+     "ref": 200.0
+    },
+    {
+     "e": "Ekonomi|Hukum",
+     "m": "selisih",
+     "v": 650.0,
+     "ok": true,
+     "ref": 650.0
+    },
+    {
+     "e": "*",
+     "m": "rerata",
+     "v": 392.5,
+     "ok": true,
+     "ref": 392.5
+    },
+    {
+     "e": "Ekonomi",
+     "m": "nilai",
+     "v": 850.0,
+     "ok": true,
+     "ref": 850.0
+    },
+    {
+     "e": "Psikologi",
+     "m": "nilai",
+     "v": 240.0,
+     "ok": true,
+     "ref": 240.0
+    },
+    {
+     "e": "Teknik",
+     "m": "nilai",
+     "v": 280.0,
+     "ok": true,
+     "ref": 280.0
+    },
+    {
+     "e": "Hukum",
+     "m": "nilai",
+     "v": 200.0,
+     "ok": true,
+     "ref": 200.0
+    }
+   ],
+   "checks": {
+    "cF": true,
+    "cδ": true,
+    "cL": false,
+    "cA": true
+   },
+   "reasons": [
+    "Nilai tidak tercetak pada grafik: angka hasil perkiraan skala, tidak dapat diverifikasi"
+   ],
+   "status": "disetujui",
+   "pdf_ditahan": false,
+   "status_gerbang": "antrean",
+   "alt_final": "Grafik berjudul “Mahasiswa baru per fakultas (2022)”, dengan sumbu kategori Fakultas dan sumbu nilai Jumlah mahasiswa (orang). Grafik memuat 4 kategori, dari Ekonomi sampai Hukum. Nilai tertinggi pada Ekonomi, yaitu 850 orang; terendah pada Hukum, yaitu 200 orang. Selisih keduanya 650 orang, dan rerata seluruh kategori 392,5 orang. Urutan dari tertinggi: Ekonomi, Teknik, Psikologi, Hukum. Rincian nilai: Ekonomi 850 orang; Psikologi 240 orang; Teknik 280 orang; Hukum 200 orang.",
+   "log": [
+    {
+     "aksi": "setujui",
+     "waktu": "2026-10-27 17:38:43"
+    }
+   ]
+  },
+  {
+   "kind": "paragraph",
+   "page": 1,
+   "text": "Gambar 1. Mahasiswa baru per fakultas (2022)",
+   "id": "e009"
+  },
+  {
+   "kind": "heading",
+   "level": 3,
+   "page": 1,
+   "text": "2. Membaca graﬁk",
+   "id": "e010"
+  },
+  {
+   "kind": "paragraph",
+   "page": 1,
+   "text": "Data berikut berasal dari contoh ilustratif dan tidak mewakili statistik resmi. Mahasiswa diminta mengidentiﬁkasi nilai tertinggi, nilai terendah, serta pola umum pada setiap graﬁk.",
+   "id": "e011"
+  },
+  {
+   "kind": "image",
+   "page": 2,
+   "bbox": [
+    67.0,
+    56.0,
+    447.0,
+    293.5
+   ],
+   "odl_id": 96,
+   "hash": "dc365116c6d93dc7e23209d765dbc3b8",
+   "area": 0.18014331623385696,
+   "decorative": false,
+   "id": "e012",
+   "jenis": "grafik",
+   "ext": {
+    "jenis_grafik": "batang_horizontal",
+    "judul": "Persentase penduduk miskin per provinsi (2025)",
+    "label_x": "Persentase (%)",
+    "label_y": "Provinsi",
+    "satuan": "%",
+    "banyak_seri": 1
+   },
+   "T1": [
+    {
+     "kategori": "Sumut",
+     "nilai": 12.0
+    },
+    {
+     "kategori": "Papua",
+     "nilai": 19.0
+    },
+    {
+     "kategori": "NTT",
+     "nilai": 15.0
+    },
+    {
+     "kategori": "Maluku",
+     "nilai": 12.0
+    },
+    {
+     "kategori": "Aceh",
+     "nilai": 30.0
+    },
+    {
+     "kategori": "Jatim",
+     "nilai": 11.0
+    }
+   ],
+   "T2": [
+    {
+     "kategori": "Sumut",
+     "nilai": 12.0
+    },
+    {
+     "kategori": "Papua",
+     "nilai": 19.0
+    },
+    {
+     "kategori": "NTT",
+     "nilai": 15.0
+    },
+    {
+     "kategori": "Maluku",
+     "nilai": 12.0
+    },
+    {
+     "kategori": "Aceh",
+     "nilai": 30.0
+    },
+    {
+     "kategori": "Jatim",
+     "nilai": 11.0
+    }
+   ],
+   "table": [
+    {
+     "kategori": "Sumut",
+     "nilai": 12.0
+    },
+    {
+     "kategori": "Papua",
+     "nilai": 19.0
+    },
+    {
+     "kategori": "NTT",
+     "nilai": 15.0
+    },
+    {
+     "kategori": "Maluku",
+     "nilai": 12.0
+    },
+    {
+     "kategori": "Aceh",
+     "nilai": 30.0
+    },
+    {
+     "kategori": "Jatim",
+     "nilai": 11.0
+    }
+   ],
+   "delta": 0.0,
+   "axis_ok": true,
+   "axis_msg": "nilai berada dalam rentang sumbu",
+   "label_tertulis": false,
+   "seg": [
+    {
+     "text": "Grafik batang horizontal "
+    },
+    {
+     "text": "berjudul “Persentase penduduk miskin per provinsi (2025)”, "
+    },
+    {
+     "text": "dengan sumbu kategori Provinsi dan sumbu nilai Persentase (%). "
+    },
+    {
+     "text": "Grafik memuat 6 kategori, dari Sumut sampai Jatim. "
+    },
+    {
+     "text": "Nilai tertinggi pada Aceh, yaitu "
+    },
+    {
+     "text": "30",
+     "claim": 0
+    },
+    {
+     "text": " %; terendah pada Jatim, yaitu "
+    },
+    {
+     "text": "11",
+     "claim": 1
+    },
+    {
+     "text": " %. Selisih keduanya "
+    },
+    {
+     "text": "19",
+     "claim": 2
+    },
+    {
+     "text": " %, dan rerata seluruh kategori "
+    },
+    {
+     "text": "16,5",
+     "claim": 3
+    },
+    {
+     "text": " %. "
+    },
+    {
+     "text": "Urutan dari tertinggi: Aceh, Papua, NTT, Sumut, Maluku, Jatim. "
+    },
+    {
+     "text": "Rincian nilai: "
+    },
+    {
+     "text": "Sumut "
+    },
+    {
+     "text": "12",
+     "claim": 4
+    },
+    {
+     "text": " %; "
+    },
+    {
+     "text": "Papua "
+    },
+    {
+     "text": "19",
+     "claim": 5
+    },
+    {
+     "text": " %; "
+    },
+    {
+     "text": "NTT "
+    },
+    {
+     "text": "15",
+     "claim": 6
+    },
+    {
+     "text": " %; "
+    },
+    {
+     "text": "Maluku "
+    },
+    {
+     "text": "12",
+     "claim": 7
+    },
+    {
+     "text": " %; "
+    },
+    {
+     "text": "Aceh "
+    },
+    {
+     "text": "30",
+     "claim": 8
+    },
+    {
+     "text": " %; "
+    },
+    {
+     "text": "Jatim "
+    },
+    {
+     "text": "11",
+     "claim": 9
+    },
+    {
+     "text": " %."
+    }
+   ],
+   "claims": [
+    {
+     "e": "Aceh",
+     "m": "maksimum",
+     "v": 30.0
+    },
+    {
+     "e": "Jatim",
+     "m": "minimum",
+     "v": 11.0
+    },
+    {
+     "e": "Aceh|Jatim",
+     "m": "selisih",
+     "v": 19.0
+    },
+    {
+     "e": "*",
+     "m": "rerata",
+     "v": 16.5
+    },
+    {
+     "e": "Sumut",
+     "m": "nilai",
+     "v": 12.0
+    },
+    {
+     "e": "Papua",
+     "m": "nilai",
+     "v": 19.0
+    },
+    {
+     "e": "NTT",
+     "m": "nilai",
+     "v": 15.0
+    },
+    {
+     "e": "Maluku",
+     "m": "nilai",
+     "v": 12.0
+    },
+    {
+     "e": "Aceh",
+     "m": "nilai",
+     "v": 30.0
+    },
+    {
+     "e": "Jatim",
+     "m": "nilai",
+     "v": 11.0
+    }
+   ],
+   "D": [
+    {
+     "e": "Aceh",
+     "m": "maksimum",
+     "v": 30.0
+    },
+    {
+     "e": "Jatim",
+     "m": "minimum",
+     "v": 11.0
+    },
+    {
+     "e": "Aceh|Jatim",
+     "m": "selisih",
+     "v": 19.0
+    },
+    {
+     "e": "*",
+     "m": "rerata",
+     "v": 16.5
+    },
+    {
+     "e": "*",
+     "m": "total",
+     "v": 99.0
+    }
+   ],
+   "alt_auto": "Grafik batang horizontal berjudul “Persentase penduduk miskin per provinsi (2025)”, dengan sumbu kategori Provinsi dan sumbu nilai Persentase (%). Grafik memuat 6 kategori, dari Sumut sampai Jatim. Nilai tertinggi pada Aceh, yaitu 30 %; terendah pada Jatim, yaitu 11 %. Selisih keduanya 19 %, dan rerata seluruh kategori 16,5 %. Urutan dari tertinggi: Aceh, Papua, NTT, Sumut, Maluku, Jatim. Rincian nilai: Sumut 12 %; Papua 19 %; NTT 15 %; Maluku 12 %; Aceh 30 %; Jatim 11 %.",
+   "claim_detail": [
+    {
+     "e": "Aceh",
+     "m": "maksimum",
+     "v": 30.0,
+     "ok": true,
+     "ref": 30.0
+    },
+    {
+     "e": "Jatim",
+     "m": "minimum",
+     "v": 11.0,
+     "ok": true,
+     "ref": 11.0
+    },
+    {
+     "e": "Aceh|Jatim",
+     "m": "selisih",
+     "v": 19.0,
+     "ok": true,
+     "ref": 19.0
+    },
+    {
+     "e": "*",
+     "m": "rerata",
+     "v": 16.5,
+     "ok": true,
+     "ref": 16.5
+    },
+    {
+     "e": "Sumut",
+     "m": "nilai",
+     "v": 12.0,
+     "ok": true,
+     "ref": 12.0
+    },
+    {
+     "e": "Papua",
+     "m": "nilai",
+     "v": 19.0,
+     "ok": true,
+     "ref": 19.0
+    },
+    {
+     "e": "NTT",
+     "m": "nilai",
+     "v": 15.0,
+     "ok": true,
+     "ref": 15.0
+    },
+    {
+     "e": "Maluku",
+     "m": "nilai",
+     "v": 12.0,
+     "ok": true,
+     "ref": 12.0
+    },
+    {
+     "e": "Aceh",
+     "m": "nilai",
+     "v": 30.0,
+     "ok": true,
+     "ref": 30.0
+    },
+    {
+     "e": "Jatim",
+     "m": "nilai",
+     "v": 11.0,
+     "ok": true,
+     "ref": 11.0
+    }
+   ],
+   "checks": {
+    "cF": true,
+    "cδ": true,
+    "cL": false,
+    "cA": true
+   },
+   "reasons": [
+    "Nilai tidak tercetak pada grafik: angka hasil perkiraan skala, tidak dapat diverifikasi"
+   ],
+   "status": "disetujui",
+   "pdf_ditahan": false,
+   "status_gerbang": "antrean",
+   "alt_final": "Grafik batang horizontal berjudul “Persentase penduduk miskin per provinsi (2025)”, dengan sumbu kategori Provinsi dan sumbu nilai Persentase (%). Grafik memuat 6 kategori, dari Sumut sampai Jatim. Nilai tertinggi pada Aceh, yaitu 30 %; terendah pada Jatim, yaitu 11 %. Selisih keduanya 19 %, dan rerata seluruh kategori 16,5 %. Urutan dari tertinggi: Aceh, Papua, NTT, Sumut, Maluku, Jatim. Rincian nilai: Sumut 12 %; Papua 19 %; NTT 15 %; Maluku 12 %; Aceh 30 %; Jatim 11 %.",
+   "log": [
+    {
+     "aksi": "setujui",
+     "waktu": "2026-10-27 18:50:29"
+    }
+   ]
+  },
+  {
+   "kind": "paragraph",
+   "page": 2,
+   "text": "Gambar 2. Persentase penduduk miskin per provinsi (2025)",
+   "id": "e013"
+  },
+  {
+   "kind": "image",
+   "page": 2,
+   "bbox": [
+    67.0,
+    328.70000000000005,
+    447.0,
+    480.7
+   ],
+   "odl_id": 99,
+   "hash": "c61b5d886983e325e75477273fb8c026",
+   "area": 0.11529172238966841,
+   "decorative": false,
+   "id": "e014",
+   "jenis": "diagram",
+   "draft": "Diagram alir yang menggambarkan tahapan dalam statistika inferensial. Urutannya dimulai dari populasi, kemudian diambil sampel, dihitung nilai statistiknya, dan diakhiri dengan proses inferensi.",
+   "checks": {},
+   "reasons": [
+    "Diagram nondata tidak memiliki pemeriksaan otomatis (K = ∅)"
+   ],
+   "status": "diubah",
+   "pdf_ditahan": false,
+   "status_gerbang": "antrean",
+   "alt_final": "Diagram alir: populasi, lalu sampel diambil, lalu statistik dihitung, lalu inferensi ditarik kembali ke populasi.",
+   "log": [
+    {
+     "aksi": "ubah",
+     "waktu": "2026-10-27 17:39:02"
+    }
+   ]
+  },
+  {
+   "kind": "paragraph",
+   "page": 2,
+   "text": "Gambar 3. Alur dari populasi ke inferensi",
+   "id": "e015"
+  },
+  {
+   "kind": "paragraph",
+   "page": 2,
+   "text": "3. Ukuran pemusatan Rerata sampel dideﬁnisikan sebagai berikut.",
+   "id": "e016"
+  },
+  {
+   "kind": "image",
+   "page": 2,
+   "bbox": [
+    67.0,
+    566.7,
+    307.0,
+    614.7
+   ],
+   "odl_id": 103,
+   "hash": "838628e99654b99e5276a0a8a8c48184",
+   "area": 0.022994470947523903,
+   "decorative": false,
+   "id": "e017",
+   "jenis": "rumus",
+   "draft": "LaTeX: s^2 = \\frac{1}{n-1} \\sum_{i=1}^{n} (x_i - \\bar{x})^2\nUcapan: s kuadrat sama dengan satu per n dikurang satu, dikali sigma dari i sama dengan satu sampai n, dari x sub i dikurangi x bar dikuadratkan.",
+   "checks": {},
+   "reasons": [
+    "Rumus: pengenal kedua belum tersedia, ditahan (fail-closed)"
+   ],
+   "status": "antrean",
+   "pdf_ditahan": false,
+   "status_gerbang": "antrean"
+  },
+  {
+   "kind": "paragraph",
+   "page": 2,
+   "text": "Regresi linear sederhana memodelkan hubungan antara variabel bebas x dan variabel terikat y. Koeﬁsien kemiringan menunjukkan besarnya perubahan y untuk setiap kenaikan satu satuan x.",
+   "id": "e018"
+  },
+  {
+   "kind": "paragraph",
+   "page": 2,
+   "text": "4. Latihan Perhatikan graﬁk berikut dan tentukan kategori dengan nilai tertinggi.",
+   "id": "e019"
+  },
+  {
+   "kind": "image",
+   "page": 3,
+   "bbox": [
+    67.0,
+    56.0,
+    447.0,
+    293.5
+   ],
+   "odl_id": 106,
+   "hash": "b8bff0a82f0ee4cc7a4a16e24e04423a",
+   "area": 0.18014331623385696,
+   "decorative": false,
+   "id": "e020",
+   "jenis": "grafik",
+   "ext": {
+    "jenis_grafik": "batang",
+    "judul": "Kunjungan perpustakaan per bulan (2025)",
+    "label_x": "Bulan",
+    "label_y": "Kunjungan (kali)",
+    "satuan": "kali",
+    "banyak_seri": 1
+   },
+   "T1": [
+    {
+     "kategori": "Jan",
+     "nilai": 1610.0
+    },
+    {
+     "kategori": "Feb",
+     "nilai": 1585.0
+    },
+    {
+     "kategori": "Mar",
+     "nilai": 1400.0
+    },
+    {
+     "kategori": "Apr",
+     "nilai": 1320.0
+    },
+    {
+     "kategori": "Mei",
+     "nilai": 1225.0
+    },
+    {
+     "kategori": "Jun",
+     "nilai": 1045.0
+    },
+    {
+     "kategori": "Jul",
+     "nilai": 870.0
+    },
+    {
+     "kategori": "Agu",
+     "nilai": 985.0
+    },
+    {
+     "kategori": "Sep",
+     "nilai": 740.0
+    },
+    {
+     "kategori": "Okt",
+     "nilai": 575.0
+    }
+   ],
+   "T2": [
+    {
+     "kategori": "Jan",
+     "nilai": 1610.0
+    },
+    {
+     "kategori": "Feb",
+     "nilai": 1585.0
+    },
+    {
+     "kategori": "Mar",
+     "nilai": 1400.0
+    },
+    {
+     "kategori": "Apr",
+     "nilai": 1320.0
+    },
+    {
+     "kategori": "Mei",
+     "nilai": 1225.0
+    },
+    {
+     "kategori": "Jun",
+     "nilai": 1045.0
+    },
+    {
+     "kategori": "Jul",
+     "nilai": 870.0
+    },
+    {
+     "kategori": "Agu",
+     "nilai": 985.0
+    },
+    {
+     "kategori": "Sep",
+     "nilai": 740.0
+    },
+    {
+     "kategori": "Okt",
+     "nilai": 575.0
+    }
+   ],
+   "table": [
+    {
+     "kategori": "Jan",
+     "nilai": 1610.0
+    },
+    {
+     "kategori": "Feb",
+     "nilai": 1585.0
+    },
+    {
+     "kategori": "Mar",
+     "nilai": 1400.0
+    },
+    {
+     "kategori": "Apr",
+     "nilai": 1320.0
+    },
+    {
+     "kategori": "Mei",
+     "nilai": 1225.0
+    },
+    {
+     "kategori": "Jun",
+     "nilai": 1045.0
+    },
+    {
+     "kategori": "Jul",
+     "nilai": 870.0
+    },
+    {
+     "kategori": "Agu",
+     "nilai": 985.0
+    },
+    {
+     "kategori": "Sep",
+     "nilai": 740.0
+    },
+    {
+     "kategori": "Okt",
+     "nilai": 575.0
+    }
+   ],
+   "delta": 0.0,
+   "axis_ok": true,
+   "axis_msg": "nilai berada dalam rentang sumbu",
+   "label_tertulis": false,
+   "seg": [
+    {
+     "text": "Grafik batang "
+    },
+    {
+     "text": "berjudul “Kunjungan perpustakaan per bulan (2025)”, "
+    },
+    {
+     "text": "dengan sumbu kategori Bulan dan sumbu nilai Kunjungan (kali). "
+    },
+    {
+     "text": "Grafik memuat 10 kategori, dari Jan sampai Okt. "
+    },
+    {
+     "text": "Nilai tertinggi pada Jan, yaitu "
+    },
+    {
+     "text": "1.610",
+     "claim": 0
+    },
+    {
+     "text": " kali; terendah pada Okt, yaitu "
+    },
+    {
+     "text": "575",
+     "claim": 1
+    },
+    {
+     "text": " kali. Selisih keduanya "
+    },
+    {
+     "text": "1.035",
+     "claim": 2
+    },
+    {
+     "text": " kali, dan rerata seluruh kategori "
+    },
+    {
+     "text": "1.135,5",
+     "claim": 3
+    },
+    {
+     "text": " kali. "
+    },
+    {
+     "text": "Secara keseluruhan tren "
+    },
+    {
+     "text": "turun",
+     "claim": 4
+    },
+    {
+     "text": ": garis regresi berubah sekitar "
+    },
+    {
+     "text": "-1.027",
+     "claim": 5
+    },
+    {
+     "text": " kali dari Jan ke Okt. "
+    },
+    {
+     "text": "Rincian nilai: "
+    },
+    {
+     "text": "Jan "
+    },
+    {
+     "text": "1.610",
+     "claim": 6
+    },
+    {
+     "text": " kali; "
+    },
+    {
+     "text": "Feb "
+    },
+    {
+     "text": "1.585",
+     "claim": 7
+    },
+    {
+     "text": " kali; "
+    },
+    {
+     "text": "Mar "
+    },
+    {
+     "text": "1.400",
+     "claim": 8
+    },
+    {
+     "text": " kali; "
+    },
+    {
+     "text": "Apr "
+    },
+    {
+     "text": "1.320",
+     "claim": 9
+    },
+    {
+     "text": " kali; "
+    },
+    {
+     "text": "Mei "
+    },
+    {
+     "text": "1.225",
+     "claim": 10
+    },
+    {
+     "text": " kali; "
+    },
+    {
+     "text": "Jun "
+    },
+    {
+     "text": "1.045",
+     "claim": 11
+    },
+    {
+     "text": " kali; "
+    },
+    {
+     "text": "Jul "
+    },
+    {
+     "text": "870",
+     "claim": 12
+    },
+    {
+     "text": " kali; "
+    },
+    {
+     "text": "Agu "
+    },
+    {
+     "text": "985",
+     "claim": 13
+    },
+    {
+     "text": " kali; "
+    },
+    {
+     "text": "Sep "
+    },
+    {
+     "text": "740",
+     "claim": 14
+    },
+    {
+     "text": " kali; "
+    },
+    {
+     "text": "Okt "
+    },
+    {
+     "text": "575",
+     "claim": 15
+    },
+    {
+     "text": " kali."
+    }
+   ],
+   "claims": [
+    {
+     "e": "Jan",
+     "m": "maksimum",
+     "v": 1610.0
+    },
+    {
+     "e": "Okt",
+     "m": "minimum",
+     "v": 575.0
+    },
+    {
+     "e": "Jan|Okt",
+     "m": "selisih",
+     "v": 1035.0
+    },
+    {
+     "e": "*",
+     "m": "rerata",
+     "v": 1135.5
+    },
+    {
+     "e": "*",
+     "m": "tren",
+     "v": "turun"
+    },
+    {
+     "e": "Jan|Okt",
+     "m": "perubahan_terfit",
+     "v": -1027.3636363636365
+    },
+    {
+     "e": "Jan",
+     "m": "nilai",
+     "v": 1610.0
+    },
+    {
+     "e": "Feb",
+     "m": "nilai",
+     "v": 1585.0
+    },
+    {
+     "e": "Mar",
+     "m": "nilai",
+     "v": 1400.0
+    },
+    {
+     "e": "Apr",
+     "m": "nilai",
+     "v": 1320.0
+    },
+    {
+     "e": "Mei",
+     "m": "nilai",
+     "v": 1225.0
+    },
+    {
+     "e": "Jun",
+     "m": "nilai",
+     "v": 1045.0
+    },
+    {
+     "e": "Jul",
+     "m": "nilai",
+     "v": 870.0
+    },
+    {
+     "e": "Agu",
+     "m": "nilai",
+     "v": 985.0
+    },
+    {
+     "e": "Sep",
+     "m": "nilai",
+     "v": 740.0
+    },
+    {
+     "e": "Okt",
+     "m": "nilai",
+     "v": 575.0
+    }
+   ],
+   "D": [
+    {
+     "e": "Jan",
+     "m": "maksimum",
+     "v": 1610.0
+    },
+    {
+     "e": "Okt",
+     "m": "minimum",
+     "v": 575.0
+    },
+    {
+     "e": "Jan|Okt",
+     "m": "selisih",
+     "v": 1035.0
+    },
+    {
+     "e": "*",
+     "m": "rerata",
+     "v": 1135.5
+    },
+    {
+     "e": "*",
+     "m": "total",
+     "v": 11355.0
+    },
+    {
+     "e": "Jan|Okt",
+     "m": "perubahan_terfit",
+     "v": -1027.3636363636365
+    },
+    {
+     "e": "Jan|Okt",
+     "m": "perubahan",
+     "v": -1035.0
+    },
+    {
+     "e": "*",
+     "m": "tren",
+     "v": "turun"
+    }
+   ],
+   "alt_auto": "Grafik batang berjudul “Kunjungan perpustakaan per bulan (2025)”, dengan sumbu kategori Bulan dan sumbu nilai Kunjungan (kali). Grafik memuat 10 kategori, dari Jan sampai Okt. Nilai tertinggi pada Jan, yaitu 1.610 kali; terendah pada Okt, yaitu 575 kali. Selisih keduanya 1.035 kali, dan rerata seluruh kategori 1.135,5 kali. Secara keseluruhan tren turun: garis regresi berubah sekitar -1.027 kali dari Jan ke Okt. Rincian nilai: Jan 1.610 kali; Feb 1.585 kali; Mar 1.400 kali; Apr 1.320 kali; Mei 1.225 kali; Jun 1.045 kali; Jul 870 kali; Agu 985 kali; Sep 740 kali; Okt 575 kali.",
+   "claim_detail": [
+    {
+     "e": "Jan",
+     "m": "maksimum",
+     "v": 1610.0,
+     "ok": true,
+     "ref": 1610.0
+    },
+    {
+     "e": "Okt",
+     "m": "minimum",
+     "v": 575.0,
+     "ok": true,
+     "ref": 575.0
+    },
+    {
+     "e": "Jan|Okt",
+     "m": "selisih",
+     "v": 1035.0,
+     "ok": true,
+     "ref": 1035.0
+    },
+    {
+     "e": "*",
+     "m": "rerata",
+     "v": 1135.5,
+     "ok": true,
+     "ref": 1135.5
+    },
+    {
+     "e": "*",
+     "m": "tren",
+     "v": "turun",
+     "ok": true,
+     "ref": "turun"
+    },
+    {
+     "e": "Jan|Okt",
+     "m": "perubahan_terfit",
+     "v": -1027.3636363636365,
+     "ok": true,
+     "ref": -1027.3636363636365
+    },
+    {
+     "e": "Jan",
+     "m": "nilai",
+     "v": 1610.0,
+     "ok": true,
+     "ref": 1610.0
+    },
+    {
+     "e": "Feb",
+     "m": "nilai",
+     "v": 1585.0,
+     "ok": true,
+     "ref": 1585.0
+    },
+    {
+     "e": "Mar",
+     "m": "nilai",
+     "v": 1400.0,
+     "ok": true,
+     "ref": 1400.0
+    },
+    {
+     "e": "Apr",
+     "m": "nilai",
+     "v": 1320.0,
+     "ok": true,
+     "ref": 1320.0
+    },
+    {
+     "e": "Mei",
+     "m": "nilai",
+     "v": 1225.0,
+     "ok": true,
+     "ref": 1225.0
+    },
+    {
+     "e": "Jun",
+     "m": "nilai",
+     "v": 1045.0,
+     "ok": true,
+     "ref": 1045.0
+    },
+    {
+     "e": "Jul",
+     "m": "nilai",
+     "v": 870.0,
+     "ok": true,
+     "ref": 870.0
+    },
+    {
+     "e": "Agu",
+     "m": "nilai",
+     "v": 985.0,
+     "ok": true,
+     "ref": 985.0
+    },
+    {
+     "e": "Sep",
+     "m": "nilai",
+     "v": 740.0,
+     "ok": true,
+     "ref": 740.0
+    },
+    {
+     "e": "Okt",
+     "m": "nilai",
+     "v": 575.0,
+     "ok": true,
+     "ref": 575.0
+    }
+   ],
+   "checks": {
+    "cF": true,
+    "cδ": true,
+    "cL": false,
+    "cA": true
+   },
+   "reasons": [
+    "Nilai tidak tercetak pada grafik: angka hasil perkiraan skala, tidak dapat diverifikasi"
+   ],
+   "status": "antrean",
+   "pdf_ditahan": false,
+   "status_gerbang": "antrean"
+  },
+  {
+   "kind": "paragraph",
+   "page": 3,
+   "text": "Gambar 4. Kunjungan perpustakaan per bulan (2025)",
+   "id": "e021"
+  },
+  {
+   "kind": "image",
+   "page": 3,
+   "bbox": [
+    67.0,
+    327.6,
+    95.0,
+    355.6
+   ],
+   "odl_id": 109,
+   "hash": "de7f3197fb8d48044c8fc38a3da69efe",
+   "area": 0.0015649014950398213,
+   "decorative": true,
+   "id": "e022",
+   "jenis": "dekoratif",
+   "status": "dekoratif",
+   "checks": {},
+   "reasons": [
+    "Disaring heuristik ukuran/pengulangan"
+   ],
+   "pdf_ditahan": false,
+   "status_gerbang": "dekoratif"
+  },
+  {
+   "kind": "paragraph",
+   "page": 3,
+   "text": "Akhir materi",
+   "id": "e023"
+  }
+ ],
+ "thresholds": {
+  "theta_e": 0.01,
+  "epsilon": 0.02,
+  "rho": 0.1,
+  "locked": true,
+  "locked_at": "2026-10-12 12:38:31",
+  "calibrated_on": "30 grafik dev",
+  "aturan": "Î¸e terkecil (â‰¥0,01) yang mempertahankan jumlah terbit maksimum dengan rerata Fk (vs acuan) â‰¥ 0,98 pada grafik dev",
+  "riwayat": "v1: Fk 0,937 pada Î´=0 â†’ ditambah cL (nilai tercetak) dan aturan urutan acuan diselaraskan; v2: cA ditoleransi 20% rentang (sumbu melewati tik terluar); set uji belum dibuka"
+ },
+ "manifest": {
+  "model_t1": "gemma-4-26b-a4b-it",
+  "model_t2": "gemma-4-26b-a4b-it",
+  "model_b2": "gemma-4-26b-a4b-it",
+  "model_qa": "gemma-4-26b-a4b-it",
+  "thinking": "bawaan (Gemma) / minimal (Gemini)",
+  "temperature": 0,
+  "prompt_t1": "a2db0023d821",
+  "prompt_t2": "bbe13c6a83dc",
+  "prompt_b2": "ad760959b04a",
+  "skema": "2881acdadcfe"
+ },
+ "pages": 3,
+ "timing": {
+  "struktur_s": 1.63,
+  "total_s": 9.61
+ },
+ "_job": "D:\\claude\\prototype\\Prototype\\work\\job_3fcbba0c56",
+ "patch": {
+  "figures": 7,
+  "alt_filled": 5,
+  "figur_ditahan": 0,
+  "figur_tambahan": 0,
+  "halaman_tidak_cocok": [],
+  "th_cells": 0,
+  "tertanam": [
+   "e001",
+   "e008",
+   "e012",
+   "e014",
+   "e017",
+   "e020",
+   "e022"
+  ],
+  "artefak": 2,
+  "artefak_gagal": 0
+ },
+ "report": {
+  "B0": {
+   "verapdf": {
+    "compliant": false,
+    "failed_rules": 6,
+    "failed_checks": 171,
+    "rules": [
+     {
+      "clause": "6.2",
+      "test": 1,
+      "checks": 1,
+      "desc": "The document catalog dictionary shall include a MarkInfo dictionary containing an entry, Marked, whose value shall be true"
+     },
+     {
+      "clause": "7.1",
+      "test": 11,
+      "checks": 1,
+      "desc": "The logical structure of the conforming file shall be described by a structure hierarchy rooted in the StructTreeRoot entry of the document catalog dictionary, as described in ISO 32000-1:2008, 14.7"
+     },
+     {
+      "clause": "7.2",
+      "test": 34,
+      "checks": 44,
+      "desc": "Natural language for text in page content shall be determined"
+     },
+     {
+      "clause": "7.1",
+      "test": 3,
+      "checks": 123,
+      "desc": "Content shall be marked as Artifact or tagged as real content"
+     },
+     {
+      "clause": "7.1",
+      "test": 8,
+      "checks": 1,
+      "desc": "The Catalog dictionary of a conforming file shall contain the Metadata key whose value is a metadata stream as defined in ISO 32000-1:2008, 14.3.2. The metadata stream dictionary shall contain entry Type with value /Metadata and entry Subtype with value /XML"
+     },
+     {
+      "clause": "7.1",
+      "test": 10,
+      "checks": 1,
+      "desc": "The document catalog dictionary shall include a ViewerPreferences dictionary containing a DisplayDocTitle key, whose value shall be true"
+     }
+    ]
+   },
+   "g1": {
+    "tagged": false,
+    "figures": 0,
+    "alt_bermakna": 0,
+    "alt_ok": false,
+    "lang_ok": false,
+    "title_ok": false,
+    "pass": false,
+    "alt_ditahan": 0,
+    "pass_ketat": false
+   }
+  },
+  "B1": {
+   "verapdf": {
+    "compliant": false,
+    "failed_rules": 5,
+    "failed_checks": 66,
+    "rules": [
+     {
+      "clause": "6.2",
+      "test": 1,
+      "checks": 1,
+      "desc": "The document catalog dictionary shall include a MarkInfo dictionary containing an entry, Marked, whose value shall be true"
+     },
+     {
+      "clause": "7.1",
+      "test": 10,
+      "checks": 1,
+      "desc": "The document catalog dictionary shall include a ViewerPreferences dictionary containing a DisplayDocTitle key, whose value shall be true"
+     },
+     {
+      "clause": "7.1",
+      "test": 8,
+      "checks": 1,
+      "desc": "The Catalog dictionary of a conforming file shall contain the Metadata key whose value is a metadata stream as defined in ISO 32000-1:2008, 14.3.2. The metadata stream dictionary shall contain entry Type with value /Metadata and entry Subtype with value /XML"
+     },
+     {
+      "clause": "7.2",
+      "test": 34,
+      "checks": 56,
+      "desc": "Natural language for text in page content shall be determined"
+     },
+     {
+      "clause": "7.2",
+      "test": 22,
+      "checks": 7,
+      "desc": "Natural language for text in Alt attribute shall be determined"
+     }
+    ]
+   },
+   "g1": {
+    "tagged": false,
+    "figures": 7,
+    "alt_bermakna": 0,
+    "alt_ok": false,
+    "lang_ok": false,
+    "title_ok": false,
+    "pass": false,
+    "alt_ditahan": 0,
+    "pass_ketat": false
+   }
+  },
+  "D": {
+   "verapdf": {
+    "compliant": true,
+    "failed_rules": 0,
+    "failed_checks": 0,
+    "rules": []
+   },
+   "g1": {
+    "tagged": true,
+    "figures": 5,
+    "alt_bermakna": 5,
+    "alt_ok": true,
+    "lang_ok": true,
+    "title_ok": true,
+    "pass": true,
+    "alt_ditahan": 2,
+    "pass_ketat": false
+   }
+  }
+ },
+ "katalog": true,
+ "dibuat": 1793097426.7930276,
+ "output_version": "versions/d728b27af6aa40a3ab29ee77d40f0abc",
+ "judul_uld": "Statistika Deskriptif",
+ "ringkasan": {
+  "teks": "Materi kuliah ini membahas tentang statistika deskriptif dan visualisasi data dalam mata kuliah statistika dasar. Fokus utamanya adalah mempelajari cara meringkas data sebelum melakukan inferensi statistik serta memahami cara membaca dan menginterpretasikan berbagai jenis grafik untuk menarik kesimpulan dari data yang ada.\n\nBagian pertama, pendahuluan dan ringkasan data. Statistika deskriptif berfungsi untuk meringkas data. Mahasiswa diajak berlatih menghitung rerata dan simpangan baku secara manual menggunakan data kuis mingguan dari lima mahasiswa.\n\nBagian kedua, visualisasi data. Grafik batang digunakan untuk membandingkan kategori, sedangkan grafik garis digunakan untuk melihat perubahan waktu. Penting untuk selalu memperhatikan satuan dan skala pada sumbu nilai. Contoh yang diberikan mencakup data mahasiswa baru per fakultas dan persentase penduduk miskin per provinsi. Mahasiswa harus mampu mengidentifikasi nilai tertinggi, nilai terendah, serta pola umum dari grafik tersebut.\n\nBagian ketiga, alur statistik dan ukuran pemusatan. Alur kerja statistik dimulai dari populasi, pengambilan sampel, perhitungan statistik, hingga penarikan inferensi kembali ke populasi. Selain itu, materi ini juga menyinggung tentang rerata sampel sebagai ukuran pemusatan data.\n\nBagian keempat, regresi linear sederhana. Metode ini digunakan untuk memodelkan hubungan antara variabel bebas dan variabel terikat. Koefisien kemiringan dalam model ini menunjukkan besarnya perubahan pada variabel terikat untuk setiap kenaikan satu satuan pada variabel bebas.\n\nBagian kelima, latihan. Mahasiswa diminta untuk mengamati grafik kunjungan perpustakaan per bulan untuk menentukan kategori dengan nilai tertinggi sebagai bentuk penerapan pemahaman visualisasi data.\n\nIstilah penting: Statistika deskriptif adalah metode untuk meringkas data. Rerata adalah nilai rata-rata dari sekumpulan data. Simpangan baku adalah ukuran sebaran data. Populasi adalah keseluruhan kelompok yang diteliti. Sampel adalah bagian dari populasi yang diambil untuk dianalisis. Regresi linear adalah model untuk melihat hubungan antara variabel bebas dan terikat.",
+  "asli": "Materi kuliah ini membahas tentang statistika deskriptif dan visualisasi data dalam mata kuliah statistika dasar. Fokus utamanya adalah mempelajari cara meringkas data sebelum melakukan inferensi statistik serta memahami cara membaca dan menginterpretasikan berbagai jenis grafik untuk menarik kesimpulan dari data yang ada.\n\nBagian pertama, pendahuluan dan ringkasan data. Statistika deskriptif berfungsi untuk meringkas data. Mahasiswa diajak berlatih menghitung rerata dan simpangan baku secara manual menggunakan data kuis mingguan dari lima mahasiswa.\n\nBagian kedua, visualisasi data. Grafik batang digunakan untuk membandingkan kategori, sedangkan grafik garis digunakan untuk melihat perubahan waktu. Penting untuk selalu memperhatikan satuan dan skala pada sumbu nilai. Contoh yang diberikan mencakup data mahasiswa baru per fakultas dan persentase penduduk miskin per provinsi. Mahasiswa harus mampu mengidentifikasi nilai tertinggi, nilai terendah, serta pola umum dari grafik tersebut.\n\nBagian ketiga, alur statistik dan ukuran pemusatan. Alur kerja statistik dimulai dari populasi, pengambilan sampel, perhitungan statistik, hingga penarikan inferensi kembali ke populasi. Selain itu, materi ini juga menyinggung tentang rerata sampel sebagai ukuran pemusatan data.\n\nBagian keempat, regresi linear sederhana. Metode ini digunakan untuk memodelkan hubungan antara variabel bebas dan variabel terikat. Koefisien kemiringan dalam model ini menunjukkan besarnya perubahan pada variabel terikat untuk setiap kenaikan satu satuan pada variabel bebas.\n\nBagian kelima, latihan. Mahasiswa diminta untuk mengamati grafik kunjungan perpustakaan per bulan untuk menentukan kategori dengan nilai tertinggi sebagai bentuk penerapan pemahaman visualisasi data.\n\nIstilah penting: Statistika deskriptif adalah metode untuk meringkas data. Rerata adalah nilai rata-rata dari sekumpulan data. Simpangan baku adalah ukuran sebaran data. Populasi adalah keseluruhan kelompok yang diteliti. Sampel adalah bagian dari populasi yang diambil untuk dianalisis. Regresi linear adalah model untuk melihat hubungan antara variabel bebas dan terikat.",
+  "status": "ditandai",
+  "dibuat": 1793105353.4547246,
+  "log": []
+ }
+}

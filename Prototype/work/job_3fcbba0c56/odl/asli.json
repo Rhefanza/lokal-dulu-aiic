@@ -1,0 +1,570 @@
+{
+  "file name" : "asli.pdf",
+  "number of pages" : 3,
+  "author" : null,
+  "title" : null,
+  "creation date" : null,
+  "modification date" : null,
+  "kids" : [ {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 1,
+    "level" : "Doctitle",
+    "page number" : 1,
+    "bounding box" : [ 67.0, 754.091, 507.266, 777.5 ],
+    "heading level" : 1,
+    "font" : "NimbusSans-Bold",
+    "font size" : 17.0,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Pertemuan 4: Statistika Deskriptif dan Visualisasi Data"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 2,
+    "page number" : 1,
+    "bounding box" : [ 67.0, 715.92, 95.0, 743.92 ],
+    "alt_source" : "missing",
+    "source" : "asli_images/imageFile1.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 3,
+    "page number" : 1,
+    "bounding box" : [ 98.058, 712.631, 315.077, 727.745 ],
+    "font" : "NimbusSans-Regular",
+    "font size" : 11.0,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Mata kuliah Statistika Dasar, semester gasal"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 4,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 67.0, 688.129, 163.083, 706.03 ],
+    "heading level" : 2,
+    "font" : "NimbusSans-Bold",
+    "font size" : 13.0,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "1. Pendahuluan"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 5,
+    "page number" : 1,
+    "bounding box" : [ 67.0, 637.631, 506.593, 679.145 ],
+    "font" : "NimbusSans-Regular",
+    "font size" : 11.0,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Statistika deskriptif membantu kita meringkas data sebelum melakukan inferensi. Pada pertemuan ini kita membahas ukuran pemusatan, ukuran penyebaran, dan cara membaca graﬁk dengan benar."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 6,
+    "page number" : 1,
+    "bounding box" : [ 67.0, 600.231, 512.698, 628.545 ],
+    "font" : "NimbusSans-Regular",
+    "font size" : 11.0,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Tabel berikut merangkum hasil kuis mingguan. Gunakan tabel ini untuk berlatih menghitung rerata dan simpangan baku secara manual sebelum memakai perangkat lunak."
+  }, {
+    "type" : "text block",
+    "id" : 7,
+    "page number" : 1,
+    "bounding box" : [ 69.0, 566.02, 153.011, 587.22 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 10,
+      "page number" : 1,
+      "bounding box" : [ 78.0, 570.031, 107.337, 585.145 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "Nama"
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 11,
+    "page number" : 1,
+    "bounding box" : [ 155.011, 566.02, 203.58, 587.22 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 14,
+      "page number" : 1,
+      "bounding box" : [ 164.011, 570.031, 194.58, 585.145 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "Kuis 1"
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 16,
+    "page number" : 1,
+    "bounding box" : [ 205.58, 566.02, 254.149, 587.22 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 19,
+      "page number" : 1,
+      "bounding box" : [ 214.58, 570.031, 245.149, 585.145 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "Kuis 2"
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 21,
+    "page number" : 1,
+    "bounding box" : [ 69.0, 542.82, 153.011, 564.02 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 24,
+      "page number" : 1,
+      "bounding box" : [ 78.0, 546.831, 143.406, 561.945 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "Mahasiswa A"
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 25,
+    "page number" : 1,
+    "bounding box" : [ 155.011, 542.82, 203.58, 564.02 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 28,
+      "page number" : 1,
+      "bounding box" : [ 164.011, 546.831, 176.243, 561.945 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "86"
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 30,
+    "page number" : 1,
+    "bounding box" : [ 205.58, 542.82, 254.149, 564.02 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 33,
+      "page number" : 1,
+      "bounding box" : [ 214.58, 546.831, 226.812, 561.945 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "73"
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 35,
+    "page number" : 1,
+    "bounding box" : [ 69.0, 519.62, 153.011, 540.82 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 38,
+      "page number" : 1,
+      "bounding box" : [ 78.0, 523.631, 143.406, 538.745 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "Mahasiswa B"
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 39,
+    "page number" : 1,
+    "bounding box" : [ 155.011, 519.62, 203.58, 540.82 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 42,
+      "page number" : 1,
+      "bounding box" : [ 164.011, 523.631, 176.243, 538.745 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "81"
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 44,
+    "page number" : 1,
+    "bounding box" : [ 205.58, 519.62, 254.149, 540.82 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 47,
+      "page number" : 1,
+      "bounding box" : [ 214.58, 523.631, 226.812, 538.745 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "84"
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 49,
+    "page number" : 1,
+    "bounding box" : [ 69.0, 496.42, 153.011, 517.62 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 52,
+      "page number" : 1,
+      "bounding box" : [ 78.0, 500.431, 144.011, 515.545 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "Mahasiswa C"
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 53,
+    "page number" : 1,
+    "bounding box" : [ 155.011, 496.42, 203.58, 517.62 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 56,
+      "page number" : 1,
+      "bounding box" : [ 164.011, 500.431, 176.243, 515.545 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "73"
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 58,
+    "page number" : 1,
+    "bounding box" : [ 205.58, 496.42, 254.149, 517.62 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 61,
+      "page number" : 1,
+      "bounding box" : [ 214.58, 500.431, 226.812, 515.545 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "60"
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 63,
+    "page number" : 1,
+    "bounding box" : [ 69.0, 473.22, 153.011, 494.42 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 66,
+      "page number" : 1,
+      "bounding box" : [ 78.0, 477.231, 144.011, 492.345 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "Mahasiswa D"
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 67,
+    "page number" : 1,
+    "bounding box" : [ 155.011, 473.22, 203.58, 494.42 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 70,
+      "page number" : 1,
+      "bounding box" : [ 164.011, 477.231, 176.243, 492.345 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "57"
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 72,
+    "page number" : 1,
+    "bounding box" : [ 205.58, 473.22, 254.149, 494.42 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 75,
+      "page number" : 1,
+      "bounding box" : [ 214.58, 477.231, 226.812, 492.345 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "60"
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 77,
+    "page number" : 1,
+    "bounding box" : [ 69.0, 450.02, 153.011, 471.22 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 80,
+      "page number" : 1,
+      "bounding box" : [ 78.0, 454.031, 143.406, 469.145 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "Mahasiswa E"
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 81,
+    "page number" : 1,
+    "bounding box" : [ 155.011, 450.02, 203.58, 471.22 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 84,
+      "page number" : 1,
+      "bounding box" : [ 164.011, 454.031, 176.243, 469.145 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "56"
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 86,
+    "page number" : 1,
+    "bounding box" : [ 205.58, 450.02, 254.149, 471.22 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 89,
+      "page number" : 1,
+      "bounding box" : [ 214.58, 454.031, 226.812, 469.145 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "96"
+    } ]
+  }, {
+    "type" : "caption",
+    "pdfua_tag" : "Caption",
+    "id" : 90,
+    "page number" : 1,
+    "bounding box" : [ 67.0, 397.431, 516.383, 438.945 ],
+    "linked content id" : 91,
+    "font" : "NimbusSans-Regular",
+    "font size" : 11.0,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Graﬁk batang cocok untuk membandingkan kategori, sedangkan graﬁk garis cocok untuk memperlihatkan perubahan menurut waktu. Perhatikan selalu satuan dan skala pada sumbu nilai."
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 91,
+    "page number" : 1,
+    "bounding box" : [ 67.0, 148.92, 447.0, 386.42 ],
+    "alt_source" : "missing",
+    "source" : "asli_images/imageFile2.png"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 92,
+    "level" : "1",
+    "page number" : 1,
+    "bounding box" : [ 67.0, 124.731, 296.867, 139.845 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 1,
+    "next list id" : 97,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "id" : 93,
+      "page number" : 1,
+      "bounding box" : [ 67.0, 124.731, 296.867, 139.845 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "Gambar 1. Mahasiswa baru per fakultas (2022)",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 94,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 67.0, 98.029, 179.71, 115.93 ],
+    "heading level" : 3,
+    "font" : "NimbusSans-Bold",
+    "font size" : 13.0,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "2. Membaca graﬁk"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 95,
+    "page number" : 1,
+    "bounding box" : [ 67.0, 60.731, 526.085, 89.045 ],
+    "font" : "NimbusSans-Regular",
+    "font size" : 11.0,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Data berikut berasal dari contoh ilustratif dan tidak mewakili statistik resmi. Mahasiswa diminta mengidentiﬁkasi nilai tertinggi, nilai terendah, serta pola umum pada setiap graﬁk."
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 96,
+    "page number" : 2,
+    "bounding box" : [ 67.0, 548.5, 447.0, 786.0 ],
+    "alt_source" : "missing",
+    "source" : "asli_images/imageFile3.png"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 97,
+    "level" : "1",
+    "page number" : 2,
+    "bounding box" : [ 67.0, 337.111, 358.005, 539.425 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "previous list id" : 92,
+    "next list id" : 107,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "id" : 98,
+      "page number" : 2,
+      "bounding box" : [ 67.0, 524.311, 358.005, 539.425 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "Gambar 2. Persentase penduduk miskin per provinsi (2025)",
+      "kids" : [ {
+        "type" : "image",
+        "pdfua_tag" : "Figure",
+        "id" : 99,
+        "page number" : 2,
+        "bounding box" : [ 67.0, 361.3, 447.0, 513.3 ],
+        "alt_source" : "missing",
+        "source" : "asli_images/imageFile4.png"
+      } ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "id" : 100,
+      "page number" : 2,
+      "bounding box" : [ 67.0, 337.111, 266.298, 352.225 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "Gambar 3. Alur dari populasi ke inferensi",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 101,
+    "level" : "2",
+    "page number" : 2,
+    "bounding box" : [ 67.0, 125.911, 402.06, 328.31 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "id" : 102,
+      "page number" : 2,
+      "bounding box" : [ 67.0, 286.311, 282.809, 328.31 ],
+      "font" : "NimbusSans-Bold",
+      "font size" : 13.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "3. Ukuran pemusatan Rerata sampel dideﬁnisikan sebagai berikut.",
+      "kids" : [ {
+        "type" : "image",
+        "pdfua_tag" : "Figure",
+        "id" : 103,
+        "page number" : 2,
+        "bounding box" : [ 67.0, 227.3, 307.0, 275.3 ],
+        "alt_source" : "missing",
+        "source" : "asli_images/imageFile5.png"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 104,
+        "page number" : 2,
+        "bounding box" : [ 67.0, 176.711, 521.267, 218.225 ],
+        "font" : "NimbusSans-Regular",
+        "font size" : 11.0,
+        "text color" : "[0.0, 0.0, 0.0]",
+        "content" : "Regresi linear sederhana memodelkan hubungan antara variabel bebas x dan variabel terikat y. Koeﬁsien kemiringan menunjukkan besarnya perubahan y untuk setiap kenaikan satu satuan x."
+      } ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "id" : 105,
+      "page number" : 2,
+      "bounding box" : [ 67.0, 125.911, 402.06, 167.91 ],
+      "font" : "NimbusSans-Bold",
+      "font size" : 13.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "4. Latihan Perhatikan graﬁk berikut dan tentukan kategori dengan nilai tertinggi.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 106,
+    "page number" : 3,
+    "bounding box" : [ 67.0, 548.5, 447.0, 786.0 ],
+    "alt_source" : "missing",
+    "source" : "asli_images/imageFile6.png"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 107,
+    "level" : "1",
+    "page number" : 3,
+    "bounding box" : [ 67.0, 524.311, 328.085, 539.425 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 1,
+    "previous list id" : 97,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "id" : 108,
+      "page number" : 3,
+      "bounding box" : [ 67.0, 524.311, 328.085, 539.425 ],
+      "font" : "NimbusSans-Regular",
+      "font size" : 11.0,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "Gambar 4. Kunjungan perpustakaan per bulan (2025)",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 109,
+    "page number" : 3,
+    "bounding box" : [ 67.0, 486.4, 95.0, 514.4 ],
+    "alt_source" : "missing",
+    "source" : "asli_images/imageFile7.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 110,
+    "page number" : 3,
+    "bounding box" : [ 98.058, 483.111, 156.732, 498.225 ],
+    "font" : "NimbusSans-Regular",
+    "font size" : 11.0,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Akhir materi"
+  } ]
+}

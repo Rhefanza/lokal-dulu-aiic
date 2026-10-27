@@ -7,7 +7,7 @@
       "runtimeArgs": [
         "-NoProfile",
         "-Command",
-        "Set-Location 'C:\\Uner\\Lomba\\Campus Data Week\\Final\\Prototype'; python -m uvicorn app:app --port 8000"
+        "Set-Location Prototype; foreach ($n in 'ELEVENLABS_API_KEY','ELEVENLABS_VOICE_ID','ELEVENLABS_MODEL','ELEVENLABS_AGENT_ID') { $v = [Environment]::GetEnvironmentVariable($n,'User'); if ($v) { Set-Item \"Env:$n\" $v } }; python -m uvicorn app:app --port 8000"
       ],
       "port": 8000
     }

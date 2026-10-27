@@ -7,6 +7,7 @@ import json
 import os
 import re
 import urllib.error
+import urllib.parse
 import urllib.request
 import uuid
 from pathlib import Path
@@ -114,13 +115,44 @@ def _eleven(text: str, out: Path, rate: str):
         temporary.unlink(missing_ok=True)
 
 
+def agent_ready() -> bool:
+    return bool(os.environ.get("ELEVENLABS_API_KEY") and os.environ.get("ELEVENLABS_AGENT_ID"))
+
+
+def agent_signed_url() -> str:
+    """URL sesi sementara untuk agen percakapan; API key tidak pernah sampai ke peramban."""
+    if not agent_ready():
+        raise VoiceError("Agen ElevenLabs belum dikonfigurasi (ELEVENLABS_AGENT_ID).")
+    req = urllib.request.Request(
+        "https://api.elevenlabs.io/v1/convai/conversation/get-signed-url?agent_id="
+        + urllib.parse.quote(os.environ["ELEVENLABS_AGENT_ID"]),
+        headers={"xi-api-key": os.environ["ELEVENLABS_API_KEY"]})
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return json.loads(r.read())["signed_url"]
+    except urllib.error.HTTPError as e:
+        raise VoiceError("Agen ElevenLabs menolak sesi. Periksa API key dan ELEVENLABS_AGENT_ID."
+                         if e.code in (401, 403, 404) else "Agen ElevenLabs sedang tidak tersedia.") from None
+    except (urllib.error.URLError, TimeoutError, KeyError, ValueError):
+        raise VoiceError("Koneksi ke agen ElevenLabs terputus.") from None
+
+
+def cache_path(text: str, speaker: str = ELEVEN_SPEAKER, rate: str = "+0%") -> Path:
+    """Letak MP3 untuk teks dan pengaturan ini; teks yang diperbaiki ULD otomatis mendapat berkas baru."""
+    if speaker != ELEVEN_SPEAKER:
+        raise ValueError(f"Sumber suara tidak didukung: {speaker}")
+    key = hashlib.sha256(f"{speaker}|{ELEVEN_MODEL}|{os.environ.get('ELEVENLABS_VOICE_ID')}|{rate}|{normalize(text)}".encode()).hexdigest()[:20]
+    return AUDIO / f"{key}.mp3"
+
+
+def cached(text: str) -> bool:
+    out = cache_path(text)
+    return out.exists() and out.stat().st_size > 0
+
+
 def synthesize(text: str, speaker: str = ELEVEN_SPEAKER, rate: str = "+0%", pitch: str = "+0Hz", tau: float = 0.3) -> Path:
     """Teks → berkas MP3 dengan suara ElevenLabs; hasil di-cache menurut isi dan pengaturan."""
-    spoken = normalize(text)
-    if speaker == ELEVEN_SPEAKER:
-        key = hashlib.sha256(f"{speaker}|{ELEVEN_MODEL}|{os.environ.get('ELEVENLABS_VOICE_ID')}|{rate}|{spoken}".encode()).hexdigest()[:20]
-        out = AUDIO / f"{key}.mp3"
-        if not out.exists() or not out.stat().st_size:
-            _eleven(spoken, out, rate)
-        return out
-    raise ValueError(f"Sumber suara tidak didukung: {speaker}")
+    out = cache_path(text, speaker, rate)
+    if not out.exists() or not out.stat().st_size:
+        _eleven(normalize(text), out, rate)
+    return out

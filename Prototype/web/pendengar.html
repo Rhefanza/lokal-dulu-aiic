@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SIMAK · Dengarkan materi</title><link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="peran.css?v=peran-20261027"></head>
+<body class="dengar">
+<button class="mulai" id="mulai" aria-describedby="mulai-ket">
+ <span class="cincin" aria-hidden="true"></span>
+ <b>Sentuh untuk mulai.</b>
+ <span id="mulai-ket">Sentuh di mana saja atau tekan tombol apa saja. Setelah itu SIMAK memandu dengan suara.</span>
+</button>
+
+<main class="panggung" id="isi" tabindex="-1" hidden>
+ <div class="sekarang">
+  <div class="mode" id="mode">Siap</div>
+  <h1 id="judul">SIMAK</h1>
+  <p class="pesan" id="pesan" role="status" aria-live="polite">Ucapkan “Halo SIMAK” atau sentuh tombol besar untuk bicara.</p>
+  <div class="kemajuan" aria-hidden="true"><i id="bar"></i></div>
+ </div>
+
+ <button class="bicara" id="bicara" data-mode="dengar"><span class="cincin-kecil" aria-hidden="true"></span><span id="bicara-label">Bicara</span>
+  <small id="bicara-ket">atau ucapkan “Halo SIMAK”. Tombol spasi juga bisa.</small></button>
+
+ <div>
+  <div class="kendali" role="group" aria-label="Kendali pemutar">
+   <button data-k="sebelumnya">Sebelumnya</button>
+   <button data-k="jedaLanjut" id="b-jeda">Jeda</button>
+   <button data-k="ulangi">Ulangi</button>
+   <button data-k="berikutnya">Berikutnya</button>
+   <button data-k="berhenti">Berhenti</button>
+  </div>
+  <details class="lainnya"><summary>Daftar materi dan percakapan</summary>
+   <ol class="pilihan" id="pilihan"></ol>
+   <h2 class="sr">Percakapan terakhir</h2>
+   <ul class="transkrip" id="transkrip" aria-label="Percakapan terakhir"></ul>
+  </details>
+ </div>
+</main>
+<script src="vendor/elevenlabs-client.min.js?v=1.27.0"></script>
+<script src="pendengar.js?v=peran-20261027"></script>
+</body></html>

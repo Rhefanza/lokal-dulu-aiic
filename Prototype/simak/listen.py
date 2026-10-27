@@ -63,6 +63,12 @@ def remediated(state: dict) -> list[dict]:
     return segs
 
 
+def table_say(rows: list[list[str]], no: int) -> str:
+    """Tabel dibacakan per baris dengan judul kolom, bukan sel berurutan."""
+    return f"Tabel {no}, {len(rows) - 1} baris. Kolom: {', '.join(rows[0])}. " + " ".join(
+        f"Baris {i + 1}: " + "; ".join(f"{h} {c}" for h, c in zip(rows[0], r)) + "." for i, r in enumerate(rows[1:]))
+
+
 def _remediated(state: dict) -> list[dict]:
     segs, tab_no = [], 0
     labels = figure_labels(state["elements"])
@@ -75,9 +81,7 @@ def _remediated(state: dict) -> list[dict]:
             segs.append({"kind": "text", "page": el["page"], "text": el["text"], "say": el["text"]})
         elif k == "table":
             tab_no += 1
-            rows = el["rows"]
-            say = f"Tabel {tab_no}, {len(rows) - 1} baris. Kolom: {', '.join(rows[0])}. " + " ".join(
-                f"Baris {i + 1}: " + "; ".join(f"{h} {c}" for h, c in zip(rows[0], r)) + "." for i, r in enumerate(rows[1:]))
+            say = table_say(el["rows"], tab_no)
             segs.append({"kind": "table", "page": el["page"], "text": say, "say": say})
         elif k == "image":
             st = el.get("status")

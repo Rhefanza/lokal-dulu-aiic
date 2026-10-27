@@ -4,6 +4,14 @@ Prototipe *Sistem Ilustrasi Materi Aksesibel untuk Kuliah* (proposal ICC 2026, t
 Masukannya PDF materi kuliah apa adanya. Keluarannya PDF bertag (PDF/UA-1) dan HTML aksesibel dengan
 mode dengar. Setiap deskripsi grafik **terverifikasi terhadap tabel data atau ditahan** di antrean tinjauan ULD.
 
+## Dua peran: ULD dan pendengar — 27 Oktober 2026
+
+- **`/uld.html`** (Unit Layanan Disabilitas, tanpa login untuk prototipe): unggah PDF → LLM memproses semuanya → materi **langsung terbit**. ULD hanya memeriksa: bagian yang belum terverifikasi ditandai, bisa dibenarkan atau diperbaiki. Teks asli LLM tetap tersimpan; perbaikan dicatat terpisah beserta lognya.
+- **`/pendengar.html`** (tunanetra): satu sentuhan untuk mulai (kebijakan peramban), lalu bebas sentuh. Pemandu suara memakai agen ElevenLabs; tanpa agen, perintah suara sederhana (Web Speech). Ucapkan "Halo SIMAK" atau tekan spasi untuk menyela.
+- Deskripsi gambar yang gagal verifikasi **ditandai, bukan ditahan**: dibacakan dengan awalan "Catatan: deskripsi gambar ini belum diperiksa."
+- Audio ElevenLabs dibuat **per bagian, sekali saat terbit** (berbayar per karakter), dan dibuat ulang hanya untuk bagian yang diperbaiki ULD.
+- Siapkan agen: [setup/agen-elevenlabs.md](setup/agen-elevenlabs.md), lalu isi `ELEVENLABS_AGENT_ID`.
+
 ## Pembaruan antarmuka dan suara — 23 Oktober 2026
 
 Latar aplikasi cream. Halaman pengantar mengadaptasi seluruh urutan dan motion Sill: pembuka lima panel, jendela, fitur yang mengembang, proses horizontal, gerbang, panel menyatu, prinsip dan formulir. Empat halaman memakai palet/typografi yang sama, dengan transisi navigasi serta menu ponsel. Library dan font di-host lokal; preferensi reduced motion tetap dihormati. ElevenLabs menjadi pilihan awal saat tersedia, dengan pilihan peramban tetap dapat dipakai. Detail desain dan bukti: [tasks/implementation-fluid.md](tasks/implementation-fluid.md); perbaikan domain/suara sebelumnya: [tasks/implementation-cream.md](tasks/implementation-cream.md). Panduan presentasi: [tasks/demo-runbook.md](tasks/demo-runbook.md).

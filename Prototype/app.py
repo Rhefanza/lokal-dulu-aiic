@@ -20,7 +20,7 @@ from fastapi.responses import FileResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from simak import chart, gate, listen, pipeline, vlm
+from simak import chart, gate, listen, materi, pipeline, vlm
 from simak.config import DATA, ROOT, WORK, thresholds
 
 app = FastAPI(title="SIMAK")
@@ -38,7 +38,7 @@ def _job_dir(jid: str) -> Path:
     return WORK / f"job_{jid}"
 
 
-def _start(pdf: Path, name: str) -> str:
+def _start(pdf: Path, name: str, katalog: bool = False) -> str:
     if not _ACTIVE.acquire(blocking=False):
         raise HTTPException(409, "Satu dokumen sedang diproses. Tunggu selesai sebelum memulai dokumen lain.")
     jid = uuid.uuid4().hex[:10]
@@ -46,7 +46,7 @@ def _start(pdf: Path, name: str) -> str:
     try:
         job.mkdir(parents=True)
         shutil.copy(pdf, job / "asli.pdf")
-        JOBS[jid] = {"tahap": "antre", "pesan": "Menunggu", "nama": name, "mulai": time.time()}
+        JOBS[jid] = {"tahap": "antre", "pesan": "Menunggu", "nama": name, "mulai": time.time(), "katalog": katalog}
     except Exception:
         _ACTIVE.release()
         raise
@@ -56,7 +56,11 @@ def _start(pdf: Path, name: str) -> str:
             with pipeline.job_lock(job):
                 state = pipeline.run(job / "asli.pdf", job, lambda t, m: JOBS[jid].update(tahap=t, pesan=m))
                 state["file"] = name
+                if katalog:  # langsung terbit untuk tunanetra; ULD memeriksa sesudahnya
+                    state["katalog"], state["dibuat"] = True, JOBS[jid]["mulai"]
                 pipeline.save(job, state)
+            if katalog:
+                _antre_audio(jid)
         except Exception:
             logging.exception("Pemrosesan SIMAK gagal: %s", jid)
             JOBS[jid].update(tahap="gagal", pesan="Dokumen gagal diproses. Periksa format PDF, lalu coba dokumen lain.")
@@ -78,18 +82,27 @@ def sampel():
     return out
 
 
-@app.post("/api/sampel/{name}")
-def proses_sampel(name: str):
+def _sampel_path(name: str) -> Path:
     f = SYN / "docs" / Path(name).name
     if not f.exists():
         f = DATA / "cc" / Path(name).name
     if not f.exists():
         raise HTTPException(404)
+    return f
+
+
+@app.post("/api/sampel/{name}")
+def proses_sampel(name: str):
+    f = _sampel_path(name)
     return {"id": _start(f, f.name)}
 
 
 @app.post("/api/unggah")
 async def unggah(file: UploadFile = File(...)):
+    return {"id": await _terima_pdf(file, katalog=False)}
+
+
+async def _terima_pdf(file: UploadFile, katalog: bool) -> str:
     data = bytearray()
     while chunk := await file.read(1024 * 1024):
         data.extend(chunk)
@@ -110,7 +123,7 @@ async def unggah(file: UploadFile = File(...)):
     tmp = WORK / f"up_{uuid.uuid4().hex}.pdf"
     tmp.write_bytes(data)
     try:
-        return {"id": _start(tmp, Path(file.filename or "dokumen.pdf").name)}
+        return _start(tmp, Path(file.filename or "dokumen.pdf").name, katalog)
     finally:
         tmp.unlink(missing_ok=True)
 
@@ -395,6 +408,166 @@ def perintah(body: Perintah):
     if not ucapan or not tombol:
         raise HTTPException(400)
     return {"pilihan": vlm.pilih_tombol(ucapan, tombol)}
+
+
+# ------------------------------------------------------------------ materi: ULD dan tunanetra
+_audio_q: list[str] = []
+_audio_cv = threading.Condition()
+AUDIO_GAGAL: dict[str, str] = {}
+
+
+def _antre_audio(jid: str):
+    """Audio seluruh materi dibuat sekali saat terbit (dan setelah ULD memperbaiki) agar pemutaran tidak menunggu."""
+    with _audio_cv:
+        if jid not in _audio_q:
+            _audio_q.append(jid)
+        _audio_cv.notify()
+
+
+def _audio_worker():
+    from simak import voice
+    for jid, _ in materi.daftar():  # materi yang audionya belum lengkap saat server terakhir berhenti
+        _antre_audio(jid)
+    while True:
+        with _audio_cv:
+            while not _audio_q:
+                _audio_cv.wait()
+            jid = _audio_q.pop(0)
+        if not voice.eleven_ready():
+            continue
+        try:
+            for p in materi.putar(pipeline.load(_job_dir(jid))):
+                if voice.cached(p["teks"]):
+                    continue
+                while _interactive[0] > 0:
+                    time.sleep(0.1)
+                _synth(p["teks"], "eleven", 0, 0, prioritas=False)
+            AUDIO_GAGAL.pop(jid, None)
+        except voice.VoiceError as e:
+            AUDIO_GAGAL[jid] = str(e)
+        except FileNotFoundError:
+            pass  # materi dihapus selagi antre
+        except Exception:
+            logging.exception("Pembuatan audio materi gagal: %s", jid)
+            AUDIO_GAGAL[jid] = "Audio sebagian bagian gagal dibuat; bagian itu dibuat saat diputar."
+
+
+threading.Thread(target=_audio_worker, daemon=True).start()
+
+
+def _materi(jid: str) -> tuple[Path, dict]:
+    job = _job_dir(jid)
+    if not (job / "state.json").exists():
+        raise HTTPException(404, "Materi tidak ditemukan")
+    state = pipeline.load(job)
+    if not state.get("katalog"):
+        raise HTTPException(404, "Materi tidak ditemukan")
+    return job, state
+
+
+@app.get("/api/materi")
+def materi_daftar():
+    from simak import voice
+    out = []
+    for jid, state in materi.daftar():
+        r = materi.ringkas(jid, state, voice.cached)
+        r["audio"]["gagal"] = AUDIO_GAGAL.get(jid)
+        out.append(r)
+    diproses = [{"id": jid, "berkas": j["nama"], "tahap": j["tahap"], "pesan": j["pesan"]}
+                for jid, j in JOBS.items() if j.get("katalog") and j["tahap"] != "selesai"]
+    return {"materi": out, "diproses": diproses, "suara": voice.eleven_ready()}
+
+
+@app.post("/api/materi")
+async def materi_unggah(file: UploadFile = File(...)):
+    return {"id": await _terima_pdf(file, katalog=True)}
+
+
+@app.post("/api/materi/sampel/{name}")
+def materi_sampel(name: str):
+    f = _sampel_path(name)
+    return {"id": _start(f, f.name, katalog=True)}
+
+
+@app.get("/api/materi/{jid}")
+def materi_isi(jid: str):
+    _, state = _materi(jid)
+    return {"id": jid, "judul": materi.judul(state), "berkas": state.get("file"), "bagian": materi.bagian(state)}
+
+
+class Judul(BaseModel):
+    judul: str
+
+
+@app.put("/api/materi/{jid}/judul")
+def materi_judul(jid: str, body: Judul):
+    job, _ = _materi(jid)
+    try:
+        materi.ganti_judul(job, body.judul)
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+    return {"judul": materi.judul(pipeline.load(job))}
+
+
+class Perbaikan(BaseModel):
+    teks: str
+
+
+def _ubah_bagian(jid: str, el: str, fn):
+    job, _ = _materi(jid)
+    try:
+        fn(job)
+    except LookupError:
+        raise HTTPException(404, "Bagian tidak ditemukan")
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+    _antre_audio(jid)
+    return next(b for b in materi.bagian(pipeline.load(job)) if b["el"] == el)
+
+
+@app.put("/api/materi/{jid}/bagian/{el}")
+def materi_perbaiki(jid: str, el: str, body: Perbaikan):
+    return _ubah_bagian(jid, el, lambda job: materi.perbaiki(job, el, body.teks[:6000]))
+
+
+@app.post("/api/materi/{jid}/bagian/{el}/benar")
+def materi_benar(jid: str, el: str):
+    return _ubah_bagian(jid, el, lambda job: materi.benarkan(job, el))
+
+
+@app.get("/api/materi/{jid}/putar")
+def materi_putar(jid: str):
+    _, state = _materi(jid)
+    return {"id": jid, "judul": materi.judul(state), "bagian": materi.putar(state)}
+
+
+@app.get("/api/materi/{jid}/audio/{i}")
+def materi_audio(jid: str, i: int):
+    from simak import voice
+    _, state = _materi(jid)
+    daftar_putar = materi.putar(state)
+    if not 0 <= i < len(daftar_putar):
+        raise HTTPException(404)
+    try:
+        f = _synth(daftar_putar[i]["teks"], "eleven", 0, 0)
+    except voice.VoiceError as e:
+        raise HTTPException(503, str(e))
+    return FileResponse(f, media_type="audio/mpeg")
+
+
+@app.get("/api/agen")
+def agen():
+    from simak import voice
+    return {"aktif": voice.agent_ready()}
+
+
+@app.get("/api/agen/sesi")
+def agen_sesi():
+    from simak import voice
+    try:
+        return {"signed_url": voice.agent_signed_url()}
+    except voice.VoiceError as e:
+        raise HTTPException(503, str(e))
 
 
 @app.get("/api/evaluasi")

@@ -74,16 +74,6 @@ async function harness(page) {
     assert.match(h.element('#prog').textContent, /Koneksi/);
   }
   {
-    const h = await harness('dengar.html');
-    h.run("var testPlayer = new Player([], document.querySelector('#test-list'), document.querySelector('#test-bar'),'fixture');");
-    const bar = h.element('#test-bar');
-    const writes = bar.htmlWrites;
-    h.run('testPlayer.render(); testPlayer.render();');
-    assert.equal(bar.htmlWrites, writes, 'render must retain the focused player control nodes');
-    assert.equal(h.element('#test-bar .status').textContent, 'Transkrip kosong');
-    assert.equal(h.element('#test-bar [data-a="play"]').disabled, true);
-  }
-  {
     // R = masuk antrean setelah gerbang / gambar nondekoratif; keputusan ULD tidak mengubahnya.
     const h = await harness('index.html');
     const gate = {e0: 'terbit_otomatis', e1: 'antrean', e2: 'antrean', e3: 'antrean', e4: 'antrean', e5: 'dekoratif'};
@@ -100,5 +90,5 @@ async function harness(page) {
     h.run('STATE = STATE_IN; render();');
     assert.match(h.element('#tally').innerHTML, /beban tinjauan R · 4\/5 masuk antrean/, 'legacy sessions count ULD-decided elements as queued');
   }
-  console.log('PASS: stale polling, duplicate start, offline recovery, stable player controls/empty state, review burden R');
+  console.log('PASS: stale polling, duplicate start, offline recovery, review burden R');
 })().catch(e => { console.error(e); process.exitCode = 1; });

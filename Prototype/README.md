@@ -16,7 +16,7 @@ mode dengar. Setiap deskripsi grafik **terverifikasi terhadap tabel data atau di
 
 Latar aplikasi cream. Halaman pengantar mengadaptasi seluruh urutan dan motion Sill: pembuka lima panel, jendela, fitur yang mengembang, proses horizontal, gerbang, panel menyatu, prinsip dan formulir. Empat halaman memakai palet/typografi yang sama, dengan transisi navigasi serta menu ponsel. Library dan font di-host lokal; preferensi reduced motion tetap dihormati. ElevenLabs menjadi pilihan awal saat tersedia, dengan pilihan peramban tetap dapat dipakai. Detail desain dan bukti: [tasks/implementation-fluid.md](tasks/implementation-fluid.md); perbaikan domain/suara sebelumnya: [tasks/implementation-cream.md](tasks/implementation-cream.md). Panduan presentasi: [tasks/demo-runbook.md](tasks/demo-runbook.md).
 
-Pembuka: `/?jelajah=1#opening`. Langsung ke unggah: `/index.html?mulai=1#contact`. Tombol Mulai melewati sesi lama tanpa menghapus hasilnya. Navigasi Remediasi/Dengar tetap membawa sesi aktif bila ada.
+Pembuka: `/?jelajah=1#opening`. Langsung ke unggah: `/index.html?mulai=1#contact`. Tombol Mulai melewati sesi lama tanpa menghapus hasilnya. Navigasi Remediasi tetap membawa sesi aktif bila ada. Halaman Dengar (sebelum/sesudah) dan Demo Gerbang dihapus pada 27 Oktober 2026 karena tumpang tindih dengan halaman pendengar dan Bukti.
 
 ## Menjalankan
 
@@ -42,13 +42,11 @@ rotasi kuota. Konfigurasi lokal dapat disimpan pada `.env.local` (diabaikan Git)
 2. **Suara.** Atur `ELEVENLABS_API_KEY` dan `ELEVENLABS_VOICE_ID` dalam environment atau `.env.local`. Model bawaan `eleven_multilingual_v2`. Aplikasi dan HTML hasil yang dibuka lewat server otomatis memilih ElevenLabs saat dikonfigurasi; pilihan suara peramban yang sengaja disimpan pengguna tetap dihormati. Teks yang diputar dikirim ke ElevenLabs. Audio dibuat saat diminta, lalu di-cache, tanpa pembuatan massal di latar.
    Pilihan **Peramban (id-ID)** tetap tersedia, juga untuk HTML yang dibuka langsung dari disk tanpa server. Ketersediaan suara Indonesia mengikuti perangkat. Pemutar memotong teks panjang dan menghentikan bagian berikutnya ketika pengguna menekan Jeda/berpindah halaman.
 
-Server lokal memakai **satu worker**. Unggah PDF berlapis teks maksimal **20 MiB, 200 halaman**; PDF pindai/PPT belum didukung langsung. Berkas sesi tetap tersimpan sampai pengguna menekan Hapus sesi; belum ada retensi berkala. Query `?job=<id>` membawa konteks antara Remediasi dan Dengar; Demo menerima `?grafik=syn043`.
+Server lokal memakai **satu worker**. Unggah PDF berlapis teks maksimal **20 MiB, 200 halaman**; PDF pindai/PPT belum didukung langsung. Berkas sesi tetap tersimpan sampai pengguna menekan Hapus sesi; belum ada retensi berkala. Query `?job=<id>` membuka kembali sesi Remediasi.
 
 ### Demo luring (tanpa internet dan tanpa key)
 
 Hasil VLM di-cache di `cache/` menurut hash (citra, perintah, skema, model). Tanpa `GEMINI_API_KEY`:
-- **Demo Gerbang** hanya menjalankan grafik yang hasilnya ada di cache; grafik lain ditandai
-  "(perlu VLM, belum di cache)" dan tidak bisa dipilih.
 - **Remediasi**: gambar yang hasil VLM-nya belum di cache **ditahan** ke antrean ULD dengan alasan
   "VLM tidak tersedia" (fail-closed); dokumen tetap selesai.
 - Isi cache untuk semua contoh sekali dengan key aktif sebelum presentasi: jalankan `python -m eval.evaluate uji`
@@ -75,7 +73,8 @@ python -m eval.evaluate uji         # set uji tertahan, sekali → eval/results.
 | Halaman | Isi |
 |---|---|
 | **Remediasi & Tinjauan** (`/`) | Unggah PDF atau pilih contoh. Menampilkan veraPDF B0/B1/D, G1, beban tinjauan R, antrean ULD (setujui/ubah/tolak/dekoratif) dengan T1 vs T2 dan klaim yang bisa diklik ke sumbernya |
-| **Demo Gerbang** (`/demo.html`) | B2 (VLM langsung) vs SIMAK pada grafik yang sama. Tombol *suntik kesalahan* (ubah angka, tukar label, angka turunan, tren) menunjukkan B2 tetap terbit sementara SIMAK menahan |
+| **Ruang ULD** (`/uld.html`) | Unggah PDF, materi langsung terbit; ULD membenarkan atau memperbaiki bagian yang ditandai |
+| **Pendengar** (`/pendengar.html`) | Tunanetra memilih dan mendengarkan materi dengan agen suara ElevenLabs |
 | **Evaluasi** (`/evaluasi.html`) | G1, G3, G4 dengan selang Wilson 95%, injeksi per jenis, dan manifes run |
 | **Keluaran HTML** | HTML semantik `lang="id"`, penanda status per gambar, tabel data grafik, mode dengar ElevenLabs saat server siap, atau suara peramban id-ID |
 

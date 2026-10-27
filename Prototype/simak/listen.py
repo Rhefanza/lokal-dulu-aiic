@@ -1,17 +1,10 @@
-"""Transkrip 'apa yang terdengar' untuk halaman Dengar: sebelum vs sesudah.
+"""Urutan baca hasil remediasi SIMAK: label gambar, tabel per baris, dan deskripsi gambar berstatus.
 
-Transkrip PDF asli adalah simulasi pembaca layar pada PDF tanpa tag: teks dibacakan
-menurut urutan aliran konten berkas (bukan urutan visual), gambar tanpa teks alternatif
-hanya diucapkan "Gambar.", dan sel tabel terbaca berurutan tanpa judul kolom.
-Transkrip SIMAK disusun dari elemen hasil remediasi, sama dengan mode dengar pada HTML keluaran.
+Dipakai mode dengar pada HTML keluaran dan katalog materi pendengar (simak/materi.py).
 """
 import re
 import unicodedata
-from pathlib import Path
 
-import fitz
-
-_NUM = re.compile(r"\d")
 _ORDINAL = ["pertama", "kedua", "ketiga", "keempat", "kelima", "keenam", "ketujuh", "kedelapan", "kesembilan", "kesepuluh"]
 
 
@@ -36,23 +29,6 @@ def figure_labels(elements) -> dict:
 def _clean(text: str) -> str:
     text = unicodedata.normalize("NFKC", text)
     return re.sub(r"\s+", " ", text).strip()
-
-
-def original(pdf: Path) -> list[dict]:
-    """Simulasi pembacaan PDF asli: blok dalam urutan berkas, gambar tanpa keterangan."""
-    segs = []
-    with fitz.open(pdf) as doc:
-        for pno, page in enumerate(doc, start=1):
-            flags = fitz.TEXTFLAGS_BLOCKS | fitz.TEXT_PRESERVE_IMAGES
-            for b in page.get_text("blocks", flags=flags, sort=False):
-                if b[6] == 1:
-                    segs.append({"kind": "image", "page": pno, "text": "Gambar.", "say": "Gambar.",
-                                 "note": "tanpa teks alternatif"})
-                    continue
-                t = _clean(b[4])
-                if t:
-                    segs.append({"kind": "text", "page": pno, "text": t, "say": t})
-    return segs
 
 
 def remediated(state: dict) -> list[dict]:
@@ -102,38 +78,3 @@ def _remediated(state: dict) -> list[dict]:
             segs.append({"kind": "image", "page": el["page"], "text": text, "say": text, "note": note,
                          "el": el["id"], "status": st})
     return segs
-
-
-def pair(asli: list[dict], state: dict) -> None:
-    """Pasangkan setiap 'Gambar.' pada transkrip asli dengan elemen gambar SIMAK di halaman yang sama,
-    hanya bila jumlahnya per halaman cocok (agar gambar tidak tertukar)."""
-    by_page: dict[int, list] = {}
-    for el in state["elements"]:
-        if el["kind"] == "image":
-            by_page.setdefault(el["page"], []).append(el["id"])
-    seen: dict[int, list] = {}
-    for sg in asli:
-        if sg["kind"] == "image":
-            seen.setdefault(sg["page"], []).append(sg)
-    for pno, segs in seen.items():
-        ids = by_page.get(pno, [])
-        if len(ids) == len(segs):
-            for sg, i in zip(segs, ids):
-                sg["el"] = i
-
-
-def summary(asli: list[dict], simak: list[dict]) -> dict:
-    """Angka sederhana untuk dibandingkan: berapa gambar yang terdengar bermakna dan berapa angka grafik yang sampai."""
-    a_img = [s for s in asli if s["kind"] == "image"]
-    s_img = [s for s in simak if s["kind"] == "image"]
-    s_info = [s for s in s_img if s.get("status") in ("terbit_otomatis", "disetujui", "diubah")]
-    return {
-        "asli_gambar": len(a_img),
-        "asli_gambar_bermakna": 0,
-        "asli_angka_grafik": 0,
-        "simak_gambar": len(s_img),
-        "simak_gambar_bermakna": len(s_info),
-        "simak_ditahan": len(s_img) - len(s_info),
-        "simak_angka_grafik": sum(len(re.findall(r"\d+(?:[.,]\d+)*", s["say"].split(".", 1)[1] if "." in s["say"] else ""))
-                                  for s in s_info),
-    }

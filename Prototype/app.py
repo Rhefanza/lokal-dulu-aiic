@@ -20,8 +20,8 @@ from fastapi.responses import FileResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from simak import chart, gate, listen, materi, pipeline, vlm
-from simak.config import DATA, ROOT, WORK, thresholds
+from simak import materi, pipeline, vlm
+from simak.config import DATA, ROOT, WORK
 
 app = FastAPI(title="SIMAK")
 WEB = ROOT / "web"
@@ -141,19 +141,6 @@ def pekerjaan(jid: str):
     return {"tahap": info.get("tahap"), "pesan": info.get("pesan"), "nama": info.get("nama")}
 
 
-@app.get("/api/pekerjaan/{jid}/dengar")
-def dengar(jid: str):
-    """Dua transkrip untuk halaman Dengar: simulasi PDF asli dan urutan baca hasil SIMAK."""
-    job = _job_dir(jid)
-    if not (job / "state.json").exists():
-        raise HTTPException(404, "Dokumen belum selesai diproses")
-    st = pipeline.load(job)
-    asli, simak = listen.original(job / "asli.pdf"), listen.remediated(st)
-    listen.pair(asli, st)
-    return {"judul": st["title"], "berkas": st.get("file"), "asli": asli, "simak": simak,
-            "ringkasan": listen.summary(asli, simak)}
-
-
 @app.get("/api/pekerjaan/{jid}/img/{el}")
 def gambar(jid: str, el: str):
     f = _job_dir(jid) / "img" / f"{Path(el).name}.png"
@@ -206,103 +193,6 @@ def hapus(jid: str):
         JOBS.pop(jid, None)
     return {"dihapus": True}
 
-
-
-# ------------------------------------------------------------------ demo adversarial
-def _charts():
-    return {c["id"]: c for c in json.loads((SYN / "charts.json").read_text(encoding="utf-8"))}
-
-
-@app.get("/api/demo/grafik")
-def demo_grafik():
-    # luring: hasil VLM grafik ini sudah di cache/, jadi demo berjalan tanpa API key atau internet.
-    return [{"id": c["id"], "judul": c["judul"], "jenis": c["jenis_grafik"], "label_nilai": c["label_nilai"],
-             "luring": vlm.chart_cached((SYN / "charts" / f"{c['id']}.png").read_bytes()), "vlm_aktif": bool(vlm.KEYS)}
-            for c in _charts().values() if c["set"] == "uji"]
-
-
-DEMO: dict[str, dict] = {}
-
-
-def _simak_chart(img: bytes) -> dict:
-    th = thresholds()
-    el = {"id": "demo", "page": 1, "png_bytes": img, "kind": "image"}
-    return pipeline.process_image(el, th)
-
-
-@app.post("/api/demo/jalankan/{cid}")
-def demo_jalankan(cid: str):
-    charts = _charts()
-    if cid not in charts:
-        raise HTTPException(404)
-    spec = charts[cid]
-    img = (SYN / "charts" / f"{cid}.png").read_bytes()
-    try:
-        el = _simak_chart(img)
-        b2 = vlm.describe_direct(img)
-    except vlm.QuotaHabis as e:  # cache miss tanpa VLM: beri tahu, jangan 500
-        raise HTTPException(503, f"Hasil VLM untuk {cid} belum ada di cache dan VLM tidak tersedia ({e}). "
-                                 "Pilih grafik bertanda tersedia luring.")
-    th = thresholds()
-    truth = [{"kategori": k, "nilai": v} for k, v in zip(spec["kategori"], spec["nilai"])]
-    ordered = chart.is_ordered({"jenis_grafik": spec["jenis_grafik"]}, [{"kategori": k} for k in spec["kategori"]])
-    D_true = chart.derived(truth, ordered, th["rho"])
-    b2_marks = gate.check_free_text(b2, truth, D_true, th["epsilon"])
-    simak_vs_truth = None
-    if el.get("claims"):
-        f, det = gate.fk(el["claims"], truth, D_true, th["epsilon"])
-        simak_vs_truth = {"fk": f, "detail": det}
-    DEMO[cid] = {"el": el, "b2": b2, "truth": truth, "D_true": D_true}
-    return {"spec": {k: spec[k] for k in ("id", "judul", "jenis_grafik", "label_nilai", "satuan")},
-            "truth": truth, "simak": el, "simak_vs_truth": simak_vs_truth,
-            "b2": {"text": b2, "marks": b2_marks, "status": "terbit (tanpa gerbang)"}, "thresholds": th}
-
-
-class Suntik(BaseModel):
-    jenis: str
-    seed: int = 0
-
-
-@app.post("/api/demo/suntik/{cid}")
-def demo_suntik(cid: str, body: Suntik):
-    if cid not in DEMO or body.jenis not in gate.MUTATIONS:
-        raise HTTPException(400)
-    d = DEMO[cid]
-    el = json.loads(json.dumps(d["el"]))
-    if not el.get("seg"):
-        raise HTTPException(400, "Elemen ini tidak memiliki deskripsi grafik")
-    vals = [r["nilai"] for r in el["table"]]
-    gap = 2 * thresholds()["epsilon"] * (max(vals) - min(vals))
-    seg, claims, touched = gate.inject(el["seg"], el["claims"], body.jenis, body.seed, min_gap=gap)
-    if not touched:
-        raise HTTPException(400, "Mutasi tidak berlaku untuk grafik ini (mis. tidak ada tren)")
-    el["seg"], el["claims"] = seg, claims
-    gate.evaluate(el, thresholds())
-    # Kesalahan yang sama pada B2: angka yang sama di teks bebas diganti; tanpa gerbang, tetap terbit.
-    th = thresholds()
-    b2_text = d["b2"]
-    marks = gate.check_free_text(b2_text, d["truth"], d["D_true"], th["epsilon"])
-    edits, used = [], set()
-    for i in touched:
-        old_v, new_v = d["el"]["claims"][i]["v"], claims[i]["v"]
-        if isinstance(old_v, str):
-            if old_v in b2_text:
-                b2_text = b2_text.replace(old_v, new_v, 1)
-            continue
-        m = next((m for m in marks if abs(m["v"] - old_v) < 1e-6 and m["start"] not in used), None)
-        if m:
-            used.add(m["start"])
-            edits.append((m["start"], m["end"], chart.fmt(new_v)))
-    for s, e, t in sorted(edits, reverse=True):
-        b2_text = b2_text[:s] + t + b2_text[e:]
-    return {"mutasi": gate.MUTATIONS[body.jenis], "simak": el,
-            "b2": {"text": b2_text, "marks": gate.check_free_text(b2_text, d["truth"], d["D_true"], th["epsilon"]),
-                   "status": "terbit (tanpa gerbang)"}}
-
-
-@app.get("/api/demo/mutasi")
-def demo_mutasi():
-    return gate.MUTATIONS
 
 
 # ------------------------------------------------------------------ evaluasi
@@ -576,14 +466,6 @@ def evaluasi():
     if not f.exists():
         return JSONResponse({"ada": False})
     return json.loads(f.read_text(encoding="utf-8"))
-
-
-@app.get("/api/grafik/{cid}.png")
-def grafik_png(cid: str):
-    f = SYN / "charts" / f"{Path(cid).name}.png"
-    if not f.exists():
-        raise HTTPException(404)
-    return FileResponse(f)
 
 
 app.mount("/", StaticFiles(directory=WEB, html=True), name="web")

@@ -52,14 +52,14 @@ function currentJob() { try { return sessionStorage.getItem('simak-job'); } catc
 
 // Nama fungsi dipertahankan untuk pemanggil yang sudah ada.
 function renderRail(current) {
-  const items = [['uld.html','ULD','hold'],['pendengar.html','Pendengar','mic'],['index.html','Remediasi','doc'],['dengar.html','Dengar','ear'],['demo.html','Verifikasi','layers'],['evaluasi.html','Bukti','chart']];
-  const links = items.map(([h,l,i])=>`<a href="${h}" ${['index.html','dengar.html'].includes(h)?`data-job-link="${h}"`:''} ${h===current?'aria-current="page"':''}>${icon(i)}${l}</a>`).join('');
+  const items = [['uld.html','ULD','hold'],['pendengar.html','Pendengar','mic'],['index.html','Remediasi','doc'],['evaluasi.html','Bukti','chart']];
+  const links = items.map(([h,l,i])=>`<a href="${h}" ${h==='index.html'?`data-job-link="${h}"`:''} ${h===current?'aria-current="page"':''}>${icon(i)}${l}</a>`).join('');
   document.querySelector('.rail').innerHTML=`<a class="wordmark" href="index.html?jelajah=1#opening" aria-label="SIMAK · kenali aplikasi"><b>SIMAK<span class="brand-dot" aria-hidden="true">.</span></b></a>
     <nav class="nav" aria-label="Navigasi utama">${links}<a class="nav-start" href="index.html?mulai=1#contact">Mulai dari PDF</a></nav>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu ${icon('layers')}</button>
     <details class="vc" id="vc" hidden><summary aria-label="Perintah suara">${icon('mic')}<span>Perintah suara</span></summary><button type="button" id="vc-btn" aria-pressed="false">${icon('mic')}<span>Perintah suara</span></button><p id="vc-st" role="status" aria-live="polite">Aktifkan mikrofon, lalu ucapkan nama tindakan atau halaman.</p></details>
     <div class="nav-menu" id="site-menu" hidden role="dialog" aria-modal="true" aria-label="Menu SIMAK" data-lenis-prevent><div class="nav-menu-head"><b class="wordmark">SIMAK.</b><button class="nav-close" id="nav-close" type="button">Tutup ${icon('cross')}</button></div><ul>
-      <li><a class="m-surface-2" href="uld.html">Ruang ULD</a></li><li><a class="m-surface-7" href="pendengar.html">Pendengar</a></li><li><a class="m-surface" href="index.html?jelajah=1#opening">Kenali SIMAK</a></li><li><a class="m-surface-3" href="dengar.html" data-job-link="dengar.html">Dengar</a></li><li><a class="m-surface-7" href="demo.html">Verifikasi</a></li><li><a class="m-surface-4" href="evaluasi.html">Bukti</a></li><li><a class="m-surface-8 nav-menu-work" href="index.html" data-job-link="index.html">Ruang remediasi</a></li><li><a class="m-surface-2" href="index.html?mulai=1#contact">Mulai dari PDF</a></li>
+      <li><a class="m-surface-2" href="uld.html">Ruang ULD</a></li><li><a class="m-surface-7" href="pendengar.html">Pendengar</a></li><li><a class="m-surface" href="index.html?jelajah=1#opening">Kenali SIMAK</a></li><li><a class="m-surface-4" href="evaluasi.html">Bukti</a></li><li><a class="m-surface-8 nav-menu-work" href="index.html" data-job-link="index.html">Ruang remediasi</a></li><li><a class="m-surface-2" href="index.html?mulai=1#contact">Mulai dari PDF</a></li>
     </ul></div>`;
   VoiceCmd.init();rememberJob(currentJob());
 }

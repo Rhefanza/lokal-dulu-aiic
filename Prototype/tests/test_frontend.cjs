@@ -51,29 +51,6 @@ async function harness(page) {
     assert.equal(h.run('STATE.title'), 'B wins', 'late poll must not overwrite the active job');
   }
   {
-    const h = await harness('index.html');
-    const pending = deferred(); let starts = 0;
-    h.context.fetch = async url => {
-      if (url === '/create') { starts++; return pending.promise; }
-      return response({tahap: 'selesai', state: fixture.completed});
-    };
-    const first = h.run("start('/create',{method:'POST'})");
-    await h.run("start('/create',{method:'POST'})");
-    assert.equal(starts, 1, 'busy must be locked before starting the network request');
-    pending.resolve(response({id: 'fixture'}));
-    await first;
-    await new Promise(setImmediate);
-    assert.equal(h.run('BUSY'), false);
-  }
-  {
-    const h = await harness('index.html');
-    h.context.fetch = async () => { throw new TypeError('offline'); };
-    await h.run("start('/create',{method:'POST'})");
-    assert.equal(h.run('BUSY'), false);
-    assert.equal(h.element('#up-btn').disabled, false);
-    assert.match(h.element('#prog').textContent, /Koneksi/);
-  }
-  {
     // R = masuk antrean setelah gerbang / gambar nondekoratif; keputusan ULD tidak mengubahnya.
     const h = await harness('index.html');
     const gate = {e0: 'terbit_otomatis', e1: 'antrean', e2: 'antrean', e3: 'antrean', e4: 'antrean', e5: 'dekoratif'};
@@ -90,5 +67,5 @@ async function harness(page) {
     h.run('STATE = STATE_IN; render();');
     assert.match(h.element('#tally').innerHTML, /beban tinjauan R · 4\/5 masuk antrean/, 'legacy sessions count ULD-decided elements as queued');
   }
-  console.log('PASS: stale polling, duplicate start, offline recovery, review burden R');
+  console.log('PASS: stale polling, review burden R');
 })().catch(e => { console.error(e); process.exitCode = 1; });

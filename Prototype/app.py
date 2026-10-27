@@ -507,4 +507,15 @@ def evaluasi():
     return json.loads(f.read_text(encoding="utf-8"))
 
 
+@app.middleware("http")
+async def validasi_ulang_aset(request, call_next):
+    """HTML, CSS, dan JS selalu divalidasi ulang (ETag tetap menghemat unduhan), agar perubahan tampilan
+    langsung terlihat tanpa Ctrl+F5; tanpa header ini peramban boleh memakai salinan lama secara heuristik."""
+    resp = await call_next(request)
+    path = request.url.path
+    if not path.startswith(("/api/", "/keluaran/")) and (path.endswith((".html", ".css", ".js", "/")) or "." not in path.rsplit("/", 1)[-1]):
+        resp.headers["Cache-Control"] = "no-cache"
+    return resp
+
+
 app.mount("/", StaticFiles(directory=WEB, html=True), name="web")

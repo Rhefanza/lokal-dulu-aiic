@@ -30,7 +30,11 @@
   audio.preload = 'auto';
 
   // ------------------------------------------------------------------ tampilan
-  function tampil(pesan) { if (pesan) $('#pesan').textContent = pesan; }
+  function tampil(pesan, siarkan = true) {
+    if (!pesan) return;
+    $('#pesan').setAttribute('aria-live', siarkan ? 'polite' : 'off');
+    $('#pesan').textContent = pesan;
+  }
   function catat(siapa, teks) {
     const li = document.createElement('li');
     li.innerHTML = '<b></b> ';
@@ -119,16 +123,37 @@
     audio.src = urlAudio(k);
     audio.play().catch(() => { if (S.status === 'putar' && S.i === k && !S.peramban) bacaPeramban(k); });
     if (k + 1 < S.aktif.bagian.length) fetch(urlAudio(k + 1)).catch(() => {});  // siapkan bagian berikutnya
-    tampil(S.aktif.bagian[k].teks.slice(0, 220));
+    siapkanTeks(S.aktif.bagian[k].teks);
     perbaruiUI();
   }
   audio.onended = () => { if (S.status === 'putar' && !S.peramban) putarBagian(S.i + 1); };
   audio.onerror = () => { if (S.status === 'putar' && !S.peramban && audio.getAttribute('src')) bacaPeramban(S.i); };
 
+  // Teks di layar mengikuti kalimat yang sedang dibacakan. Audio ElevenLabs tidak membawa penanda waktu,
+  // jadi kalimat aktif diperkirakan dari proporsi waktu putar terhadap panjang karakter tiap kalimat.
+  let SUB = {daftar: [], batas: [], total: 0, aktif: -1};
+  function siapkanTeks(teks) {
+    const daftar = (teks.match(/[^.!?;]+[.!?;]*/g) || [teks]).map(x => x.trim()).filter(Boolean);
+    let n = 0;
+    SUB = {daftar, batas: daftar.map(x => (n += x.length + 1)), total: n, aktif: -1};
+    tampilKalimat(0);
+  }
+  function tampilKalimat(j) {
+    if (j === SUB.aktif || !SUB.daftar[j]) return;
+    SUB.aktif = j;
+    tampil(SUB.daftar[j], false);  // tidak diumumkan pembaca layar: suaranya sudah terdengar
+  }
+  const kalimatPada = karakter => Math.max(0, SUB.batas.findIndex(b => karakter < b));
+  audio.ontimeupdate = () => {
+    if (S.peramban || S.status !== 'putar' || !audio.duration || !SUB.total) return;
+    tampilKalimat(kalimatPada(audio.currentTime / audio.duration * SUB.total));
+  };
+
   function bacaPeramban(k) {  // audio ElevenLabs tidak tersedia: bagian ini dibacakan suara perangkat
     S.peramban = true;
     const u = new SpeechSynthesisUtterance(S.aktif.bagian[k].teks);
     u.lang = 'id-ID';
+    u.onboundary = e => { if (S.i === k) tampilKalimat(kalimatPada(e.charIndex)); };  // suara peramban memberi posisi kata
     u.onend = () => { if (S.status === 'putar' && S.i === k && S.peramban) putarBagian(k + 1); };
     speechSynthesis.cancel();
     speechSynthesis.speak(u);
@@ -303,7 +328,7 @@
       return;
     }
     jeda();
-    const sapaan = S.aktif ? `Ya? ${S.aktif.judul} dijeda.` : 'Ya? Ada yang bisa dibantu?';
+    const sapaan = 'Ya?';  // singkat: pengguna sudah tahu apa yang sedang diputar
     if (S.agenSiap) bukaAgen(sapaan); else perintahSederhana(sapaan);
   }
 
@@ -433,6 +458,7 @@
   $('#mulai').onclick = mulai;
   document.addEventListener('keydown', e => {
     if (!$('#mulai').hidden) {  // tombol pengubah dan tombol pembaca layar (NVDA/JAWS) tidak memulai
+      if (e.target.closest('#keluar')) return;  // Enter/spasi pada tombol Keluar tidak ikut memulai
       // spasi yang masih tertahan dari halaman pembuka mengirim keydown berulang; hanya tekanan baru yang memulai
       if (!e.repeat && !['Shift', 'Control', 'Alt', 'Meta', 'CapsLock', 'Insert', 'Tab'].includes(e.key)) { e.preventDefault(); mulai(); }
       return;

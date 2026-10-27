@@ -29,3 +29,73 @@ body>div.shell>main{max-width:1600px;padding:100px 16px 32px}body[data-page=inde
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.rail,button,.btn,.m-btn::before,.m-btn-2::before,.m-btn__label{transition:none!important}.m-link:hover{animation:none}::view-transition-old(root),::view-transition-new(root){animation:none!important}#opening .op-panel,#opening .op-photo img,#opening .op-curl{animation:none!important}.brand-site [style*="clip-path"]{clip-path:inset(0)!important}}
 /* Pintasan tunanetra di halaman pembuka: spasi membuka Pendengar. */
 .spasi-hint{margin-top:18px}.spasi-hint kbd{display:inline-block;padding:2px 12px;margin-right:6px;border:2px solid currentColor;border-bottom-width:5px;border-radius:8px;font:inherit;font-weight:700}
+/* Pintu peran dan materi terbit (pengganti form unggah; unggah hanya di Ruang ULD). */
+#contact .ct-form{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-content:start}
+#contact .ct-form>*,#contact .ct-form h2{grid-column:1/-1}
+#contact .rute{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-1)}
+#contact .rute-pintu{display:grid;align-content:start;gap:12px;height:100%;padding:24px;background:var(--color-2);color:var(--color-1);text-decoration:none;transition:background .2s var(--motion-ease),color .2s var(--motion-ease),transform .2s var(--motion-ease)}
+#contact .rute-pintu img{width:100%;height:clamp(140px,16vw,210px);object-fit:contain}
+#contact .rute-pintu b{font:800 clamp(24px,2.3vw,34px)/1.05 var(--font-1);letter-spacing:-.02em}
+#contact .rute-pintu span{font-size:18px;line-height:1.45}
+#contact .rute-pintu:hover{background:var(--color-1);color:var(--color-2)}
+#contact .rute-pintu:active{transform:translateY(2px)}
+#contact .rute-pintu:focus-visible{outline:4px solid var(--color-1);outline-offset:4px}
+#contact .rute-pintu kbd,.terbit kbd{display:inline-block;padding:0 10px;border:2px solid currentColor;border-bottom-width:5px;border-radius:8px;font:inherit;font-weight:700}
+#contact .ct-hours{flex-direction:column;align-items:flex-start;gap:18px}
+#contact .terbit{list-style:none;margin:0;padding:0;display:grid;gap:4px;width:100%}
+#contact .terbit li{font-size:18px}
+#contact .terbit a{display:flex;gap:16px;align-items:baseline;padding:8px 0;font-size:clamp(20px,1.7vw,24px);font-weight:700;color:inherit;text-decoration:none}
+#contact .terbit a:hover{text-decoration:underline;text-underline-offset:5px}
+#contact .terbit b{font:900 clamp(28px,2.4vw,36px)/1 var(--font-1);min-width:1.2em}
+@media(max-width:767.98px){#contact .rute{grid-template-columns:1fr}#contact .ct-form{grid-column:1/-1}}
+/* Ilustrasi pengisi slot kosong pada halaman pembuka */
+.dy-sky .dy-alur{position:absolute;left:50%;top:50%;width:min(92%,1100px);height:auto;transform:translate(-50%,-50%);z-index:1}
+.qt-rule .qt-ikon{width:clamp(72px,7vw,104px);height:auto}
+.fq-head .fq-gambar{width:100%;max-width:360px;height:auto;align-self:center}
+/* Keterbacaan untuk pengguna low vision: teks kecil dinaikkan */
+.brand-site .m-text,#footer .m-text{font-size:clamp(17px,1.25vw,19px)}
+.brand-site .m-text-4,#footer .m-text-4{font-size:15px;letter-spacing:.02em}
+.qt-rule .m-text{font-size:17px}
+/* Wordmark penutup utuh: line-height .85 + overflow:hidden memotong kaki huruf */
+#footer .ft-mark{padding-bottom:clamp(12px,2vw,28px)}
+#footer .ft-word{line-height:1;padding:0 0 .06em}
+/* Keterbacaan semua halaman (low vision): batas bawah ukuran teks */
+.stamp{font-size:.875rem}
+.status,.small,.note,.honest{font-size:1rem}
+.toolbar .lbl{font-size:.9375rem}
+.card-body{font-size:1.0625rem}
+.qlist .stamp{font-size:.8125rem}
+@media(max-width:767.98px){.brand-site .m-text,#footer .m-text{font-size:17px}.brand-site .m-text-4,#footer .m-text-4{font-size:14px}}
+#opening .op-ledge,#opening .op-win__label{font-size:15px;letter-spacing:.02em}
+@media(max-width:767.98px){#opening .op-ledge,#opening .op-win__label{font-size:14px}}
+/* Landing untuk low vision: batas bawah ukuran teks. !important sengaja dipakai agar menimpa
+   ukuran per bagian dari template Sill (mis. kartu, panel, label jendela) di satu tempat. */
+#input-stage .m-text,#input-stage .m-text li,#input-stage li,#input-stage .lt-sign,#footer .m-text{font-size:20px!important;line-height:1.5}
+#input-stage .m-text-4,#input-stage .op-win__label,#input-stage .op-ledge,#input-stage .spasi-hint,#footer .m-text-4{font-size:18px!important;letter-spacing:.01em}
+#input-stage .m-link,#footer .m-link,#input-stage .m-btn__label{font-size:19px!important}
+#input-stage .m-text-7{font-size:clamp(20px,1.7vw,24px)!important}
+#courtyard .cy-text p{font-size:20px!important}
+@media(max-width:767.98px){
+ #input-stage .m-text,#input-stage .m-text li,#input-stage li,#input-stage .lt-sign,#footer .m-text,#courtyard .cy-text p{font-size:18px!important}
+ #input-stage .m-text-4,#input-stage .op-win__label,#input-stage .op-ledge,#input-stage .spasi-hint,#footer .m-text-4{font-size:16px!important}
+ #input-stage .m-link,#footer .m-link,#input-stage .m-btn__label{font-size:17px!important}
+}
+/* Caption jendela 'Setiap bagian punya arti': strip setinggi 42px (34px di ponsel) dari template memotong
+   teks 16-18px. Tinggi strip kini dihitung dari garis pemisah + satu baris teks + ruang napas. */
+#opening .op-win{--cap:calc(var(--space-1) + 1.3em + 20px);font-size:18px}
+#opening .op-win__photo,#opening .op-win--plain::before{bottom:var(--cap)}
+#opening .op-win__label{height:var(--cap);display:flex;align-items:center;padding:0 12px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#opening .op-win{min-height:calc(150px + var(--cap) - 42px)}
+@media(max-width:767.98px){#opening .op-win{font-size:16px;--cap:calc(var(--space-1) + 1.3em + 14px);min-height:calc(104px + var(--cap) - 34px)}#opening .op-win__label{padding:0 8px}}
+/* Bar atas: tautan dan tombol menu ikut batas keterbacaan */
+.nav a{font-size:18px}.nav-start{font-size:18px}.nav-toggle{font-size:18px}
+@media(max-width:767.98px){.nav-toggle{font-size:16px}}
+/* Hero: minimal setinggi layar tetapi boleh memanjang, agar teks besar di panel bawah tidak terpotong
+   pada layar pendek (sebelumnya height:100svh dan baris minmax(0,…) memotong isi). */
+@media(min-width:768px){
+ #opening .op-s1{height:auto;min-height:max(640px,100svh)}
+ #opening .op-grid{height:auto;min-height:calc(max(640px,100svh) - 64px - 2 * var(--space-1));grid-template-rows:minmax(min-content,1.2fr) minmax(min-content,1fr)}
+ #opening .op-cell,#opening .op-c .op-panel,#opening .op-d .op-panel,#opening .op-e .op-panel{min-height:auto}
+}
+/* Piktogram jendela selalu utuh: 'cover' memotong atas-bawah saat jendela melebar di layar lebar */
+#opening .op-win__photo img{object-fit:contain;padding:clamp(6px,.8vw,14px)}

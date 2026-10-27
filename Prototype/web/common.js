@@ -55,10 +55,10 @@ function renderRail(current) {
   const items = [['index.html','Remediasi','doc'],['uld.html','ULD','hold'],['pendengar.html','Pendengar','mic'],['evaluasi.html','Bukti','chart']];
   const links = items.map(([h,l,i])=>`<a href="${h}" ${h==='index.html'?`data-job-link="${h}"`:''} ${h===current?'aria-current="page"':''}>${icon(i)}${l}</a>`).join('');
   document.querySelector('.rail').innerHTML=`<a class="wordmark" href="index.html?jelajah=1#opening" aria-label="SIMAK · kenali aplikasi"><b>SIMAK<span class="brand-dot" aria-hidden="true">.</span></b></a>
-    <nav class="nav" aria-label="Navigasi utama">${links}<a class="nav-start" href="index.html?mulai=1#contact">Mulai dari PDF</a></nav>
+    <nav class="nav" aria-label="Navigasi utama">${links}<a class="nav-start" href="uld.html">Mulai dari PDF</a></nav>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu ${icon('layers')}</button>
     <div class="nav-menu" id="site-menu" hidden role="dialog" aria-modal="true" aria-label="Menu SIMAK" data-lenis-prevent><div class="nav-menu-head"><b class="wordmark">SIMAK.</b><button class="nav-close" id="nav-close" type="button">Tutup ${icon('cross')}</button></div><ul>
-      <li><a class="m-surface-8 nav-menu-work" href="index.html" data-job-link="index.html">Remediasi</a></li><li><a class="m-surface-2" href="uld.html">Ruang ULD</a></li><li><a class="m-surface-7" href="pendengar.html">Pendengar</a></li><li><a class="m-surface-4" href="evaluasi.html">Bukti</a></li><li><a class="m-surface-3" href="index.html?mulai=1#contact">Mulai dari PDF</a></li><li><a class="m-surface" href="index.html?jelajah=1#opening">Kenali SIMAK</a></li>
+      <li><a class="m-surface-8 nav-menu-work" href="index.html" data-job-link="index.html">Remediasi</a></li><li><a class="m-surface-2" href="uld.html">Ruang ULD</a></li><li><a class="m-surface-7" href="pendengar.html">Pendengar</a></li><li><a class="m-surface-4" href="evaluasi.html">Bukti</a></li><li><a class="m-surface-3" href="uld.html">Mulai dari PDF</a></li><li><a class="m-surface" href="index.html?jelajah=1#opening">Kenali SIMAK</a></li>
     </ul></div>`;
   rememberJob(currentJob());
 }

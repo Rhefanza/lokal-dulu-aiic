@@ -76,8 +76,8 @@
 
 /* Aset visual: gambar keadaan pemutar, ilustrasi panel, dan tombol keluar */
 /* melayang di pojok agar selalu terjangkau, juga saat halaman digulir ke tombol Bicara */
-.keluar-baris{position:fixed;right:16px;bottom:16px;z-index:90;margin:0}
-.keluar{min-height:40px;padding:8px 14px;font-size:var(--t-xs);background:var(--card);box-shadow:0 6px 18px rgba(11,10,10,.18)}
+.keluar-baris{position:fixed;right:16px;bottom:16px;z-index:210;margin:0}  /* di atas layar mulai (z 200) */
+.keluar{min-height:48px;padding:10px 18px;font-size:var(--t-sm);border-width:2px;background:var(--card);box-shadow:0 6px 18px rgba(11,10,10,.18)}
 .keluar:hover{background:var(--ink);color:var(--card)}
 .dengar-head .page-head{position:relative;padding-right:clamp(150px,18vw,240px)}
 .status-gambar{position:absolute;top:clamp(20px,3vw,40px);right:clamp(20px,3vw,40px);width:clamp(110px,14vw,190px);height:auto}

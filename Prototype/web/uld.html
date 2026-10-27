@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ULD · SIMAK</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="preload" href="fonts/Gabarito-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="fonts.css?v=fluid-20261023"><link rel="stylesheet" href="style.css?v=fluid-20261023"><link rel="stylesheet" href="sill.css?v=fluid-20261023"><link rel="stylesheet" href="fluid.css?v=fluid-20261028"><link rel="stylesheet" href="peran.css?v=peran-20261028c"></head>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ULD · SIMAK</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="preload" href="fonts/Gabarito-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="fonts.css?v=fluid-20261023"><link rel="stylesheet" href="style.css?v=fluid-20261023"><link rel="stylesheet" href="sill.css?v=fluid-20261023"><link rel="stylesheet" href="fluid.css?v=fluid-20261028n"><link rel="stylesheet" href="peran.css?v=peran-20261028d"></head>
 <body data-page="uld"><a class="skip" href="#isi">Lompat ke isi</a><div class="shell"><header class="rail"></header><main id="isi" tabindex="-1">
 
 <div id="v-daftar">
@@ -53,7 +53,7 @@ async function muatDaftar() {
      ${m.ditandai ? `<span class="stamp hold">${icon('hold')}${m.ditandai} perlu dicek</span>` : `<span class="stamp">${icon('check')}Semua sudah dicek</span>`}
      ${m.diperbaiki ? `<span class="stamp pending">${icon('undo')}${m.diperbaiki} diperbaiki</span>` : ''}
      <span>${m.ringkasan ? '' : m.ringkasan_gagal ? esc(m.ringkasan_gagal) + ' · ' : 'Membuat ringkasan… · '}${m.audio.gagal ? esc(m.audio.gagal) : m.audio.siap < m.audio.total ? `Menyiapkan audio ${m.audio.siap}/${m.audio.total}` : 'Audio siap'}</span></div></div>
-    <div class="aksi"><a class="btn btn-primary" href="#m=${m.id}">Periksa</a><button class="btn-danger" data-hapus="${m.id}" data-judul="${esc(m.judul)}">${icon('trash')}Hapus</button></div></li>`).join('')
+    <div class="aksi"><a class="btn btn-primary" href="#m=${m.id}">Periksa</a><a class="btn" href="index.html?job=${m.id}">Hasil remediasi</a><button class="btn-danger" data-hapus="${m.id}" data-judul="${esc(m.judul)}">${icon('trash')}Hapus</button></div></li>`).join('')
     : '<li class="kosong">Belum ada materi. Unggah PDF pertama di atas.</li>';
   const sibuk = d.diproses.some(p => p.tahap !== 'gagal') || d.materi.some(m => (!m.audio.gagal && d.suara && m.audio.siap < m.audio.total) || (!m.ringkasan && !m.ringkasan_gagal));
   clearTimeout(POLL);

@@ -8,7 +8,7 @@
   const $ = s => document.querySelector(s);
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   const WAKE = /\b(halo|hallo|helo|hai|hei|hey|oke|ok)\s*,?\s*(si ?mak|semak|cimak|simak)\b/;
-  const BANTUAN = 'Perintah yang bisa diucapkan: daftar materi, putar nomor satu, jeda, lanjut, ulangi, sebelumnya, berikutnya, berhenti, dan posisi.';
+  const BANTUAN = 'Perintah yang bisa diucapkan: daftar materi, putar nomor satu, ringkasan nomor satu, jeda, lanjut, ulangi, sebelumnya, berikutnya, berhenti, dan posisi.';
   const SENYAP = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=';
 
   const S = {
@@ -52,7 +52,8 @@
     $('#bicara-label').textContent = S.mode === 'ngobrol' ? 'Selesai bicara' : 'Bicara';
     $('#bicara-ket').textContent = S.mode === 'ngobrol' ? 'Sentuh untuk menutup percakapan.'
       : SR ? 'atau ucapkan “Halo SIMAK”. Tombol spasi juga bisa.' : 'Peramban ini belum mendukung panggilan suara; sentuh tombol ini untuk bicara.';
-    document.querySelectorAll('#pilihan button').forEach(x => x.setAttribute('aria-current', String(x.dataset.id === S.aktif?.id)));
+    document.querySelectorAll('#pilihan button').forEach(x => x.setAttribute('aria-current',
+      String(x.dataset.id === S.aktif?.id && (x.dataset.jenis || 'materi') === S.aktif?.jenis)));
     if ('mediaSession' in navigator) {
       navigator.mediaSession.playbackState = S.status === 'putar' ? 'playing' : S.status === 'jeda' ? 'paused' : 'none';
       if (S.aktif) navigator.mediaSession.metadata = new MediaMetadata({title: S.aktif.judul, artist: 'SIMAK', album: `Bagian ${S.i + 1} dari ${n}`});
@@ -63,10 +64,12 @@
   async function muatMateri() {
     try {
       const d = await fetch('/api/materi').then(r => r.json());
-      S.materi = d.materi.map(m => ({id: m.id, judul: m.judul}));
+      S.materi = d.materi.map(m => ({id: m.id, judul: m.judul, ringkasan: !!m.ringkasan}));
     } catch (_) {}
-    $('#pilihan').innerHTML = S.materi.map((m, k) => `<li><button data-id="${m.id}"><b>Nomor ${k + 1}</b></button></li>`).join('');
-    document.querySelectorAll('#pilihan button').forEach((b, k) => b.append(S.materi[k].judul));
+    $('#pilihan').innerHTML = S.materi.map((m, k) => `<li><button data-id="${m.id}"><b>Nomor ${k + 1}</b></button>`
+      + (m.ringkasan ? `<button class="btn-quiet ringkas" data-id="${m.id}" data-jenis="ringkasan">Ringkasan</button>` : '') + '</li>').join('');
+    document.querySelectorAll('#pilihan button:not(.ringkas)').forEach((b, k) => b.append(S.materi[k].judul));
+    document.querySelectorAll('#pilihan .ringkas').forEach(b => b.setAttribute('aria-label', 'Ringkasan ' + S.materi.find(m => m.id === b.dataset.id).judul));
     perbaruiUI();
   }
   const teksDaftar = () => S.materi.length
@@ -96,11 +99,12 @@
   }
 
   // ------------------------------------------------------------------ pemutar
-  const urlAudio = k => `/api/materi/${S.aktif.id}/audio/${k}`;
+  const urlAudio = k => `/api/materi/${S.aktif.id}/audio/${k}?jenis=${S.aktif.jenis}`;
+  const ambilPutar = (id, jenis) => fetch(`/api/materi/${id}/putar?jenis=${jenis}`).then(r => r.ok ? r.json() : Promise.reject());
 
-  async function mulaiMateri(m) {
-    const d = await fetch(`/api/materi/${m.id}/putar`).then(r => r.ok ? r.json() : Promise.reject());
-    S.aktif = {id: d.id, judul: d.judul, bagian: d.bagian};
+  async function mulaiMateri(m, jenis = 'materi', d = null) {
+    d = d || await ambilPutar(m.id, jenis);
+    S.aktif = {id: d.id, jenis, judul: jenis === 'ringkasan' ? `Ringkasan ${d.judul}` : d.judul, materi: d.judul, bagian: d.bagian};
     putarBagian(0);
   }
 
@@ -150,9 +154,11 @@
     perbaruiUI();
   }
   function selesaiMateri() {
-    const j = S.aktif.judul;
+    const {jenis, materi: j} = S.aktif;
     berhenti();
-    ucap(`Materi ${j} selesai. Ucapkan Halo SIMAK atau sentuh tombol Bicara untuk memilih materi lain.`);
+    ucap(jenis === 'ringkasan'
+      ? `Ringkasan ${j} selesai. Ucapkan Halo SIMAK lalu sebut nomornya untuk mendengar materi lengkap.`
+      : `Materi ${j} selesai. Ucapkan Halo SIMAK atau sentuh tombol Bicara untuk memilih materi lain.`);
   }
 
   // ------------------------------------------------------------------ lapisan perintah
@@ -162,6 +168,15 @@
   const PERINTAH = {
     daftar_materi: async () => { await muatMateri(); return {pesan: teksDaftar()}; },
     posisi: () => ({pesan: teksPosisi()}),
+    ringkasan_materi: async ({nomor, judul} = {}) => {
+      await muatMateri();
+      // tanpa nomor/judul: ringkasan materi yang sedang diputar
+      const m = nomor || judul ? cariMateri({nomor: Number(nomor) || null, judul}) : S.materi.find(x => x.id === S.aktif?.id);
+      if (!m) return {pesan: `Sebutkan materi yang ingin diringkas. ${teksDaftar()}`};
+      const d = await ambilPutar(m.id, 'ringkasan').catch(() => null);
+      if (!d?.bagian.length) return {pesan: `Ringkasan ${m.judul} belum tersedia. Saya bisa memutar materinya dari awal.`};
+      return {pesan: `Memutar ringkasan ${m.judul}.`, aksi: () => mulaiMateri(m, 'ringkasan', d)};
+    },
     putar_materi: async ({nomor, judul} = {}) => {
       await muatMateri();
       const m = cariMateri({nomor: Number(nomor) || null, judul});
@@ -187,6 +202,10 @@
     t = t.toLowerCase();
     const w = t.split(/\s+/);
     const no = t.match(/\b(?:nomor|no|materi|yang)\s+(\S+)/);
+    if (/ringkas|rangkum|intisari|garis besar/.test(t)) {
+      const n = no && angka(no[1]) || angka(w.find(angka) || '');
+      return ['ringkasan_materi', n ? {nomor: n} : cariMateri({judul: t}) ? {judul: t} : {}];
+    }
     if (no && angka(no[1])) return ['putar_materi', {nomor: angka(no[1])}];
     if (w.length <= 2 && w.some(angka)) return ['putar_materi', {nomor: angka(w.find(angka))}];
     if (/daftar|pilihan|ada apa saja|materi apa/.test(t)) return ['daftar_materi'];
@@ -203,9 +222,9 @@
   }
   async function tafsirLLM(t) {  // salah dengar atau kalimat bebas: LLM server memilih perintah terdekat
     const opsi = [['daftar_materi'], ['jeda'], ['lanjut'], ['ulangi'], ['bagian_sebelumnya'], ['bagian_berikutnya'], ['berhenti'], ['posisi'],
-      ...S.materi.map((m, k) => ['putar_materi', {nomor: k + 1}])];
+      ...S.materi.map((m, k) => ['putar_materi', {nomor: k + 1}]), ...S.materi.map((m, k) => ['ringkasan_materi', {nomor: k + 1}])];
     const label = ['daftar materi', 'jeda', 'lanjut', 'ulangi bagian ini', 'bagian sebelumnya', 'bagian berikutnya', 'berhenti', 'posisi sekarang',
-      ...S.materi.map(m => 'putar materi ' + m.judul)];
+      ...S.materi.map(m => 'putar materi ' + m.judul), ...S.materi.map(m => 'ringkasan materi ' + m.judul)];
     try {
       const r = await fetch('/api/perintah', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ucapan: t, tombol: label})});
       const {pilihan} = await r.json();
@@ -387,7 +406,7 @@
   $('#pilihan').onclick = e => {
     const b = e.target.closest('[data-id]');
     const m = b && S.materi.find(x => x.id === b.dataset.id);
-    if (m) jalankan(() => mulaiMateri(m));
+    if (m) jalankan(() => mulaiMateri(m, b.dataset.jenis || 'materi'));
   };
   $('#bicara').onclick = sela;
   if ('mediaSession' in navigator) {  // tombol putar/jeda di earphone atau keyboard media

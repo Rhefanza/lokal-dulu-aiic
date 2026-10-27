@@ -2,6 +2,7 @@ import json
 import shutil
 import tempfile
 import unittest
+import unittest.mock
 from pathlib import Path
 
 from simak import materi, pipeline
@@ -55,6 +56,41 @@ class MateriTests(unittest.TestCase):
             materi.perbaiki(tmp, "e001", "   ")
         with self.assertRaises(LookupError):
             materi.benarkan(tmp, "tidak-ada")
+
+    def test_summary_flagged_then_reviewed_and_excludes_unverified_images(self):
+        tmp = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, tmp)
+        pipeline.save(tmp, _state())
+        sumber = materi.sumber_ringkasan(pipeline.load(tmp))
+        self.assertIn("Teks asli dari PDF.", sumber)
+        self.assertIn("Grafik batang terverifikasi.", sumber)
+        self.assertNotIn("x kuadrat", sumber)  # deskripsi ditandai tidak boleh menyebar ke ringkasan
+        with unittest.mock.patch.object(materi.vlm, "ringkas_materi", return_value="Gambaran umum.\n\n Istilah penting: uji.") as llm:
+            materi.buat_ringkasan(tmp)
+            materi.buat_ringkasan(tmp)  # sudah ada: tidak memanggil LLM lagi
+        self.assertEqual(llm.call_count, 1)
+        st = pipeline.load(tmp)
+        r = materi.ringkasan(st)
+        self.assertEqual((r["tanda"], r["teks"]), ("ditandai", "Gambaran umum.\n\nIstilah penting: uji."))
+        self.assertIn(materi.CATATAN_RINGKASAN, r["ucapan"])
+        self.assertEqual(materi.putar(st, materi.RINGKASAN)[0]["el"], materi.RINGKASAN)
+        self.assertEqual(materi.ringkas("x", st, lambda t: False)["ditandai"], 3)  # dua gambar bertanda + ringkasan
+        materi.perbaiki(tmp, materi.RINGKASAN, "Ringkasan versi ULD.")
+        r = materi.ringkasan(pipeline.load(tmp))
+        self.assertEqual((r["tanda"], r["asli"]), ("diperbaiki", "Gambaran umum.\n\nIstilah penting: uji."))
+        self.assertNotIn(materi.CATATAN_RINGKASAN, r["ucapan"])
+
+    def test_openrouter_backs_up_text_only_when_gemini_unavailable(self):
+        from simak import vlm
+        with unittest.mock.patch.object(vlm, "KEYS", []), unittest.mock.patch.object(vlm, "OR_KEY", "uji"), \
+                unittest.mock.patch.object(vlm, "_openrouter", return_value="ringkasan cadangan") as cadangan:
+            self.assertEqual(vlm._gen("gemma-4-31b-it", ["teks materi"]), "ringkasan cadangan")
+            with self.assertRaises(vlm.QuotaHabis):  # citra grafik tidak boleh pindah penyedia
+                vlm._gen("gemma-4-31b-it", [object(), "teks"])
+        self.assertEqual(cadangan.call_count, 1)
+        with unittest.mock.patch.object(vlm, "KEYS", []), unittest.mock.patch.object(vlm, "OR_KEY", None):
+            with self.assertRaises(vlm.QuotaHabis):
+                vlm._gen("gemma-4-31b-it", ["teks materi"])
 
     @unittest.skipUnless(CONTOH.exists(), "contoh sesi tidak ada")
     def test_sample_playlist_has_no_empty_parts(self):

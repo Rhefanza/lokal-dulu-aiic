@@ -304,6 +304,7 @@ def perintah(body: Perintah):
 _audio_q: list[str] = []
 _audio_cv = threading.Condition()
 AUDIO_GAGAL: dict[str, str] = {}
+RINGKASAN_GAGAL: dict[str, str] = {}
 
 
 def _antre_audio(jid: str):
@@ -314,19 +315,35 @@ def _antre_audio(jid: str):
         _audio_cv.notify()
 
 
+def _ringkasan(jid: str, ulang: bool = False):
+    """Ringkasan dibuat sekali setelah terbit; kegagalan LLM tidak menghentikan audio materi."""
+    try:
+        materi.buat_ringkasan(_job_dir(jid), ulang)
+        RINGKASAN_GAGAL.pop(jid, None)
+    except FileNotFoundError:
+        pass
+    except vlm.QuotaHabis as e:
+        RINGKASAN_GAGAL[jid] = f"Ringkasan belum bisa dibuat: {e}"
+    except Exception:
+        logging.exception("Ringkasan materi gagal: %s", jid)
+        RINGKASAN_GAGAL[jid] = "Ringkasan gagal dibuat. Coba Buat ulang ringkasan."
+
+
 def _audio_worker():
     from simak import voice
-    for jid, _ in materi.daftar():  # materi yang audionya belum lengkap saat server terakhir berhenti
+    for jid, _ in materi.daftar():  # materi yang ringkasan atau audionya belum lengkap saat server terakhir berhenti
         _antre_audio(jid)
     while True:
         with _audio_cv:
             while not _audio_q:
                 _audio_cv.wait()
             jid = _audio_q.pop(0)
+        _ringkasan(jid)
         if not voice.eleven_ready():
             continue
         try:
-            for p in materi.putar(pipeline.load(_job_dir(jid))):
+            state = pipeline.load(_job_dir(jid))
+            for p in materi.putar(state) + materi.putar(state, materi.RINGKASAN):
                 if voice.cached(p["teks"]):
                     continue
                 while _interactive[0] > 0:
@@ -362,6 +379,7 @@ def materi_daftar():
     for jid, state in materi.daftar():
         r = materi.ringkas(jid, state, voice.cached)
         r["audio"]["gagal"] = AUDIO_GAGAL.get(jid)
+        r["ringkasan_gagal"] = RINGKASAN_GAGAL.get(jid)
         out.append(r)
     diproses = [{"id": jid, "berkas": j["nama"], "tahap": j["tahap"], "pesan": j["pesan"]}
                 for jid, j in JOBS.items() if j.get("katalog") and j["tahap"] != "selesai"]
@@ -382,7 +400,8 @@ def materi_sampel(name: str):
 @app.get("/api/materi/{jid}")
 def materi_isi(jid: str):
     _, state = _materi(jid)
-    return {"id": jid, "judul": materi.judul(state), "berkas": state.get("file"), "bagian": materi.bagian(state)}
+    return {"id": jid, "judul": materi.judul(state), "berkas": state.get("file"), "bagian": materi.bagian(state),
+            "ringkasan": materi.ringkasan(state), "ringkasan_gagal": RINGKASAN_GAGAL.get(jid)}
 
 
 class Judul(BaseModel):
@@ -412,7 +431,10 @@ def _ubah_bagian(jid: str, el: str, fn):
     except ValueError as e:
         raise HTTPException(400, str(e))
     _antre_audio(jid)
-    return next(b for b in materi.bagian(pipeline.load(job)) if b["el"] == el)
+    state = pipeline.load(job)
+    if el == materi.RINGKASAN:
+        return materi.ringkasan(state)
+    return next(b for b in materi.bagian(state) if b["el"] == el)
 
 
 @app.put("/api/materi/{jid}/bagian/{el}")
@@ -425,17 +447,34 @@ def materi_benar(jid: str, el: str):
     return _ubah_bagian(jid, el, lambda job: materi.benarkan(job, el))
 
 
+@app.post("/api/materi/{jid}/ringkasan")
+def materi_ringkasan_ulang(jid: str):
+    """Buat ulang ringkasan dari isi terbaru (termasuk perbaikan ULD); menggantikan ringkasan lama."""
+    _materi(jid)
+    _ringkasan(jid, ulang=True)
+    if jid in RINGKASAN_GAGAL:
+        raise HTTPException(503, RINGKASAN_GAGAL[jid])
+    _antre_audio(jid)
+    return materi.ringkasan(pipeline.load(_job_dir(jid)))
+
+
+def _jenis(jenis: str) -> str:
+    if jenis not in ("materi", materi.RINGKASAN):
+        raise HTTPException(400)
+    return jenis
+
+
 @app.get("/api/materi/{jid}/putar")
-def materi_putar(jid: str):
+def materi_putar(jid: str, jenis: str = "materi"):
     _, state = _materi(jid)
-    return {"id": jid, "judul": materi.judul(state), "bagian": materi.putar(state)}
+    return {"id": jid, "judul": materi.judul(state), "jenis": jenis, "bagian": materi.putar(state, _jenis(jenis))}
 
 
 @app.get("/api/materi/{jid}/audio/{i}")
-def materi_audio(jid: str, i: int):
+def materi_audio(jid: str, i: int, jenis: str = "materi"):
     from simak import voice
     _, state = _materi(jid)
-    daftar_putar = materi.putar(state)
+    daftar_putar = materi.putar(state, _jenis(jenis))
     if not 0 <= i < len(daftar_putar):
         raise HTTPException(404)
     try:

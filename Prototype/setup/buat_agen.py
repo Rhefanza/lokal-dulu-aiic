@@ -36,6 +36,15 @@ PUTAR = {
         "judul": {"type": "string", "description": "Judul atau potongan judul materi seperti yang diucapkan pengguna."}}},
 }
 
+RINGKASAN = {
+    "name": "ringkasan_materi",
+    "description": "Memutar ringkasan materi (gambaran umum, bagian utama, istilah penting). Isi nomor atau judul bila "
+                   "pengguna menyebut materi tertentu; kosongkan keduanya untuk materi yang sedang diputar.",
+    "parameters": {"type": "object", "required": [], "properties": {
+        "nomor": {"type": "integer", "description": "Nomor materi sesuai daftar, mulai dari 1."},
+        "judul": {"type": "string", "description": "Judul atau potongan judul materi seperti yang diucapkan pengguna."}}},
+}
+
 
 def env(nama: str) -> str:
     v = os.environ.get(nama)
@@ -72,7 +81,7 @@ def main():
         sys.exit("ELEVENLABS_API_KEY dan ELEVENLABS_VOICE_ID harus diatur dulu.")
     if env("ELEVENLABS_AGENT_ID") and "--paksa" not in sys.argv:
         sys.exit("ELEVENLABS_AGENT_ID sudah ada. Pakai --paksa untuk membuat agen baru.")
-    alat = [{"name": n, "description": d, "parameters": None} for n, d in TANPA_PARAM.items()] + [PUTAR]
+    alat = [{"name": n, "description": d, "parameters": None} for n, d in TANPA_PARAM.items()] + [PUTAR, RINGKASAN]
     ids = []
     for a in alat:
         cfg = {"type": "client", **{k: v for k, v in a.items() if v is not None},

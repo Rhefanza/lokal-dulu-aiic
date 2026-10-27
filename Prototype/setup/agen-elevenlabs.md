@@ -42,6 +42,7 @@ Aturan:
 6. Teks yang diawali "Catatan: deskripsi gambar ini belum diperiksa" berarti deskripsinya belum dicek Unit Layanan Disabilitas. Sampaikan bahwa deskripsi itu bisa saja keliru.
 7. Jika pengguna bilang sudah, cukup, atau terima kasih tanpa permintaan lain, pamit singkat lalu panggil end_call.
 8. Ajukan paling banyak satu pertanyaan dalam satu giliran.
+9. Jika pengguna meminta ringkasan, rangkuman, intisari, atau gambaran umum materi, panggil ringkasan_materi. Isi nomor atau judul bila disebut; kosongkan bila yang dimaksud materi yang sedang diputar. Setelah memanggilnya, ucapkan konfirmasi singkat seperti "Baik." Ringkasan dibacakan pemutar, bukan kamu.
 ```
 
 ## 3. Tools
@@ -59,6 +60,7 @@ Tambahkan sebagai **Client tool**, dengan *Wait for response* aktif. Nama harus 
 | `bagian_berikutnya` | Melompat ke bagian berikutnya. | – |
 | `berhenti` | Menghentikan materi sepenuhnya. | – |
 | `posisi` | Memberi tahu materi dan bagian yang sedang diputar. | – |
+| `ringkasan_materi` | Memutar ringkasan materi (gambaran umum, bagian utama, istilah penting). | `nomor` (integer, opsional), `judul` (string, opsional); keduanya kosong = materi yang sedang diputar. |
 | `isi_sekitar` | Mengambil teks bagian yang sedang diputar dan dua bagian sebelumnya, untuk menjawab pertanyaan tentang isi. | – |
 
 Aktifkan juga system tool **End conversation** (`end_call`).

@@ -10,6 +10,7 @@ mode dengar. Setiap deskripsi grafik **terverifikasi terhadap tabel data atau di
 - **`/pendengar.html`** (tunanetra): satu sentuhan untuk mulai (kebijakan peramban), lalu bebas sentuh. Pemandu suara memakai agen ElevenLabs; tanpa agen, perintah suara sederhana (Web Speech). Ucapkan "Halo SIMAK" atau tekan spasi untuk menyela.
 - Deskripsi gambar yang gagal verifikasi **ditandai, bukan ditahan**: dibacakan dengan awalan "Catatan: deskripsi gambar ini belum diperiksa."
 - Audio ElevenLabs dibuat **per bagian, sekali saat terbit** (berbayar per karakter), dan dibuat ulang hanya untuk bagian yang diperbaiki ULD.
+- **Ringkasan materi** dibuat otomatis setelah terbit (Gemini Flash Lite, ±200–350 kata: gambaran umum, bagian utama, istilah penting), lengkap dengan audionya. Deskripsi gambar yang belum diperiksa tidak dipakai sebagai sumber. ULD memeriksa ringkasan di atas halaman Periksa; pendengar memintanya dengan "ringkasan nomor satu".
 - Siapkan agen: [setup/agen-elevenlabs.md](setup/agen-elevenlabs.md), lalu isi `ELEVENLABS_AGENT_ID`.
 
 ## Pembaruan antarmuka dan suara — 23 Oktober 2026

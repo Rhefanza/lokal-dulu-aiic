@@ -1,78 +1,59 @@
 <!doctype html>
-<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ULD · SIMAK</title><link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="peran.css?v=peran-20261027"></head>
-<body>
-<a class="skip" href="#isi">Lompat ke isi</a>
-<header class="atas"><a class="merek" href="uld.html">SIMAK<span>.</span></a><span class="peran">Unit Layanan Disabilitas</span>
-<nav><a href="pendengar.html">Halaman pendengar</a></nav></header>
-<main id="isi" tabindex="-1">
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ULD · SIMAK</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="preload" href="fonts/Gabarito-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="fonts.css?v=fluid-20261023"><link rel="stylesheet" href="style.css?v=fluid-20261023"><link rel="stylesheet" href="sill.css?v=fluid-20261023"><link rel="stylesheet" href="fluid.css?v=fluid-20261023"><link rel="stylesheet" href="peran.css?v=peran-20261027b"></head>
+<body data-page="uld"><a class="skip" href="#isi">Lompat ke isi</a><div class="shell"><header class="rail"></header><main id="isi" tabindex="-1">
 
 <div id="v-daftar">
- <div class="kepala"><h1>Materi kuliah</h1>
-  <p>Unggah PDF. SIMAK memproses seluruh isi dan materi langsung bisa didengar tunanetra. Bagian yang belum terverifikasi ditandai; periksa dan perbaiki bila perlu.</p></div>
+ <div class="listen-head"><header class="page-head"><h1>Unggah sekali.<br> Langsung terdengar.</h1><p>LLM memproses seluruh isi PDF dan materi <strong>langsung terbit</strong> untuk mahasiswa tunanetra. Unit Layanan Disabilitas cukup memeriksa bagian yang ditandai dan memperbaikinya bila keliru.</p></header>
+  <aside class="listen-intro" aria-label="Peran ULD"><b>ULD memeriksa,<br> bukan menunggu.</b><p>Deskripsi yang belum terverifikasi tetap dibacakan, dengan penanda “belum diperiksa”.</p></aside></div>
 
- <section aria-labelledby="h-unggah"><h2 id="h-unggah">Unggah PDF</h2>
-  <form class="unggah" id="f-unggah">
-   <div class="baris"><label class="sr" for="berkas">Berkas PDF</label><input type="file" id="berkas" accept="application/pdf,.pdf" required>
-    <button class="utama" type="submit">Unggah dan proses</button></div>
-   <p class="kecil">PDF berlapis teks, maksimal 20 MiB dan 200 halaman. Bisa juga diseret ke kotak ini.</p>
-   <div class="baris"><label class="sr" for="sampel">Contoh materi</label><select id="sampel"><option value="">Atau pilih contoh materi…</option></select>
-    <button type="button" id="b-sampel" disabled>Tambahkan contoh</button></div>
-  </form>
-  <p class="status" id="st-unggah" role="status" aria-live="polite"></p>
-  <div id="diproses" aria-live="polite"></div>
- </section>
+ <form class="toolbar" id="f-unggah" aria-label="Unggah materi">
+  <div class="row"><label class="lbl" for="berkas">PDF materi</label><input type="file" id="berkas" accept="application/pdf,.pdf" required><button class="btn-primary" type="submit"><span>Unggah dan proses</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg></button></div>
+  <div class="row"><label class="lbl" for="sampel">Contoh materi</label><select id="sampel"><option value="">Pilih contoh materi…</option></select><button type="button" id="b-sampel" disabled>Tambahkan contoh</button></div>
+  <div class="row"><span class="status" id="st-unggah" role="status" aria-live="polite">PDF berlapis teks, maksimal 20 MiB dan 200 halaman. Bisa juga diseret ke kotak ini.</span></div>
+ </form>
+ <div class="proses" id="diproses" aria-live="polite"></div>
 
- <section aria-labelledby="h-terbit"><h2 id="h-terbit">Sudah terbit</h2>
-  <p class="status" id="st-suara"></p>
-  <ol class="daftar" id="daftar"></ol>
- </section>
+ <article class="card" aria-labelledby="h-terbit"><div class="card-head"><h2 id="h-terbit">Sudah terbit</h2><span class="status" id="st-suara"></span></div>
+  <ol class="daftar" id="daftar"></ol></article>
 </div>
 
 <div id="v-periksa" hidden>
- <p><a href="uld.html" id="kembali">← Semua materi</a></p>
- <div class="periksa-kepala">
-  <form class="judul-edit" id="f-judul"><label class="sr" for="judul">Judul yang dibacakan</label><input id="judul" required maxlength="200"><button type="submit">Simpan judul</button></form>
-  <p class="kecil">Judul ini yang disebut pemandu suara saat tunanetra memilih materi. Buat singkat dan mudah diucapkan.</p>
-  <div class="saring" role="group" aria-label="Saring bagian">
-   <label><input type="checkbox" id="hanya-tanda" checked> Hanya yang perlu dicek</label>
-   <span class="status" id="st-periksa" role="status" aria-live="polite"></span>
-  </div>
- </div>
+ <header class="result-head periksa-head">
+  <a href="uld.html" class="kembali" id="kembali">← Semua materi</a>
+  <form class="judul-edit" id="f-judul"><label class="sr" for="judul">Judul yang dibacakan</label><input id="judul" required maxlength="200"><button class="btn-primary" type="submit">Simpan judul</button></form>
+  <p class="small">Judul ini yang disebut pemandu suara saat tunanetra memilih materi. Buat singkat dan mudah diucapkan.</p>
+ </header>
+ <div class="toolbar" role="group" aria-label="Saring bagian"><div class="row"><label class="cek"><input type="checkbox" id="hanya-tanda" checked> Hanya yang perlu dicek</label><span class="status" id="st-periksa" role="status" aria-live="polite"></span></div></div>
  <ol class="bagian" id="bagian"></ol>
 </div>
-</main>
-<script>
-const $ = s => document.querySelector(s);
-const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const TANDA = {ditandai:'Belum diperiksa', tanpa_deskripsi:'Belum ada deskripsi', terverifikasi:'Terverifikasi otomatis',
-  diperiksa:'Sudah dicek ULD', diperbaiki:'Diperbaiki ULD', otomatis:'Dari PDF'};
-const JENIS = {heading:'Judul', paragraph:'Paragraf', table:'Tabel', image:'Gambar'};
-const PERLU = t => t === 'ditandai' || t === 'tanpa_deskripsi';
-let MATERI = null, POLL = null, audioUji = null;
 
-async function api(url, opt) {
-  const r = await fetch(url, opt);
-  const j = await r.json().catch(() => ({}));
-  if (!r.ok) throw new Error(j.detail || `Permintaan gagal (${r.status})`);
-  return j;
-}
+<footer id="footer" class="site-footer" data-8b-section="footer"><div class="ft-grid"><nav class="ft-nav" aria-label="Jelajahi SIMAK"><ul><li><a class="m-link" href="uld.html">Ruang ULD</a></li><li><a class="m-link" href="pendengar.html">Halaman pendengar</a></li><li><a class="m-link" href="index.html?jelajah=1#opening">Kenali SIMAK</a></li><li><a class="m-link" href="evaluasi.html">Lihat bukti</a></li></ul></nav><div class="ft-contact"><p class="m-text-6">Materi kuliah,<br> untuk semua.</p><a class="m-link" href="pendengar.html">Dengarkan materi</a></div><div class="ft-note"><p class="m-text">SIMAK oleh tim IRIS.<br> Universitas Airlangga.</p><p class="m-text-4">Prototipe ICC 2026</p><p class="credit">Desain mengacu pada Sill oleh <a href="https://8b.com/templates/sill/" target="_blank" rel="noopener">8B</a>.</p></div></div><div class="ft-mark" aria-hidden="true"><p class="m-text-2 ft-word" style="--len:6">SIMAK.</p></div></footer>
+</main></div><script src="speech.js?v=fluid-20261023"></script><script src="common.js?v=peran-20261027b"></script><script src="vendor/gsap.min.js?v=fluid-20261023"></script><script src="vendor/ScrollTrigger.min.js?v=fluid-20261023"></script><script src="vendor/SplitText.min.js?v=fluid-20261023"></script><script src="vendor/lenis.min.js?v=fluid-20261023"></script><script src="sill-scenes.js?v=fluid-20261023"></script><script src="motion.js?v=fluid-20261023"></script><script>
+renderRail('uld.html');
+const TANDA = {ditandai: ['hold', 'Belum diperiksa', 'hold'], tanpa_deskripsi: ['fail', 'Belum ada deskripsi', 'alert'],
+  terverifikasi: ['', 'Terverifikasi otomatis', 'check'], diperiksa: ['', 'Sudah dicek ULD', 'check'],
+  diperbaiki: ['', 'Diperbaiki ULD', 'undo'], otomatis: ['pending', 'Dari PDF', 'doc']};
+const JENIS = {heading: 'Judul', paragraph: 'Paragraf', table: 'Tabel', image: 'Gambar'};
+const PERLU = t => t === 'ditandai' || t === 'tanpa_deskripsi';
+const stampTanda = t => { const [k, l, i] = TANDA[t]; return `<span class="stamp ${k}">${icon(i)}${l}</span>`; };
+let MATERI = null, POLL = null, audioUji = null;
 
 // ---------------------------------------------------------------- daftar
 async function muatDaftar() {
   let d;
-  try { d = await api('/api/materi'); } catch (e) { $('#st-suara').textContent = e.message; $('#st-suara').className = 'status galat'; return; }
-  $('#st-suara').textContent = d.suara ? '' : 'Suara ElevenLabs belum dikonfigurasi di server; pendengar memakai suara peramban.';
-  $('#diproses').innerHTML = d.diproses.map(p => `<div class="proses"><b>${esc(p.berkas)}</b>${p.tahap === 'gagal'
-    ? `<span class="status galat">${esc(p.pesan)}</span>` : `<span class="status">${esc(p.pesan || 'Menunggu')}…</span>`}</div>`).join('');
+  try { d = await requestJson('/api/materi'); }
+  catch (e) { $('#st-suara').textContent = e.message; $('#st-suara').className = 'status error'; return; }
+  $('#st-suara').className = 'status';
+  $('#st-suara').textContent = d.suara ? `${d.materi.length} materi` : 'Suara ElevenLabs belum dikonfigurasi; pendengar memakai suara peramban.';
+  $('#diproses').innerHTML = d.diproses.map(p => `<div class="card"><div class="card-body"><b>${esc(p.berkas)}</b>${p.tahap === 'gagal'
+    ? `<span class="status error">${esc(p.pesan)}</span>` : `<span class="status busy">${esc(p.pesan || 'Menunggu')}</span>`}</div></div>`).join('');
   $('#daftar').innerHTML = d.materi.length ? d.materi.map((m, i) => `<li class="materi">
     <span class="no" aria-hidden="true">${i + 1}</span>
-    <div><h3>${esc(m.judul)}</h3><div class="info"><span>Nomor ${i + 1}</span><span>${esc(m.berkas)}</span><span>${m.halaman} halaman</span><span>${m.bagian} bagian</span>
-     ${m.ditandai ? `<span class="lencana ditandai">${m.ditandai} perlu dicek</span>` : '<span class="lencana">Semua sudah dicek</span>'}
-     ${m.diperbaiki ? `<span class="lencana diperbaiki">${m.diperbaiki} diperbaiki</span>` : ''}
+    <div><h3>${esc(m.judul)}</h3><div class="info"><span>Nomor ${i + 1}</span><span>${esc(m.berkas)}</span><span>${m.halaman} halaman · ${m.bagian} bagian</span>
+     ${m.ditandai ? `<span class="stamp hold">${icon('hold')}${m.ditandai} perlu dicek</span>` : `<span class="stamp">${icon('check')}Semua sudah dicek</span>`}
+     ${m.diperbaiki ? `<span class="stamp pending">${icon('undo')}${m.diperbaiki} diperbaiki</span>` : ''}
      <span>${m.audio.gagal ? esc(m.audio.gagal) : m.audio.siap < m.audio.total ? `Menyiapkan audio ${m.audio.siap}/${m.audio.total}` : 'Audio siap'}</span></div></div>
-    <div class="aksi"><a class="btn" href="#m=${m.id}">Periksa</a><button class="tipis" data-hapus="${m.id}" data-judul="${esc(m.judul)}">Hapus</button></div></li>`).join('')
+    <div class="aksi"><a class="btn btn-primary" href="#m=${m.id}">Periksa</a><button class="btn-danger" data-hapus="${m.id}" data-judul="${esc(m.judul)}">${icon('trash')}Hapus</button></div></li>`).join('')
     : '<li class="kosong">Belum ada materi. Unggah PDF pertama di atas.</li>';
   const sibuk = d.diproses.some(p => p.tahap !== 'gagal') || d.materi.some(m => !m.audio.gagal && d.suara && m.audio.siap < m.audio.total);
   clearTimeout(POLL);
@@ -81,25 +62,25 @@ async function muatDaftar() {
 
 async function muatSampel() {
   try {
-    const s = await api('/api/sampel');
-    $('#sampel').insertAdjacentHTML('beforeend', s.map(x => `<option value="${esc(x.file)}">${esc(x.file)} (${esc(x.set)})</option>`).join(''));
+    const s = await requestJson('/api/sampel');
+    $('#sampel').insertAdjacentHTML('beforeend', s.map(x => `<option value="${esc(x.file)}">${esc(x.file)} · ${esc(x.set)}</option>`).join(''));
   } catch (_) {}
 }
 $('#sampel').onchange = () => { $('#b-sampel').disabled = !$('#sampel').value; };
 
 async function mulaiProses(promise) {
-  $('#st-unggah').className = 'status';
+  $('#st-unggah').className = 'status busy';
   $('#st-unggah').textContent = 'Mengirim…';
-  try { await promise; $('#st-unggah').textContent = 'Diproses. Materi otomatis terbit setelah selesai.'; }
-  catch (e) { $('#st-unggah').className = 'status galat'; $('#st-unggah').textContent = e.message; }
+  try { await promise; $('#st-unggah').className = 'status'; $('#st-unggah').textContent = 'Diproses. Materi otomatis terbit setelah selesai.'; }
+  catch (e) { $('#st-unggah').className = 'status error'; $('#st-unggah').textContent = e.message; }
   muatDaftar();
 }
 function unggah(file) {
   const fd = new FormData(); fd.append('file', file);
-  mulaiProses(api('/api/materi', {method: 'POST', body: fd}));
+  mulaiProses(requestJson('/api/materi', {method: 'POST', body: fd}));
 }
 $('#f-unggah').onsubmit = e => { e.preventDefault(); const f = $('#berkas').files[0]; if (f) { unggah(f); $('#berkas').value = ''; } };
-$('#b-sampel').onclick = () => mulaiProses(api('/api/materi/sampel/' + encodeURIComponent($('#sampel').value), {method: 'POST'}));
+$('#b-sampel').onclick = () => mulaiProses(requestJson('/api/materi/sampel/' + encodeURIComponent($('#sampel').value), {method: 'POST'}));
 const zona = $('#f-unggah');
 zona.ondragover = e => { e.preventDefault(); zona.classList.add('seret'); };
 zona.ondragleave = () => zona.classList.remove('seret');
@@ -108,29 +89,29 @@ zona.ondrop = e => { e.preventDefault(); zona.classList.remove('seret'); const f
 $('#daftar').onclick = async e => {
   const b = e.target.closest('[data-hapus]');
   if (!b || !confirm(`Hapus "${b.dataset.judul}"? Tunanetra tidak bisa lagi mendengarnya.`)) return;
-  try { await api('/api/pekerjaan/' + b.dataset.hapus, {method: 'DELETE'}); } catch (err) { alert(err.message); }
+  try { await requestJson('/api/pekerjaan/' + b.dataset.hapus, {method: 'DELETE'}); } catch (err) { alert(err.message); }
   muatDaftar();
 };
 
 // ---------------------------------------------------------------- periksa
 async function muatMateri(id) {
-  try { MATERI = await api('/api/materi/' + id); }
-  catch (e) { $('#st-periksa').textContent = e.message; $('#st-periksa').className = 'status galat'; return; }
+  try { MATERI = await requestJson('/api/materi/' + id); }
+  catch (e) { $('#st-periksa').textContent = e.message; $('#st-periksa').className = 'status error'; return; }
   $('#judul').value = MATERI.judul;
   document.title = `Periksa: ${MATERI.judul} · SIMAK`;
   gambarBagian();
 }
 
-function kartu(b, i) {
+function kartu(b) {
   const gambar = b.kind === 'image';
   const isi = b.kind === 'heading' ? `<p class="h">${esc(b.teks)}</p>` : `<p>${esc(gambar ? b.ucapan : b.teks)}</p>`;
-  return `<li class="bg${gambar ? ' gambar' : ''}" data-tanda="${b.tanda}" data-el="${b.el}">
-   <div class="meta"><span>Halaman ${b.page}</span><span>${JENIS[b.kind]}</span><span class="lencana ${b.tanda}">${TANDA[b.tanda]}</span></div>
-   <div class="isi">${gambar ? `<img src="/api/pekerjaan/${MATERI.id}/img/${encodeURIComponent(b.el)}" alt="Gambar asli di halaman ${b.page}" loading="lazy">` : ''}
+  return `<li class="card bg${gambar ? ' gambar' : ''}" data-tanda="${b.tanda}" data-el="${b.el}">
+   <div class="card-head"><div class="meta"><b>${JENIS[b.kind]}</b><span>Halaman ${b.page}</span></div>${stampTanda(b.tanda)}</div>
+   <div class="card-body"><div class="isi">${gambar ? `<img src="/api/pekerjaan/${MATERI.id}/img/${encodeURIComponent(b.el)}" alt="Gambar asli di halaman ${b.page}" loading="lazy">` : ''}
     <div><div class="tampil">${isi}${b.asli ? `<details><summary>Teks asli dari LLM</summary><p>${esc(b.asli)}</p></details>` : ''}</div>
-    <div class="tombol">${PERLU(b.tanda) || b.tanda === 'otomatis' ? `<button data-a="benar" ${b.tanda === 'tanpa_deskripsi' ? 'disabled' : ''}>Sudah benar</button>` : ''}
-     <button data-a="ubah">${b.tanda === 'tanpa_deskripsi' ? 'Tulis deskripsi' : 'Perbaiki'}</button>
-     <button class="tipis" data-a="dengar">Dengar</button></div></div></div></li>`;
+    <div class="tombol">${PERLU(b.tanda) || b.tanda === 'otomatis' ? `<button class="btn-primary" data-a="benar" ${b.tanda === 'tanpa_deskripsi' ? 'disabled' : ''}>${icon('check')}Sudah benar</button>` : ''}
+     <button data-a="ubah">${icon('inject')}${b.tanda === 'tanpa_deskripsi' ? 'Tulis deskripsi' : 'Perbaiki'}</button>
+     <button class="btn-quiet" data-a="dengar">${icon('ear')}Dengar</button></div></div></div></div></li>`;
 }
 
 function gambarBagian() {
@@ -139,18 +120,16 @@ function gambarBagian() {
   const perlu = MATERI.bagian.filter(b => PERLU(b.tanda)).length;
   $('#st-periksa').className = 'status';
   $('#st-periksa').textContent = perlu ? `${perlu} dari ${MATERI.bagian.length} bagian perlu dicek.` : 'Semua bagian sudah dicek atau berasal langsung dari PDF.';
-  $('#bagian').innerHTML = daftar.length ? daftar.map(kartu).join('') : '<li class="kosong">Tidak ada bagian yang perlu dicek. Hilangkan centang untuk melihat seluruh isi.</li>';
+  $('#bagian').innerHTML = daftar.length ? daftar.map(kartu).join('') : '<li class="card"><p class="kosong">Tidak ada bagian yang perlu dicek. Hilangkan centang untuk melihat seluruh isi.</p></li>';
 }
 $('#hanya-tanda').onchange = gambarBagian;
 
 function ganti(b) {
-  const i = MATERI.bagian.findIndex(x => x.el === b.el);
-  MATERI.bagian[i] = b;
-  const li = $(`#bagian [data-el="${CSS.escape(b.el)}"]`);
-  li.outerHTML = kartu(b);
-  const baru = $(`#bagian [data-el="${CSS.escape(b.el)}"]`);
-  baru.querySelector('button')?.focus();
+  MATERI.bagian[MATERI.bagian.findIndex(x => x.el === b.el)] = b;
+  $(`#bagian [data-el="${CSS.escape(b.el)}"]`).outerHTML = kartu(b);
+  $(`#bagian [data-el="${CSS.escape(b.el)}"] button`)?.focus();
   const perlu = MATERI.bagian.filter(x => PERLU(x.tanda)).length;
+  $('#st-periksa').className = 'status';
   $('#st-periksa').textContent = `Tersimpan. ${perlu ? perlu + ' bagian masih perlu dicek.' : 'Semua bagian sudah dicek.'}`;
 }
 
@@ -163,39 +142,39 @@ $('#bagian').onclick = async e => {
   if (a === 'dengar') return dengar(b.ucapan, btn);
   if (a === 'ubah') {
     li.querySelector('.tampil').innerHTML = `<label class="sr" for="t-${el}">Isi yang dibacakan</label><textarea id="t-${el}">${esc(b.teks)}</textarea>`;
-    li.querySelector('.tombol').innerHTML = '<button class="utama" data-a="simpan">Simpan perbaikan</button><button class="tipis" data-a="batal">Batal</button>';
+    li.querySelector('.tombol').innerHTML = `<button class="btn-primary" data-a="simpan">${icon('check')}Simpan perbaikan</button><button class="btn-quiet" data-a="batal">Batal</button>`;
     li.querySelector('textarea').focus();
     return;
   }
   if (a === 'batal') { li.outerHTML = kartu(b); return; }
   btn.disabled = true;
+  $('#st-periksa').className = 'status busy';
   $('#st-periksa').textContent = b.kind === 'image' ? 'Menyimpan dan memperbarui PDF…' : 'Menyimpan…';
   try {
-    const hasil = a === 'simpan'
-      ? await api(url, {method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({teks: li.querySelector('textarea').value})})
-      : await api(url + '/benar', {method: 'POST'});
-    ganti(hasil);
+    ganti(a === 'simpan'
+      ? await requestJson(url, {method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({teks: li.querySelector('textarea').value})})
+      : await requestJson(url + '/benar', {method: 'POST'}));
   } catch (err) {
     btn.disabled = false;
-    $('#st-periksa').className = 'status galat';
+    $('#st-periksa').className = 'status error';
     $('#st-periksa').textContent = err.message;
   }
 };
 
 async function dengar(teks, btn) {
   if (audioUji) { audioUji.pause(); audioUji = null; }
-  const label = btn.textContent;
+  const label = btn.innerHTML;
   btn.textContent = 'Memuat…';
   try {
     const r = await fetch('/api/suara', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({teks: teks.slice(0, 4000)})});
     if (!r.ok) throw new Error();
     audioUji = new Audio(URL.createObjectURL(await r.blob()));
-    btn.textContent = 'Diputar';
-    audioUji.onended = () => { btn.textContent = label; };
+    btn.innerHTML = icon('pause') + 'Diputar';
+    audioUji.onended = () => { btn.innerHTML = label; };
     await audioUji.play();
   } catch (_) {
     const u = new SpeechSynthesisUtterance(teks); u.lang = 'id-ID';
-    u.onend = () => { btn.textContent = label; };
+    u.onend = () => { btn.innerHTML = label; };
     speechSynthesis.cancel(); speechSynthesis.speak(u);
     btn.textContent = 'Suara peramban';
   }
@@ -204,9 +183,9 @@ async function dengar(teks, btn) {
 $('#f-judul').onsubmit = async e => {
   e.preventDefault();
   try {
-    const r = await api(`/api/materi/${MATERI.id}/judul`, {method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({judul: $('#judul').value})});
+    const r = await requestJson(`/api/materi/${MATERI.id}/judul`, {method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({judul: $('#judul').value})});
     MATERI.judul = r.judul; $('#st-periksa').className = 'status'; $('#st-periksa').textContent = 'Judul tersimpan.';
-  } catch (err) { $('#st-periksa').className = 'status galat'; $('#st-periksa').textContent = err.message; }
+  } catch (err) { $('#st-periksa').className = 'status error'; $('#st-periksa').textContent = err.message; }
 };
 
 // ---------------------------------------------------------------- navigasi
@@ -216,7 +195,8 @@ function rute() {
   if (audioUji) { audioUji.pause(); audioUji = null; }
   if (id) { clearTimeout(POLL); $('#bagian').innerHTML = ''; muatMateri(id); }
   else { document.title = 'ULD · SIMAK'; muatDaftar(); }
-  $('#isi').focus();
+  window.lenis ? window.lenis.scrollTo(0, {immediate: true}) : scrollTo(0, 0);  // gulir halus Sill menahan scrollTo biasa
+  $('#isi').focus({preventScroll: true});
 }
 $('#kembali').onclick = e => { e.preventDefault(); history.pushState(null, '', 'uld.html'); rute(); };
 addEventListener('hashchange', rute);

@@ -353,7 +353,9 @@
       console.warn(e);
       S.agenSiap = false;  // jatuh ke perintah sederhana sampai halaman dimuat ulang
       S.mode = 'dengar';
-      perintahSederhana('Asisten suara sedang tidak tersambung. Saya pakai perintah sederhana. ' + sapaan);
+      perintahSederhana((e.name === 'NotAllowedError'
+        ? 'Mikrofon belum diizinkan, jadi asisten suara tidak bisa mendengar. Izinkan mikrofon di peramban, atau pakai tombol di layar. '
+        : 'Asisten suara sedang tidak tersambung. Saya pakai perintah sederhana. ') + sapaan);
     } finally {
       S.membuka = false;
     }

@@ -72,6 +72,8 @@ ELEVENLABS_AGENT_ID=agent_xxxxxxxx
 ```
 
 `ELEVENLABS_API_KEY` yang sama dipakai server untuk meminta signed URL (`GET /api/agen/sesi`). Key tidak pernah dikirim ke peramban.
+Izin key untuk **ElevenAgents harus Write**: ElevenLabs menolak `get-signed-url` dengan izin Read (`missing the permission convai_write`).
+Dengan izin itu, `python setup/buat_agen.py` juga bisa membuat agen beserta 10 tool-nya tanpa dashboard.
 Mulai ulang server. `GET /api/agen` mengembalikan `{"aktif": true}` bila agen siap.
 
 ## Cara kerja setengah dupleks

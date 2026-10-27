@@ -48,6 +48,7 @@
 .mulai:hover{background:var(--brand)}
 .mulai b{font:900 clamp(3.4rem,11vw,9rem)/.88 var(--f-display);letter-spacing:-.05em}
 .mulai span{font-size:clamp(1.1rem,2.2vw,1.5rem);max-width:30ch;font-weight:500;line-height:1.4}
+.mulai .spasi{width:min(560px,80vw);height:auto;margin-bottom:auto;align-self:center}
 .mulai .titik{width:clamp(72px,9vw,120px);height:clamp(72px,9vw,120px);border-radius:50%;background:var(--ink);animation:denyut 2.4s var(--ease,ease) infinite}
 @keyframes denyut{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
 .dengar-head .page-head .pesan{font-size:clamp(1.15rem,2vw,1.5rem);line-height:1.45;max-width:46ch;min-height:2.9em;margin-top:18px}
@@ -72,3 +73,13 @@
 .transkrip li b{color:var(--ink)}
 @media (max-width:760px){.kendali{grid-template-columns:repeat(2,minmax(0,1fr))}.kendali button:last-child{grid-column:1/-1}}
 @media (prefers-reduced-motion:reduce){.mulai .titik,.bicara .titik-kecil{animation:none}}
+
+/* Aset visual: gambar keadaan pemutar, ilustrasi panel, dan tombol keluar */
+/* melayang di pojok agar selalu terjangkau, juga saat halaman digulir ke tombol Bicara */
+.keluar-baris{position:fixed;right:16px;bottom:16px;z-index:90;margin:0}
+.keluar{min-height:40px;padding:8px 14px;font-size:var(--t-xs);background:var(--card);box-shadow:0 6px 18px rgba(11,10,10,.18)}
+.keluar:hover{background:var(--ink);color:var(--card)}
+.dengar-head .page-head{position:relative;padding-right:clamp(150px,18vw,240px)}
+.status-gambar{position:absolute;top:clamp(20px,3vw,40px);right:clamp(20px,3vw,40px);width:clamp(110px,14vw,190px);height:auto}
+.listen-intro .intro-gambar{width:100%;max-width:300px;height:auto}
+@media (max-width:760px){.keluar-panjang{display:none}.keluar-baris{right:10px;bottom:10px}.dengar-head .page-head{padding-right:22px}.status-gambar{position:static;display:block;width:96px;margin-bottom:14px}.mulai .spasi{width:88vw}}

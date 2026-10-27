@@ -45,6 +45,8 @@
     $('#bar').style.width = n ? `${Math.round((S.i + (S.status === 'diam' ? 0 : 1)) / n * 100)}%` : '0';
     $('#mode').textContent = S.mode === 'ngobrol' ? 'Bicara dengan SIMAK'
       : {putar: 'Memutar materi', jeda: 'Dijeda', diam: 'Siap'}[S.status];
+    // gambar besar keadaan pemutar untuk pengguna low vision dan pendamping; teksnya sudah diumumkan #mode
+    $('#status-gambar').src = `assets/status-${S.mode === 'ngobrol' ? 'bicara' : {putar: 'putar', jeda: 'jeda', diam: 'siap'}[S.status]}.svg`;
     $('#b-jeda').textContent = S.status === 'putar' ? 'Jeda' : 'Lanjut';
     document.querySelectorAll('.kendali button').forEach(b => { b.disabled = !S.aktif; });
     const b = $('#bicara');
@@ -431,12 +433,14 @@
   $('#mulai').onclick = mulai;
   document.addEventListener('keydown', e => {
     if (!$('#mulai').hidden) {  // tombol pengubah dan tombol pembaca layar (NVDA/JAWS) tidak memulai
-      if (!['Shift', 'Control', 'Alt', 'Meta', 'CapsLock', 'Insert', 'Tab'].includes(e.key)) { e.preventDefault(); mulai(); }
+      // spasi yang masih tertahan dari halaman pembuka mengirim keydown berulang; hanya tekanan baru yang memulai
+      if (!e.repeat && !['Shift', 'Control', 'Alt', 'Meta', 'CapsLock', 'Insert', 'Tab'].includes(e.key)) { e.preventDefault(); mulai(); }
       return;
     }
     if (e.key === 'Escape' && S.sesi) return tutupAgen();
-    if (e.key === ' ' && !e.target.closest('button, input, textarea, select, summary')) { e.preventDefault(); sela(); }
+    if (e.key === ' ' && !e.target.closest('a, button, input, textarea, select, summary')) { e.preventDefault(); sela(); }
   });
+  $('#keluar').onclick = () => { tutupAgen(); berhenti(); berhentiDengar(); };  // tautan tetap berpindah ke halaman pembuka
   $('#mulai').focus();
   window.SIMAK = {S, PERINTAH, tafsir};  // pemeriksaan di konsol
 })();

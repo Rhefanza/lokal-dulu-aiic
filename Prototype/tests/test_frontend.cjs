@@ -22,7 +22,7 @@ async function harness(page) {
   const context = vm.createContext({
     console, AbortController, URLSearchParams, setTimeout, clearTimeout,
     fetch: async url => response(url === '/api/sampel' ? [] : {}),
-    window: {addEventListener() {}}, document: {querySelector: element, querySelectorAll: () => [], getElementById: element},
+    window: {addEventListener() {}}, document: {querySelector: element, querySelectorAll: () => [], getElementById: element, addEventListener() {}},
     localStorage: {getItem: () => null, setItem() {}}, sessionStorage: {getItem: () => null, setItem() {}, removeItem() {}},
     location: {search: ''}, history: {replaceState() {}}, matchMedia: () => ({matches: true}), confirm: () => true,
   });
